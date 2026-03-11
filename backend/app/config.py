@@ -50,19 +50,24 @@ class Config:
     OASIS_SIMULATION_DATA_DIR = os.path.join(os.path.dirname(__file__), '../uploads/simulations')
     
     # OASIS platform action config
-    OASIS_TWITTER_ACTIONS = [
+    OASIS_TWITTER_ACTIONS = (
         'CREATE_POST', 'LIKE_POST', 'REPOST', 'FOLLOW', 'DO_NOTHING', 'QUOTE_POST'
-    ]
-    OASIS_REDDIT_ACTIONS = [
+    )
+    OASIS_REDDIT_ACTIONS = (
         'LIKE_POST', 'DISLIKE_POST', 'CREATE_POST', 'CREATE_COMMENT',
         'LIKE_COMMENT', 'DISLIKE_COMMENT', 'SEARCH_POSTS', 'SEARCH_USER',
         'TREND', 'REFRESH', 'DO_NOTHING', 'FOLLOW', 'MUTE'
-    ]
+    )
     
     # Report Agent config
     REPORT_AGENT_MAX_TOOL_CALLS = int(os.environ.get('REPORT_AGENT_MAX_TOOL_CALLS', '5'))
     REPORT_AGENT_MAX_REFLECTION_ROUNDS = int(os.environ.get('REPORT_AGENT_MAX_REFLECTION_ROUNDS', '2'))
     REPORT_AGENT_TEMPERATURE = float(os.environ.get('REPORT_AGENT_TEMPERATURE', '0.5'))
+
+    # Knowledge Curation config
+    KNOWLEDGE_DIR = os.path.join(os.path.dirname(__file__), '../preset_knowledge')
+    TAVILY_API_KEY = os.environ.get('TAVILY_API_KEY')
+    KNOWLEDGE_MAX_INJECTION_CHARS = int(os.environ.get('KNOWLEDGE_MAX_INJECTION_CHARS', '3000'))
     
     @classmethod
     def validate(cls):

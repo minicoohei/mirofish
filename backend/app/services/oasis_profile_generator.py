@@ -21,6 +21,7 @@ from zep_cloud.client import Zep
 from ..config import Config
 from ..utils.logger import get_logger
 from .zep_entity_reader import EntityNode, ZepEntityReader
+from .knowledge_loader import KnowledgeLoader
 
 logger = get_logger('mirofish.oasis_profile')
 
@@ -190,7 +191,8 @@ class OasisProfileGenerator:
     ):
         self.api_key = api_key or Config.LLM_API_KEY
         self.base_url = base_url or Config.LLM_BASE_URL
-        self.model_name = model_name or Config.LLM_MODEL_NAME
+        # プロフィール生成はエージェント品質を決める重要処理 → チャットモデル（gpt-5.4）を使用
+        self.model_name = model_name or getattr(Config, 'LLM_CHAT_MODEL_NAME', None) or Config.LLM_MODEL_NAME
         
         if not self.api_key:
             raise ValueError("LLM_API_KEY not configured")
@@ -748,6 +750,12 @@ class OasisProfileGenerator:
    - 性格特徴（MBTI類型、コアとなる性格、コミュニケーションスタイル）
    - 立場・観点（キャリアに対する価値観、重視する経験・資格）
    - 個人の記憶（過去の採用・評価・研究における具体的な判断エピソード）
+   - 【必須】会話テーマ指示: このキャラクターは他のエージェントとの対話で以下のテーマについて積極的に議論すること:
+     * 候補者のキャリアの可能性と将来性（「この経験があれば○○方面に進める」「△△業界で需要が高まっている」）
+     * 業界の未来予測（「今後3-5年で○○スキルの需要が激変する」「この業界はAI/DXでこう変わる」）
+     * キャリアパスの分岐シナリオ（「マネジメントに進むならこのタイミング」「専門特化なら○○の深掘りが必要」）
+     * 他のエージェントの意見への反応と議論（「○○さんの指摘に同意だが、△△の観点も重要」）
+     * 候補者が次に経験すべきこと（「次の転職先では○○を経験すべき」「足りないのは□□の実戦経験」）
 3. age: 年齢（整数）
 4. gender: 性別、英語で: "male" または "female"
 5. mbti: MBTIタイプ（例：INTJ、ENFP等）
@@ -779,6 +787,16 @@ class OasisProfileGenerator:
 
         attrs_str = json.dumps(entity_attributes, ensure_ascii=False) if entity_attributes else "なし"
         context_str = context[:3000] if context else "No additional context"
+
+        # Inject industry knowledge
+        knowledge_context = KnowledgeLoader.get_relevant_knowledge(
+            context_str, injection_point="group_persona"
+        )
+        knowledge_section = f"""
+
+## 業界・市場データ（参考情報）
+{knowledge_context}
+""" if knowledge_context else ""
 
         return f"""企業・組織エンティティに対して、候補者と業務上の関係があった人物のペルソナを生成してください。
 この企業は候補者が過去に在籍していた企業、またはクライアント企業（候補者がサービスを提供した相手）です。
@@ -819,6 +837,11 @@ class OasisProfileGenerator:
 
    共通:
    - カテゴリC（観察・分析する側）としての評価スタンス
+   - 【必須】会話テーマ指示: 他のエージェントとの対話で以下について積極的に議論すること:
+     * 候補者のキャリアの将来性（「この経歴があれば○○方面に進める」「市場での需要変化を考えると...」）
+     * 業界の未来予測（「この業界は今後○○の方向に変わる」「必要スキルが△△にシフトしつつある」）
+     * 候補者の成長シナリオ（「あと2-3年○○を経験すれば一段上のレベルに行ける」）
+     * 他のエージェントの評価への反応（同意・反論・別角度からの補足）
 
 3. age: この人物の年齢（整数、25〜55の範囲）
 4. gender: 性別、英語で: "male" または "female"
@@ -834,7 +857,8 @@ class OasisProfileGenerator:
 - 日本語で記述（genderフィールドのみ英語でmale/female）
 - この人物は「組織」ではなく、その組織に所属していた/している「個人」として生成すること
 - 候補者との業務経験に基づく具体的な証言・評価を含めること
-- 「一緒に働きましょう」等の勧誘は不可。あくまで過去の業務実態の証言・評価に留めること"""
+- 「一緒に働きましょう」等の勧誘は不可。あくまで過去の業務実態の証言・評価に留めること
+{knowledge_section}"""
     
     def _generate_profile_rule_based(
         self,
@@ -1122,7 +1146,7 @@ class OasisProfileGenerator:
 {{
     "name": "候補者の氏名（履歴書から推定、不明なら「候補者」）",
     "bio": "候補者の概要（200字）。現在の職種・経験年数・主要スキル・転職の動機を含む",
-    "persona": "候補者の詳細プロフィール（2000字、改行なし）。以下を含むこと: (1) 学歴・職歴の時系列, (2) 各社での具体的な業務内容と成果, (3) 技術スキル・ソフトスキル, (4) 強み・弱み, (5) キャリアの志向性・転職で実現したいこと, (6) 人柄・コミュニケーションスタイル, (7) MBTIタイプ",
+    "persona": "候補者の詳細プロフィール（2000字、改行なし）。以下を含むこと: (1) 学歴・職歴の時系列, (2) 各社での具体的な業務内容と成果, (3) 技術スキル・ソフトスキル, (4) 強み・弱み, (5) キャリアの志向性・転職で実現したいこと, (6) 人柄・コミュニケーションスタイル, (7) MBTIタイプ, (8) 【会話テーマ指示】他のエージェントから評価やアドバイスを受けた際、自分のキャリアビジョンや将来の方向性について語ること。「自分としては○○を目指している」「△△の経験を活かして□□に挑戦したい」のように、評価への応答と自己のキャリア展望を述べること。業界の将来性や次に必要なスキルについても自分の見解を述べること",
     "age": 年齢（整数、推定）,
     "gender": "male" or "female"（推定）,
     "mbti": "MBTIタイプ",
@@ -1485,13 +1509,18 @@ class OasisProfileGenerator:
         
         gender_lower = gender.lower().strip()
         
-        # Chinese mapping
         gender_map = {
+            # Japanese
+            "男性": "male",
+            "女性": "female",
+            "組織": "other",
+            "その他": "other",
+            # Chinese (legacy OASIS compatibility)
             "男": "male",
             "女": "female",
             "机构": "other",
             "其他": "other",
-            # English already present
+            # English
             "male": "male",
             "female": "female",
             "other": "other",
@@ -1697,6 +1726,16 @@ class OasisProfileGenerator:
 
     def _customize_hr_specialist(self, spec: dict, candidate_context: str) -> Optional[str]:
         """Use LLM to customize HR specialist persona based on candidate context"""
+        # Inject HR trends knowledge
+        knowledge_context = KnowledgeLoader.get_relevant_knowledge(
+            candidate_context, injection_point="hr_specialist"
+        )
+        knowledge_section = f"""
+
+## HRトレンド・市場データ（参考情報）
+{knowledge_context}
+""" if knowledge_context else ""
+
         prompt = f"""以下のHR専門家のペルソナを、候補者の情報を踏まえてカスタマイズしてください。
 ベースとなる人物像はそのまま維持し、候補者に対する具体的な評価視点や質問を追加してください。
 
@@ -1707,6 +1746,16 @@ class OasisProfileGenerator:
 
 ## 候補者の概要
 {candidate_context[:2000]}
+{knowledge_section}
+
+## カスタマイズの必須要素
+1. 候補者に対する具体的な評価視点や質問を追加
+2. 以下の会話テーマを自然に組み込むこと:
+   - 候補者のキャリアの可能性と将来性（「この経験があれば○○方面に進める」等）
+   - 業界の未来予測（「今後3-5年で○○スキルの需要がどう変わるか」「AI/DXが業界に与える影響」等）
+   - キャリアパスの分岐シナリオ（「マネジメントに進むか専門特化するか」「海外展開の可能性」等）
+   - 候補者が次に経験すべきこと（「足りないのは○○の経験」「次の転職では△△を重視すべき」等）
+   - 他のエージェント（採用側・アドバイザー・元同僚等）の意見への反応と議論
 
 カスタマイズされたペルソナを純粋なテキストで返してください（JSON不要、改行不要、1つの連続したテキスト）。"""
 
@@ -1750,13 +1799,23 @@ class OasisProfileGenerator:
             logger.warning("No candidate context provided, skipping target company generation")
             return []
 
+        # Inject job market knowledge
+        knowledge_context = KnowledgeLoader.get_relevant_knowledge(
+            candidate_context, injection_point="target_company"
+        )
+        knowledge_section = f"""
+
+## 転職市場データ（参考情報）
+{knowledge_context}
+""" if knowledge_context else ""
+
         # Step 1: Ask LLM to suggest target companies
         prompt = f"""以下の候補者の経歴・スキルセットから、この候補者が転職先として応募する可能性が高い企業を{num_companies}社推薦してください。
 過去に在籍した企業は除外してください。
 
 ## 候補者の概要
 {candidate_context[:3000]}
-
+{knowledge_section}
 以下のJSON形式で返してください:
 {{
     "companies": [
@@ -1819,7 +1878,8 @@ class OasisProfileGenerator:
 - この面接官が候補者の経歴で評価するポイント
 - この面接官が候補者に対して持つ懸念点や確認したい事項
 - 面接での質問傾向と判断基準
-- カテゴリA（ゲートキーパー）としての合否判断基準"""
+- カテゴリA（ゲートキーパー）としての合否判断基準
+- 【会話テーマ指示】他のエージェントとの対話で以下を積極的に議論すること: (1) このポジションでの候補者の成長可能性（「入社後1-2年でどこまで伸びるか」）, (2) {company_name}の業界での今後の展望と必要スキルの変化, (3) 候補者がこのポジションに就いた場合の3-5年後のキャリアパス, (4) 他のエージェントの評価への反応（「アドバイザーの見立てには同意するが、実際の面接では○○も確認したい」等）"""
 
             persona = f"{manager_name}は{company_name}の{manager_role}として、{position}ポジションの採用面接を担当する。{reason}"
 
@@ -1887,11 +1947,21 @@ class OasisProfileGenerator:
             logger.warning("No candidate context provided, skipping top player generation")
             return []
 
+        # Inject industry knowledge
+        knowledge_context = KnowledgeLoader.get_relevant_knowledge(
+            candidate_context, injection_point="top_player"
+        )
+        knowledge_section = f"""
+
+## 業界・スキル市場データ（参考情報）
+{knowledge_context}
+""" if knowledge_context else ""
+
         prompt = f"""以下の候補者の経歴から、この候補者と同じ職種における業界トップクラスの人材（Topプレイヤー）のペルソナを生成してください。
 
 ## 候補者の概要
 {candidate_context[:3000]}
-
+{knowledge_section}
 ## 指示
 1. まず候補者の主要な職種を特定してください（例：プロダクトマネージャー、ソフトウェアエンジニア、データサイエンティスト、経営コンサルタント、営業、マーケター等）
 2. その職種で日本国内トップクラスの実績を持つ架空の人物を1名生成してください
@@ -1903,7 +1973,7 @@ class OasisProfileGenerator:
     "name": "トップレイヤーの名前（架空の日本人名）",
     "role": "同職種のTopプレイヤー（○○）← 括弧内に具体的な職種名",
     "bio": "この人物の概要（200字）。同職種で突出した実績を持つ人物としての紹介。候補者を評価する立場であることを明記",
-    "persona": "詳細なペルソナ（2000字、改行なし、1つの連続テキスト）。以下を含むこと: (1) 経歴・学歴・所属企業の実績, (2) この職種で卓越している具体的なスキルと成果, (3) 業界での受賞歴・登壇実績・メディア露出等, (4) 同職種の候補者を評価する際の基準（技術力/思考力/リーダーシップ/ビジネスインパクト等）, (5) カテゴリCの観察者として候補者の相対的位置づけをどう見るか, (6) MBTIタイプとその行動パターン",
+    "persona": "詳細なペルソナ（2000字、改行なし、1つの連続テキスト）。以下を含むこと: (1) 経歴・学歴・所属企業の実績, (2) この職種で卓越している具体的なスキルと成果, (3) 業界での受賞歴・登壇実績・メディア露出等, (4) 同職種の候補者を評価する際の基準（技術力/思考力/リーダーシップ/ビジネスインパクト等）, (5) カテゴリCの観察者として候補者の相対的位置づけをどう見るか, (6) MBTIタイプとその行動パターン, (7) 【会話テーマ指示】他のエージェントとの対話で以下を積極的に議論すること: 業界の未来予測（今後3-5年でこの職種に求められるスキルがどう変わるか）、候補者が同職種トップに到達するために必要な経験と成長ステップ、AI/テクノロジーが業界に与える影響と新たに生まれるキャリア機会、他のエージェントの評価への具体的な反応（「アドバイザーの見立ては甘い、トップ層から見ると○○が足りない」等の率直なフィードバック）",
     "age": 年齢（整数、30-50の範囲）,
     "gender": "male" or "female",
     "mbti": "MBTIタイプ",

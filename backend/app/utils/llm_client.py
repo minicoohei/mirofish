@@ -62,8 +62,9 @@ class LLMClient:
             "max_completion_tokens": max_tokens,
         }
 
-        # gpt-5系はtemperatureカスタム値非対応のためスキップ
-        if temperature != 1.0 and not self.model.startswith("gpt-5"):
+        # Models that don't support temperature parameter
+        NO_TEMP_MODELS = ("gpt-5", "gpt-5-mini", "gpt-5-nano")
+        if temperature != 1.0 and self.model not in NO_TEMP_MODELS:
             kwargs["temperature"] = temperature
         
         if response_format:
@@ -106,6 +107,6 @@ class LLMClient:
 
         try:
             return json.loads(cleaned_response)
-        except json.JSONDecodeError:
-            raise ValueError(f"Invalid JSON from LLM: {cleaned_response}")
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON from LLM: {cleaned_response}") from e
 

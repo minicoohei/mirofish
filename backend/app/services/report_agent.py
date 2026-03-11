@@ -21,6 +21,7 @@ from enum import Enum
 from ..config import Config
 from ..utils.llm_client import LLMClient
 from ..utils.logger import get_logger
+from .knowledge_loader import KnowledgeLoader
 from .zep_tools import (
     ZepToolsService, 
     SearchResult, 
@@ -546,6 +547,24 @@ Workflow:
 
 [Important] OASIS simulation environment must be running to use this feature!"""
 
+TOOL_DESC_KNOWLEDGE_SEARCH = """\
+[Industry Knowledge Search - Preset knowledge base]
+Search curated industry knowledge including salary benchmarks, hiring trends,
+skill demand data, career patterns, and industry overviews.
+
+Use this tool when you need:
+- Factual market data (salary ranges, hiring trends, industry growth rates)
+- Industry-specific context beyond what simulation agents know
+- Career pattern analysis and success factors
+- Skill demand trends and future predictions
+
+This searches locally curated Markdown files, NOT the Zep graph.
+Results are pre-structured and may include data from external sources (news, job postings).
+
+[Parameters]
+- query: Search keywords (e.g., "IT業界 年収相場", "PM スキル需要")
+- category: "industries", "job_market", "career_patterns", or "all" (default "all")"""
+
 # ── Outline planning prompt ──
 
 PLAN_SYSTEM_PROMPT = """\
@@ -906,8 +925,8 @@ class ReportAgent:
         self.simulation_id = simulation_id
         self.simulation_requirement = simulation_requirement
         
-        self.llm = llm_client or LLMClient()
-        self.chat_llm = LLMClient(use_chat_model=True)  # インタラクティブチャット用（別モデル可）
+        self.llm = llm_client or LLMClient(use_chat_model=True)  # レポート生成もチャットモデル（gpt-5.4）を使用
+        self.chat_llm = self.llm  # インタラクティブチャットも同一モデル
         self.zep_tools = zep_tools or ZepToolsService()
         
         # Tool definitions
@@ -953,6 +972,14 @@ class ReportAgent:
                 "parameters": {
                     "interview_topic": "Interview topic or requirement description",
                     "max_agents": "Max number of agents to interview (optional, default 5, max 10)"
+                }
+            },
+            "knowledge_search": {
+                "name": "knowledge_search",
+                "description": TOOL_DESC_KNOWLEDGE_SEARCH,
+                "parameters": {
+                    "query": "Search query for industry knowledge (e.g., 'IT業界の年収相場', 'PM職の市場トレンド')",
+                    "category": "Knowledge category: 'industries', 'job_market', 'career_patterns', or 'all' (default 'all')"
                 }
             }
         }
@@ -1023,7 +1050,12 @@ class ReportAgent:
                     max_agents=max_agents
                 )
                 return result.to_text()
-            
+
+            elif tool_name == "knowledge_search":
+                query = parameters.get("query", "")
+                category = parameters.get("category", "all")
+                return KnowledgeLoader.search_knowledge(query=query, category=category)
+
             # ========== Backward-compatible old tools (internally redirected to new tools) ==========
             
             elif tool_name == "search_graph":
@@ -1066,7 +1098,7 @@ class ReportAgent:
             return f"Tool execution failed: {str(e)}"
     
     # Valid tool name set for bare JSON fallback parsing validation
-    VALID_TOOL_NAMES = {"insight_forge", "panorama_search", "quick_search", "interview_agents"}
+    VALID_TOOL_NAMES = {"insight_forge", "panorama_search", "quick_search", "interview_agents", "knowledge_search"}
 
     def _parse_tool_calls(self, response: str) -> List[Dict[str, Any]]:
         """
@@ -1153,7 +1185,7 @@ class ReportAgent:
         Returns:
             ReportOutline: Report outline
         """
-        logger.info("开始Plan report outline...")
+        logger.info("Planning report outline...")
         
         if progress_callback:
             progress_callback("planning", 0, "Analyzing simulation requirements...")
@@ -1291,7 +1323,7 @@ class ReportAgent:
         min_tool_calls = 3  # Min tool calls required
         conflict_retries = 0  # Consecutive conflict count (tool call + Final Answer simultaneously)
         used_tools = set()  # Track used tool names
-        all_tools = {"insight_forge", "panorama_search", "quick_search", "interview_agents"}
+        all_tools = {"insight_forge", "panorama_search", "quick_search", "interview_agents", "knowledge_search"}
 
         # Report context for InsightForge sub-question generation
         report_context = f"Section title: {section.title}\nSimulation requirement: {self.simulation_requirement}"
@@ -1333,7 +1365,7 @@ class ReportAgent:
             if has_tool_calls and has_final_answer:
                 conflict_retries += 1
                 logger.warning(
-                    f"章节 {section.title} 第 {iteration+1} 轮: "
+                    f"Section {section.title} iteration {iteration+1}: "
                     f"LLM output both tool call and Final Answer (conflict #{conflict_retries})"
                 )
 
@@ -1354,7 +1386,7 @@ class ReportAgent:
                 else:
                     # Third time: degraded handling, truncate to first tool call, force execute
                     logger.warning(
-                        f"章节 {section.title}: 连续 {conflict_retries} 次冲突，"
+                        f"Section {section.title}: {conflict_retries} consecutive conflicts, "
                         "degrading to truncated execution of first tool call"
                     )
                     first_tool_end = response.find('</tool_call>')
@@ -1603,7 +1635,7 @@ class ReportAgent:
             # Phase 1: Plan outline
             report.status = ReportStatus.PLANNING
             ReportManager.update_progress(
-                report_id, "planning", 5, "开始Plan report outline...",
+                report_id, "planning", 5, "Planning report outline...",
                 completed_sections=[]
             )
             
@@ -1611,7 +1643,7 @@ class ReportAgent:
             self.report_logger.log_planning_start()
             
             if progress_callback:
-                progress_callback("planning", 0, "开始Plan report outline...")
+                progress_callback("planning", 0, "Planning report outline...")
             
             outline = self.plan_outline(
                 progress_callback=lambda stage, prog, msg: 
@@ -1815,7 +1847,7 @@ class ReportAgent:
         messages = [{"role": "system", "content": system_prompt}]
         
         # Add chat history
-        for h in chat_history[-10:]:  # 限制历史长度
+        for h in chat_history[-10:]:  # Limit history length
             messages.append(h)
         
         # Add user message
@@ -1824,7 +1856,7 @@ class ReportAgent:
             "content": message
         })
         
-        # ReACT loop（简化版）
+        # ReACT loop (simplified)
         tool_calls_made = []
         max_iterations = 2  # Reduced iteration rounds
         
@@ -2176,7 +2208,7 @@ class ReportManager:
                 # Convert all heading levels (#, ##, ###, #### etc.) to bold
                 # Since section headings are added by the system, content should not have any headings
                 cleaned_lines.append(f"**{title_text}**")
-                cleaned_lines.append("")  # 添加空行
+                cleaned_lines.append("")  # Add blank line
                 continue
             
             # If previous line was a skipped heading and current line is empty, skip too

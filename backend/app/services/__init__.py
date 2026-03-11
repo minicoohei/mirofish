@@ -1,5 +1,5 @@
 """
-业务服务模块
+Business services module
 """
 
 from .ontology_generator import OntologyGenerator
@@ -28,6 +28,9 @@ from .zep_graph_memory_updater import (
     ZepGraphMemoryManager,
     AgentActivity
 )
+from .knowledge_curator import KnowledgeCurator
+from .knowledge_loader import KnowledgeLoader
+from .external_data_fetcher import ExternalDataFetcher
 from .simulation_ipc import (
     SimulationIPCClient,
     SimulationIPCServer,
@@ -69,5 +72,8 @@ __all__ = [
     'IPCResponse',
     'CommandType',
     'CommandStatus',
+    'KnowledgeCurator',
+    'KnowledgeLoader',
+    'ExternalDataFetcher',
 ]
 

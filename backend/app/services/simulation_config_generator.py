@@ -109,19 +109,34 @@ class TimeSimulationConfig:
 
 
 @dataclass
+class CareerPhase:
+    """Career timeline phase for future simulation"""
+    phase_id: int  # 1=current, 2=short-term, 3=mid-term
+    phase_name: str  # e.g. "現在の評価", "1-2年後", "3-5年後"
+    trigger_round: int  # Round number when this phase activates
+    scenario_description: str  # What changed in this phase
+    evaluation_focus: str  # What evaluators should focus on
+    career_developments: List[str] = field(default_factory=list)  # Key changes
+    injected_posts: List[Dict[str, Any]] = field(default_factory=list)  # Phase trigger posts
+
+
+@dataclass
 class EventConfig:
     """Event config"""
     # Initial events (trigger events at simulation start)
     initial_posts: List[Dict[str, Any]] = field(default_factory=list)
-    
+
     # Timed events (events triggered at specific times)
     scheduled_events: List[Dict[str, Any]] = field(default_factory=list)
-    
+
     # Hot topic keywords
     hot_topics: List[str] = field(default_factory=list)
-    
+
     # Narrative direction
     narrative_direction: str = ""
+
+    # Career timeline phases (future simulation)
+    career_phases: List[CareerPhase] = field(default_factory=list)
 
 
 @dataclass
@@ -228,7 +243,8 @@ class SimulationConfigGenerator:
     ):
         self.api_key = api_key or Config.LLM_API_KEY
         self.base_url = base_url or Config.LLM_BASE_URL
-        self.model_name = model_name or Config.LLM_MODEL_NAME
+        # シナリオ設計・フェーズ生成は品質重視 → チャットモデル（gpt-5.4）を使用
+        self.model_name = model_name or getattr(Config, 'LLM_CHAT_MODEL_NAME', None) or Config.LLM_MODEL_NAME
         
         if not self.api_key:
             raise ValueError("LLM_API_KEY not configured")
@@ -301,8 +317,15 @@ class SimulationConfigGenerator:
         # ========== Step 2: Generate event config ==========
         report_progress(2, "Generating event config and hot topics...")
         event_config_result = self._generate_event_config(context, simulation_requirement, entities)
-        event_config = self._parse_event_config(event_config_result)
+        # Calculate total rounds for phase trigger timing
+        total_hours = time_config.total_simulation_hours
+        minutes_per_round = time_config.minutes_per_round
+        total_rounds = (total_hours * 60) // minutes_per_round
+        event_config = self._parse_event_config(event_config_result, total_rounds=total_rounds)
         reasoning_parts.append(f"Event config: {event_config_result.get('reasoning', 'success')}")
+        if event_config.career_phases:
+            phase_info = ", ".join([f"{p.phase_name}(round {p.trigger_round})" for p in event_config.career_phases])
+            reasoning_parts.append(f"Career phases: {phase_info}")
         
         # ========== Steps 3-N: Batch generate Agent configs ==========
         all_agent_configs = []
@@ -321,7 +344,6 @@ class SimulationConfigGenerator:
                 )
 
                 batch_configs = self._generate_agent_configs_from_profiles(
-                    context=context,
                     profiles=batch_profiles,
                     simulation_requirement=simulation_requirement
                 )
@@ -339,7 +361,6 @@ class SimulationConfigGenerator:
                 )
 
                 batch_configs = self._generate_agent_configs_batch(
-                    context=context,
                     entities=batch_entities,
                     start_idx=start_idx,
                     simulation_requirement=simulation_requirement
@@ -353,6 +374,15 @@ class SimulationConfigGenerator:
         event_config = self._assign_initial_post_agents(event_config, all_agent_configs)
         assigned_count = len([p for p in event_config.initial_posts if p.get("poster_agent_id") is not None])
         reasoning_parts.append(f"Initial post assignment: {assigned_count} posts assigned publishers")
+
+        # ========== Assign publisher agents for career phase posts ==========
+        for phase in event_config.career_phases:
+            if phase.injected_posts:
+                phase.injected_posts = self._assign_poster_agent_ids(phase.injected_posts, all_agent_configs)
+        # Also update scheduled_events with assigned agent IDs
+        for evt in event_config.scheduled_events:
+            if evt.get("posts"):
+                evt["posts"] = self._assign_poster_agent_ids(evt["posts"], all_agent_configs)
         
         # ========== Final step: Generate platform config ==========
         report_progress(total_steps, "Generating platform config...")
@@ -670,11 +700,6 @@ Field descriptions:
     ) -> Dict[str, Any]:
         """Generate event config"""
         
-        # Get available entity type list for LLM reference
-        entity_types_available = list(set(
-            e.get_entity_type() or "Unknown" for e in entities
-        ))
-        
         # List representative entity names per type
         type_examples = {}
         for e in entities:
@@ -737,8 +762,47 @@ Return JSON format (no markdown)：
         {{"content": "Professional evaluation statement from this stakeholder's perspective", "poster_type": "Stakeholder type (must select from available types)"}},
         ...
     ],
+    "career_phases": [
+        {{
+            "phase_id": 1,
+            "phase_name": "現在の評価",
+            "scenario_description": "候補者の現時点での経歴・スキルに対する各ステークホルダーの評価",
+            "evaluation_focus": "現在のスキルセット、職歴の妥当性、市場価値の現状分析",
+            "career_developments": ["現職での実績", "保有スキルの市場評価"],
+            "injected_posts": [
+                {{"content": "Phase 1の評価コメント", "poster_type": "利用可能なタイプから選択"}}
+            ]
+        }},
+        {{
+            "phase_id": 2,
+            "phase_name": "1-2年後の予測",
+            "scenario_description": "候補者が転職・スキルアップした1-2年後の想定シナリオ。具体的な成長仮説を立てる",
+            "evaluation_focus": "短期的なキャリア成長の可能性、転職先でのフィット、スキルギャップの解消見込み",
+            "career_developments": ["想定される転職先での成果", "新スキル習得の見込み", "市場価値の変化"],
+            "injected_posts": [
+                {{"content": "1-2年後の想定に基づく評価コメント。『もし○○に転職して△△を経験すれば...』のような仮説ベース", "poster_type": "利用可能なタイプから選択"}}
+            ]
+        }},
+        {{
+            "phase_id": 3,
+            "phase_name": "3-5年後の展望",
+            "scenario_description": "候補者のキャリアパスの分岐点。複数の可能性と到達点を予測",
+            "evaluation_focus": "中長期のキャリア天井、マネジメント vs スペシャリスト、業界変化への適応力",
+            "career_developments": ["キャリアパスA: マネジメント路線", "キャリアパスB: 専門特化路線", "業界トレンドとの整合性"],
+            "injected_posts": [
+                {{"content": "3-5年後の展望に基づく評価。『この方向に進めば○○クラスの人材になれる』のような将来予測", "poster_type": "利用可能なタイプから選択"}}
+            ]
+        }}
+    ],
     "reasoning": "<brief explanation>"
-}}"""
+}}
+
+**career_phases のルール**:
+- 必ず3フェーズ（現在→1-2年後→3-5年後）を生成すること
+- 各フェーズの injected_posts は3-5件。フェーズが進むにつれ「予測」「仮説」「分岐シナリオ」の要素が増える
+- Phase 2以降は具体的な仮説（「もし○○すれば」「△△を経験した場合」）に基づく評価
+- Phase 3では複数のキャリアパス分岐を提示し、それぞれの到達点をステークホルダーが評価
+- poster_type は available stakeholder types から選択すること"""
 
         system_prompt = "あなたはHRキャリアシミュレーションの専門家です。候補者の履歴書に対する各ステークホルダーの専門的評価を生成してください。純粋なJSON形式で返してください。poster_type は利用可能なステークホルダータイプと正確に一致させてください。SNS的な投稿や勧誘メッセージではなく、採用・評価の文脈に沿った専門的コメントを生成すること。"
         
@@ -753,13 +817,51 @@ Return JSON format (no markdown)：
                 "reasoning": "Using default config"
             }
     
-    def _parse_event_config(self, result: Dict[str, Any]) -> EventConfig:
+    def _parse_event_config(self, result: Dict[str, Any], total_rounds: int = 72) -> EventConfig:
         """Parse event config result"""
+        # Parse career phases
+        career_phases = []
+        raw_phases = result.get("career_phases", [])
+        for phase_data in raw_phases:
+            phase_id = phase_data.get("phase_id", 1)
+            # Calculate trigger round: Phase 1 = round 0, Phase 2 = 1/3, Phase 3 = 2/3
+            if phase_id == 1:
+                trigger_round = 0
+            elif phase_id == 2:
+                trigger_round = total_rounds // 3
+            else:
+                trigger_round = (total_rounds * 2) // 3
+
+            career_phases.append(CareerPhase(
+                phase_id=phase_id,
+                phase_name=phase_data.get("phase_name", f"Phase {phase_id}"),
+                trigger_round=trigger_round,
+                scenario_description=phase_data.get("scenario_description", ""),
+                evaluation_focus=phase_data.get("evaluation_focus", ""),
+                career_developments=phase_data.get("career_developments", []),
+                injected_posts=phase_data.get("injected_posts", []),
+            ))
+
+        # Build scheduled_events from career phases (Phase 2 and 3)
+        scheduled_events = []
+        for phase in career_phases:
+            if phase.phase_id > 1:
+                scheduled_events.append({
+                    "trigger_round": phase.trigger_round,
+                    "phase_id": phase.phase_id,
+                    "phase_name": phase.phase_name,
+                    "scenario_description": phase.scenario_description,
+                    "evaluation_focus": phase.evaluation_focus,
+                    "career_developments": phase.career_developments,
+                    "posts": phase.injected_posts,
+                })
+
         return EventConfig(
             initial_posts=result.get("initial_posts", []),
-            scheduled_events=[],
+            scheduled_events=scheduled_events,
             hot_topics=result.get("hot_topics", []),
-            narrative_direction=result.get("narrative_direction", "")
+            narrative_direction=result.get("narrative_direction", ""),
+            career_phases=career_phases,
         )
     
     def _assign_initial_post_agents(
@@ -776,7 +878,7 @@ Return JSON format (no markdown)：
         if not event_config.initial_posts:
             return event_config
 
-        # Build agent index by both entity_type and role_category
+        # Build agent index by entity_type
         agents_by_type: Dict[str, List[AgentActivityConfig]] = {}
         agents_by_role: Dict[str, List[AgentActivityConfig]] = {}
         for agent in agent_configs:
@@ -784,11 +886,6 @@ Return JSON format (no markdown)：
             if etype not in agents_by_type:
                 agents_by_type[etype] = []
             agents_by_type[etype].append(agent)
-            # Also index by role_category if it's a known HR role
-            if etype in ("gatekeeper", "agent", "researcher"):
-                if etype not in agents_by_role:
-                    agents_by_role[etype] = []
-                agents_by_role[etype].append(agent)
 
         # Type mapping table (handle different formats LLM may output)
         # Includes HR role_category mappings
@@ -858,10 +955,50 @@ Return JSON format (no markdown)：
         
         event_config.initial_posts = updated_posts
         return event_config
-    
+
+    def _assign_poster_agent_ids(
+        self,
+        posts: List[Dict[str, Any]],
+        agent_configs: List[AgentActivityConfig]
+    ) -> List[Dict[str, Any]]:
+        """Assign agent_ids to a list of posts based on poster_type"""
+        if not posts or not agent_configs:
+            return posts
+
+        # Build agent index by entity_type
+        agents_by_type: Dict[str, List[AgentActivityConfig]] = {}
+        for agent in agent_configs:
+            etype = agent.entity_type.lower()
+            if etype not in agents_by_type:
+                agents_by_type[etype] = []
+            agents_by_type[etype].append(agent)
+
+        used_indices: Dict[str, int] = {}
+        updated = []
+        for post in posts:
+            poster_type = post.get("poster_type", "").lower()
+            matched_agent_id = None
+
+            # 1. Exact entity_type match
+            if poster_type in agents_by_type:
+                agents = agents_by_type[poster_type]
+                idx = used_indices.get(poster_type, 0) % len(agents)
+                matched_agent_id = agents[idx].agent_id
+                used_indices[poster_type] = idx + 1
+
+            # 2. Last resort: highest influence agent
+            if matched_agent_id is None and agent_configs:
+                sorted_agents = sorted(agent_configs, key=lambda a: a.influence_weight, reverse=True)
+                matched_agent_id = sorted_agents[0].agent_id
+
+            updated.append({
+                **post,
+                "poster_agent_id": matched_agent_id if matched_agent_id is not None else 0,
+            })
+        return updated
+
     def _generate_agent_configs_from_profiles(
         self,
-        context: str,
         profiles: List['OasisAgentProfile'],
         simulation_requirement: str
     ) -> List[AgentActivityConfig]:
@@ -879,7 +1016,7 @@ Return JSON format (no markdown)：
                 "bio": p.bio[:200] if p.bio else ""
             })
 
-        prompt = f"""以下のHRキャリアシミュレーションのエージェント情報を基に、各エージェントのSNS活動設定を生成してください。
+        prompt = f"""以下のHRキャリアシミュレーションのエージェント情報を基に、各エージェントのキャリア活動設定を生成してください。
 
 シミュレーション要件: {simulation_requirement}
 
@@ -1009,7 +1146,6 @@ Return JSON format (no markdown):
 
     def _generate_agent_configs_batch(
         self,
-        context: str,
         entities: List[EntityNode],
         start_idx: int,
         simulation_requirement: str

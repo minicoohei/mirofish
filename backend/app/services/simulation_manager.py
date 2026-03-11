@@ -424,9 +424,7 @@ class SimulationManager:
             return state
             
         except Exception as e:
-            logger.error(f"Simulation preparation failed: {simulation_id}, error={str(e)}")
-            import traceback
-            logger.error(traceback.format_exc())
+            logger.exception(f"Simulation preparation failed: {simulation_id}, error={str(e)}")
             state.status = SimulationStatus.FAILED
             state.error = str(e)
             self._save_simulation_state(state)
