@@ -71,6 +71,7 @@ class _TTLCache:
             return key in self._store
 
     def _evict_expired(self):
+        """Remove expired entries. Must be called with _cache_lock held."""
         now = time.monotonic()
         expired = [k for k, t in self._timestamps.items() if now - t > self._ttl]
         for k in expired:
@@ -114,7 +115,7 @@ def initialize_life_simulation():
         agent_id = data.get("agent_id", "agent_0")
         profile = data.get("profile", {})
         life_ctx = data.get("life_context", {})
-        seed = data.get("seed")
+        seed = data.get("seed")  # None → random seed for non-deterministic simulation
 
         simulation_id = _generate_sim_id()
         family_members = _build_family_members(life_ctx, profile)
@@ -252,7 +253,7 @@ def run_multipath_simulation():
         profile = data.get("profile", {})
         life_ctx = data.get("life_context", {})
         round_count = data.get("round_count", 40)
-        seed = data.get("seed")
+        seed = data.get("seed")  # None → random seed for non-deterministic simulation
 
         simulation_id = _generate_sim_id()
 
@@ -285,8 +286,7 @@ def run_multipath_simulation():
             monthly_expenses=life_ctx.get("monthly_expenses", 25),
         )
 
-        base_seed = seed if seed is not None else int(uuid.uuid4().int % 2**31)
-        simulator = MultiPathSimulator(base_seed=base_seed)
+        simulator = MultiPathSimulator(base_seed=seed)
         simulator.initialize(identity, initial_state, round_count=round_count)
         simulator.run_all()
 

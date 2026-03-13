@@ -288,6 +288,7 @@ const lifeContext = reactive({
   parentAge2: null,
   mortgageRemaining: 0,
   cashBufferRange: '500未満',
+  monthlyExpenses: 25,
 })
 
 // Child management
@@ -351,7 +352,10 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
 const addFiles = (newFiles) => {
   const validFiles = newFiles.filter(file => {
     const ext = file.name.split('.').pop().toLowerCase()
-    if (!['pdf', 'md', 'txt'].includes(ext)) return false
+    if (!['pdf', 'md', 'txt'].includes(ext)) {
+      error.value = `${file.name}: unsupported format (pdf/md/txt only)`
+      return false
+    }
     if (file.size > MAX_FILE_SIZE) {
       error.value = `${file.name} is too large (max 10MB)`
       return false
@@ -387,6 +391,7 @@ const startSimulation = () => {
       parents: [],
       mortgage_remaining: lifeContext.mortgageRemaining || 0,
       cash_buffer_range: lifeContext.cashBufferRange,
+      monthly_expenses: lifeContext.monthlyExpenses,
     }
     if (lifeContext.parentAge1) lifeCtx.parents.push({ relation: 'parent', age: lifeContext.parentAge1 })
     if (lifeContext.parentAge2) lifeCtx.parents.push({ relation: 'parent', age: lifeContext.parentAge2 })

@@ -72,6 +72,8 @@ class LifeEventEngine:
                     ))
 
         # Elder care end: 10% per round if caring (avg ~2.5 years)
+        # Note: parent.notes is unchanged at evaluate() time (updated in apply_event),
+        # so a same-round START→END is not possible.
         for parent in state.get_parents():
             if parent.notes and "介護" in parent.notes:
                 if self._rng.random() < 0.10:

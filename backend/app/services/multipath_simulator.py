@@ -5,6 +5,7 @@ Runs 3 career paths simultaneously from the same starting state,
 each with different scheduled career events, and produces a comparison report.
 """
 
+import os
 from typing import Dict, Any, List, Optional
 from copy import deepcopy
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -136,8 +137,8 @@ class MultiPathSimulator:
     to ensure isolation.
     """
 
-    def __init__(self, base_seed: int = 42):
-        self.base_seed = base_seed
+    def __init__(self, base_seed: Optional[int] = None):
+        self.base_seed = base_seed if base_seed is not None else int.from_bytes(os.urandom(4), "big") % (2**31)
         self.paths: Dict[str, SimulationPath] = {}
         self._base_identity: Optional[BaseIdentity] = None
         self._base_state: Optional[CareerState] = None
@@ -229,9 +230,12 @@ class MultiPathSimulator:
         """Run all paths in parallel using ThreadPoolExecutor.
 
         If a path fails, its error is logged and remaining paths continue.
-        Failed paths are excluded from results.
+        Failed paths are removed from self.paths.
+
+        Returns:
+            Dict of completed paths. self.errors contains any failures.
         """
-        errors: Dict[str, str] = {}
+        self.errors: Dict[str, str] = {}
         with ThreadPoolExecutor(max_workers=3) as executor:
             futures = {
                 executor.submit(self._run_single_path, config): config.path_id
@@ -244,10 +248,15 @@ class MultiPathSimulator:
                     self.paths[path_id] = result
                 except Exception as e:
                     logger.error(f"Path {path_id} failed: {e}", exc_info=True)
-                    errors[path_id] = str(e)
+                    self.errors[path_id] = str(e)
 
-        if errors and not any(p.final_state for p in self.paths.values()):
-            raise RuntimeError(f"All simulation paths failed: {errors}")
+        # Remove shell entries for failed paths
+        for path_id in self.errors:
+            if path_id in self.paths and self.paths[path_id].final_state is None:
+                del self.paths[path_id]
+
+        if not self.paths:
+            raise RuntimeError(f"All simulation paths failed: {self.errors}")
 
         return self.paths
 
@@ -307,13 +316,16 @@ class MultiPathSimulator:
                 path_summaries, key=lambda p: p["final_wlb"]
             )["path_id"]
 
-        return {
+        result = {
             "identity": self._base_identity.to_dict() if self._base_identity else {},
             "simulation_years": self._round_count / 4,
             "total_rounds": self._round_count,
             "paths": path_summaries,
             "rankings": rankings,
         }
+        if hasattr(self, 'errors') and self.errors:
+            result["failed_paths"] = self.errors
+        return result
 
     def get_path_timeline(self, path_id: str) -> List[Dict[str, Any]]:
         """Get detailed timeline for a specific path."""

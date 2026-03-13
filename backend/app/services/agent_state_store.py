@@ -94,10 +94,15 @@ class AgentStateStore:
         elif event.event_type == LifeEventType.ELDER_CARE_START:
             state.stress_level = min(1.0, state.stress_level + 0.3)
             state.work_life_balance = max(0.0, state.work_life_balance - 0.3)
+            # Mark first non-caring parent (age check is done at event generation)
+            marked = False
             for parent in state.get_parents():
-                if parent.age >= 75 and "介護" not in parent.notes:
+                if "介護" not in parent.notes:
                     parent.notes = "要介護"
+                    marked = True
                     break
+            if not marked:
+                logger.warning(f"ELDER_CARE_START fired but no parent to mark for {agent_id}")
 
         elif event.event_type == LifeEventType.SALARY_INCREASE:
             increase = event.state_changes.get("salary_increase_pct", 10)
