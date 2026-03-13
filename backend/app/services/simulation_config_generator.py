@@ -262,7 +262,7 @@ class SimulationConfigGenerator:
         simulation_requirement: str,
         document_text: str,
         entities: List[EntityNode],
-        profiles: Optional[List['OasisAgentProfile']] = None,
+        profiles: List['OasisAgentProfile'],
         enable_twitter: bool = True,
         enable_reddit: bool = True,
         progress_callback: Optional[Callable[[int, int, str], None]] = None,
@@ -286,8 +286,8 @@ class SimulationConfigGenerator:
         """
         logger.info(f"Starting intelligent config generation: simulation_id={simulation_id}, entities={len(entities)}")
         
-        # Calculate total steps
-        num_batches = math.ceil(len(entities) / self.AGENTS_PER_BATCH)
+        # Calculate total steps based on profiles
+        num_batches = math.ceil(len(profiles) / self.AGENTS_PER_BATCH)
         total_steps = 3 + num_batches  # time config + event config + N batches of agents + platform config
         current_step = 0
         
@@ -329,43 +329,21 @@ class SimulationConfigGenerator:
         
         # ========== Steps 3-N: Batch generate Agent configs ==========
         all_agent_configs = []
-        if profiles:
-            # New architecture: generate configs from HR agent profiles
-            num_batches = math.ceil(len(profiles) / self.AGENTS_PER_BATCH)
-            total_steps = 3 + num_batches
-            for batch_idx in range(num_batches):
-                start_idx = batch_idx * self.AGENTS_PER_BATCH
-                end_idx = min(start_idx + self.AGENTS_PER_BATCH, len(profiles))
-                batch_profiles = profiles[start_idx:end_idx]
+        for batch_idx in range(num_batches):
+            start_idx = batch_idx * self.AGENTS_PER_BATCH
+            end_idx = min(start_idx + self.AGENTS_PER_BATCH, len(profiles))
+            batch_profiles = profiles[start_idx:end_idx]
 
-                report_progress(
-                    3 + batch_idx,
-                    f"Generating Agent configs ({start_idx + 1}-{end_idx}/{len(profiles)})..."
-                )
+            report_progress(
+                3 + batch_idx,
+                f"Generating Agent configs ({start_idx + 1}-{end_idx}/{len(profiles)})..."
+            )
 
-                batch_configs = self._generate_agent_configs_from_profiles(
-                    profiles=batch_profiles,
-                    simulation_requirement=simulation_requirement
-                )
-                all_agent_configs.extend(batch_configs)
-        else:
-            # Legacy: generate configs from graph entities
-            for batch_idx in range(num_batches):
-                start_idx = batch_idx * self.AGENTS_PER_BATCH
-                end_idx = min(start_idx + self.AGENTS_PER_BATCH, len(entities))
-                batch_entities = entities[start_idx:end_idx]
-
-                report_progress(
-                    3 + batch_idx,
-                    f"Generating Agent configs ({start_idx + 1}-{end_idx}/{len(entities)})..."
-                )
-
-                batch_configs = self._generate_agent_configs_batch(
-                    entities=batch_entities,
-                    start_idx=start_idx,
-                    simulation_requirement=simulation_requirement
-                )
-                all_agent_configs.extend(batch_configs)
+            batch_configs = self._generate_agent_configs_from_profiles(
+                profiles=batch_profiles,
+                simulation_requirement=simulation_requirement
+            )
+            all_agent_configs.extend(batch_configs)
 
         reasoning_parts.append(f"Agent configs: successfully generated {len(all_agent_configs)}")
         
@@ -1007,7 +985,7 @@ Return JSON format (no markdown)：
         # Build profile info for LLM
         profile_list = []
         for p in profiles:
-            role_category = getattr(p, "role_category", None) or p.source_entity_type or "researcher"
+            role_category = p.role_category or "researcher"
             profile_list.append({
                 "agent_id": p.user_id,
                 "name": p.name,
@@ -1066,7 +1044,7 @@ Return JSON format (no markdown):
         for profile in profiles:
             agent_id = profile.user_id
             cfg = llm_configs.get(agent_id, {})
-            role_category = getattr(profile, "role_category", None) or profile.source_entity_type or "researcher"
+            role_category = profile.role_category or "researcher"
 
             # If LLM did not generate, use role_category-based rules
             if not cfg:
@@ -1144,180 +1122,4 @@ Return JSON format (no markdown):
                 "influence_weight": 1.5
             }
 
-    def _generate_agent_configs_batch(
-        self,
-        entities: List[EntityNode],
-        start_idx: int,
-        simulation_requirement: str
-    ) -> List[AgentActivityConfig]:
-        """Batch generate Agent configs"""
-        
-        # Build entity info (using configured summary length)
-        entity_list = []
-        summary_len = self.AGENT_SUMMARY_LENGTH
-        for i, e in enumerate(entities):
-            entity_list.append({
-                "agent_id": start_idx + i,
-                "entity_name": e.name,
-                "entity_type": e.get_entity_type() or "Unknown",
-                "summary": e.summary[:summary_len] if e.summary else ""
-            })
-        
-        prompt = f"""Based on the following info, generate social media activity config for each entity.
-
-Simulation requirement: {simulation_requirement}
-
-## Entity list
-```json
-{json.dumps(entity_list, ensure_ascii=False, indent=2)}
-```
-
-## Task
-Generate activity config for each entity, note:
-- **Follow Chinese daily routine**: almost no activity 0-5 AM, most active 19-22 PM
-- **Officials**（University/GovernmentAgency）：low activity(0.1-0.3),work hours(9-17), slow response(60-240minutes),high influence(2.5-3.0)
-- **Media**（MediaOutlet）：medium activity(0.4-0.6),all-day activity(8-23),fast response(5-30minutes),high influence(2.0-2.5)
-- **Individuals**（Student/Person/Alumni）：high activity(0.6-0.9),mainly evening activity(18-23),fast response(1-15minutes),low influence(0.8-1.2)
-- **Public figures/experts**: medium activity(0.4-0.6), medium-high influence(1.5-2.0)
-
-Return JSON format (no markdown)：
-{{
-    "agent_configs": [
-        {{
-            "agent_id": <Must match input>,
-            "activity_level": <0.0-1.0>,
-            "posts_per_hour": <Post frequency>,
-            "comments_per_hour": <Comment frequency>,
-            "active_hours": [<Active hours list, considering Chinese daily routine>],
-            "response_delay_min": <Min response delay in minutes>,
-            "response_delay_max": <Max response delay in minutes>,
-            "sentiment_bias": <-1.0 to 1.0>,
-            "stance": "<supportive/opposing/neutral/observer>",
-            "influence_weight": <Influence weight>
-        }},
-        ...
-    ]
-}}"""
-
-        system_prompt = "あなたはキャリアシミュレーションの行動分析専門家です。純粋なJSONを返してください。設定はビジネスアワーベースの活動パターンに準拠してください。"
-        
-        try:
-            result = self._call_llm_with_retry(prompt, system_prompt)
-            llm_configs = {cfg["agent_id"]: cfg for cfg in result.get("agent_configs", [])}
-        except Exception as e:
-            logger.warning(f"Agent config batch LLM generation failed: {e}, using rule-based generation")
-            llm_configs = {}
-        
-        # Build AgentActivityConfig objects
-        configs = []
-        for i, entity in enumerate(entities):
-            agent_id = start_idx + i
-            cfg = llm_configs.get(agent_id, {})
-            
-            # If LLM did not generate, use rule-based generation
-            if not cfg:
-                cfg = self._generate_agent_config_by_rule(entity)
-            
-            config = AgentActivityConfig(
-                agent_id=agent_id,
-                entity_uuid=entity.uuid,
-                entity_name=entity.name,
-                entity_type=entity.get_entity_type() or "Unknown",
-                activity_level=cfg.get("activity_level", 0.5),
-                posts_per_hour=cfg.get("posts_per_hour", 0.5),
-                comments_per_hour=cfg.get("comments_per_hour", 1.0),
-                active_hours=cfg.get("active_hours", list(range(9, 23))),
-                response_delay_min=cfg.get("response_delay_min", 5),
-                response_delay_max=cfg.get("response_delay_max", 60),
-                sentiment_bias=cfg.get("sentiment_bias", 0.0),
-                stance=cfg.get("stance", "neutral"),
-                influence_weight=cfg.get("influence_weight", 1.0)
-            )
-            configs.append(config)
-        
-        return configs
-    
-    def _generate_agent_config_by_rule(self, entity: EntityNode) -> Dict[str, Any]:
-        """Generate single Agent config by rules"""
-        entity_type = (entity.get_entity_type() or "Unknown").lower()
-        
-        if entity_type in ["university", "governmentagency", "ngo"]:
-            # Official org: work hours activity, low frequency, high influence
-            return {
-                "activity_level": 0.2,
-                "posts_per_hour": 0.1,
-                "comments_per_hour": 0.05,
-                "active_hours": list(range(9, 18)),  # 9:00-17:59
-                "response_delay_min": 60,
-                "response_delay_max": 240,
-                "sentiment_bias": 0.0,
-                "stance": "neutral",
-                "influence_weight": 3.0
-            }
-        elif entity_type in ["mediaoutlet"]:
-            # Media: all-day activity, medium frequency, high influence
-            return {
-                "activity_level": 0.5,
-                "posts_per_hour": 0.8,
-                "comments_per_hour": 0.3,
-                "active_hours": list(range(7, 24)),  # 7:00-23:59
-                "response_delay_min": 5,
-                "response_delay_max": 30,
-                "sentiment_bias": 0.0,
-                "stance": "observer",
-                "influence_weight": 2.5
-            }
-        elif entity_type in ["professor", "expert", "official"]:
-            # Expert/Professor: work + evening activity, medium frequency
-            return {
-                "activity_level": 0.4,
-                "posts_per_hour": 0.3,
-                "comments_per_hour": 0.5,
-                "active_hours": list(range(8, 22)),  # 8:00-21:59
-                "response_delay_min": 15,
-                "response_delay_max": 90,
-                "sentiment_bias": 0.0,
-                "stance": "neutral",
-                "influence_weight": 2.0
-            }
-        elif entity_type in ["student"]:
-            # Student: mainly evening, high frequency
-            return {
-                "activity_level": 0.8,
-                "posts_per_hour": 0.6,
-                "comments_per_hour": 1.5,
-                "active_hours": [8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23],  # Morning + evening
-                "response_delay_min": 1,
-                "response_delay_max": 15,
-                "sentiment_bias": 0.0,
-                "stance": "neutral",
-                "influence_weight": 0.8
-            }
-        elif entity_type in ["alumni"]:
-            # Alumni: mainly evening
-            return {
-                "activity_level": 0.6,
-                "posts_per_hour": 0.4,
-                "comments_per_hour": 0.8,
-                "active_hours": [12, 13, 19, 20, 21, 22, 23],  # Lunch break + evening
-                "response_delay_min": 5,
-                "response_delay_max": 30,
-                "sentiment_bias": 0.0,
-                "stance": "neutral",
-                "influence_weight": 1.0
-            }
-        else:
-            # Regular person: evening peak
-            return {
-                "activity_level": 0.7,
-                "posts_per_hour": 0.5,
-                "comments_per_hour": 1.2,
-                "active_hours": [9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23],  # Daytime + evening
-                "response_delay_min": 2,
-                "response_delay_max": 20,
-                "sentiment_bias": 0.0,
-                "stance": "neutral",
-                "influence_weight": 1.0
-            }
-    
 

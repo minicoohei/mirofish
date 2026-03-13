@@ -117,6 +117,7 @@ class AgentStateStore:
                     parent.notes = ""
                     break
 
+
         elif event.event_type == LifeEventType.MARKET_CRASH:
             state.cash_buffer = int(state.cash_buffer * 0.7)
             _handled_keys.add("cash_buffer")
