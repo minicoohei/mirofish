@@ -4,13 +4,57 @@ AI Career Simulator powered by Claude Code SubAgents.
 
 Simulate 10-year career trajectories with multi-path analysis, social sentiment simulation, and detailed HTML reports.
 
-## Features
+<div align="center">
+<img src="docs/images/report_demo.gif" alt="MiroFish Report Demo" width="80%"/>
+<br/>
+<em>Generated HTML report: profile analysis, income projections, scenario comparison, agent discussions</em>
+</div>
 
-- **Multi-Path Career Simulation** - Generate 5 parallel career paths with best/likely/base/worst scenarios
-- **SNS Agent Swarm** - 50-character social simulation discussing career decisions
-- **Fact Checking** - Verify salary/market claims against real data (via Tavily)
-- **Macro Trend Analysis** - Incorporate industry trends and labor market data
-- **Interactive HTML Reports** - Rich visualizations with income charts, scenario comparisons, and agent discussions
+## What It Does
+
+Input a resume and career context. MiroFish generates a comprehensive career simulation report covering:
+
+- **5 parallel career paths** with best/likely/base/worst scenarios per path
+- **10-year income projections** with interactive charts
+- **30 AI agents** discussing your career choices from different perspectives
+- **Fact-checked claims** against real market data
+- **Reskilling recommendations** prioritized by cross-path impact
+
+### Report Sections
+
+<table>
+<tr>
+<td width="50%"><img src="docs/images/report_03_overview_radar.png" alt="Scenario Analysis"/><br/><b>Scenario Analysis</b> - 5 paths x 3 scenarios with probability-weighted scoring</td>
+<td width="50%"><img src="docs/images/report_04_income_chart.png" alt="Income Chart"/><br/><b>Income Projections</b> - 10-year salary trajectories across all paths</td>
+</tr>
+<tr>
+<td><img src="docs/images/report_05_career_paths.png" alt="Career Paths"/><br/><b>Career Path Details</b> - Period-by-period breakdown with events and blockers</td>
+<td><img src="docs/images/report_06_reskill.png" alt="Reskilling"/><br/><b>Reskilling Suggestions</b> - Skills prioritized by cross-path relevance</td>
+</tr>
+<tr>
+<td><img src="docs/images/report_08_swarm_voices.png" alt="Agent Voices"/><br/><b>Agent Swarm Voices</b> - 30 AI agents discuss each career path</td>
+<td><img src="docs/images/report_10_knowledge_graph.png" alt="Knowledge Graph"/><br/><b>Knowledge Graph</b> - Interactive visualization of career relationships</td>
+</tr>
+</table>
+
+## Origin
+
+This project is a Claude Code-native fork of [666ghj/MiroFish](https://github.com/666ghj/MiroFish), the multi-agent social simulation platform.
+
+**What we kept from the original:**
+- Domain models: `BaseIdentity`, `CareerState`, life event definitions
+- Core engines: `LifeEventEngine`, `BlockerEngine` (6-category career blockers)
+- Zep knowledge graph integration for candidate memory
+- OASIS-inspired social simulation concepts
+
+**What changed:**
+- Replaced OpenAI + Flask backend with Claude Code SubAgent orchestration
+- Removed frontend (Vue.js) and Docker -- output is a self-contained HTML report
+- Added multi-path expansion (5 paths x 4 scenarios = 20 trajectories)
+- Added SNS Agent Swarm (30-50 AI characters discussing career decisions)
+- Added Pydantic v2 data contracts with normalizer layer for LLM output variance
+- Added fact-checking pipeline (Tavily) and macro trend analysis
+- Packaged as standalone Python CLI (`cc_layer`)
 
 ## Requirements
 
@@ -58,7 +102,7 @@ The orchestrator guide at `cc_layer/prompts/orchestrator.md` provides step-by-st
 ```
 cc_layer/
   app/
-    models/          # Pydantic domain models (CareerState, BaseIdentity, etc.)
+    models/          # Domain models (CareerState, BaseIdentity, etc.)
     services/        # Business logic (event engine, blocker engine, etc.)
     utils/           # Shared utilities (logging, retry, validation)
   cli/               # CLI tools (sim_init, sim_tick, path_score, report_html, etc.)
