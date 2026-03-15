@@ -1,0 +1,32 @@
+{
+  "name": "高橋勇太",
+  "age": 38,
+  "gender": "male",
+  "education": "東京工業大学 情報理工学院",
+  "mbti": "ISTP",
+  "traits": [
+    "技術力",
+    "自己管理能力",
+    "問題解決力",
+    "効率化志向"
+  ],
+  "certifications": [
+    "AWS Solutions Architect Professional",
+    "GCP Professional Cloud Architect"
+  ],
+  "career_summary": "SIer→Webサービス企業→34歳でフリーランスに。インフラ・バックエンドの技術顧問を複数社で並行。",
+  "current_role": "フリーランスエンジニア",
+  "current_employer": "個人事業主",
+  "industry": "ITコンサルティング",
+  "years_in_role": 4,
+  "salary": 1200,
+  "skills": [
+    "AWS",
+    "GCP",
+    "Kubernetes",
+    "Go",
+    "Rust",
+    "システム設計",
+    "技術顧問"
+  ]
+}

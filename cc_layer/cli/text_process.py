@@ -31,7 +31,7 @@ import sys
 # Ensure backend is importable
 import cc_layer.cli  # noqa: F401
 
-from app.services.text_processor import TextProcessor
+from cc_layer.app.services.text_processor import TextProcessor
 
 
 def main():

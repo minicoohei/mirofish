@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mirofish"
+version = "0.1.0"
+description = "AI Career Simulator powered by Claude Code SubAgents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+zep = ["zep-cloud>=2.0"]
+search = ["tavily-python>=0.3"]
+otel = ["opentelemetry-sdk", "opentelemetry-exporter-otlp-proto-grpc"]
+all = ["mirofish[zep,search,otel]"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["cc_layer"]
+
+[tool.pytest.ini_options]
+testpaths = ["cc_layer/tests"]

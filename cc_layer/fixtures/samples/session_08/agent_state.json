@@ -1,0 +1,55 @@
+{
+  "identity": {
+    "name": "渡辺修平",
+    "age_at_start": 33,
+    "gender": "male",
+    "education": "新潟大学 法学部",
+    "mbti": "ISFJ",
+    "stable_traits": [
+      "堅実性",
+      "地域貢献意欲",
+      "行政知識",
+      "調整力"
+    ],
+    "certifications": [
+      "行政書士"
+    ],
+    "career_history_summary": "地方公務員（新潟県庁）10年目。企画課→税務課→現在は産業振興課。地元へのUターン転職を検討中（現在は新潟市在住、実家は長岡市）。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 33,
+    "role": "主査",
+    "employer": "新潟県庁",
+    "industry": "地方行政",
+    "years_in_role": 3,
+    "salary_annual": 520,
+    "skills": [
+      "行政計画策定",
+      "予算管理",
+      "地域振興",
+      "条例起案",
+      "住民対応"
+    ],
+    "family": [
+      {
+        "relation": "妻",
+        "age": 31
+      },
+      {
+        "relation": "長男",
+        "age": 2
+      }
+    ],
+    "marital_status": "married",
+    "cash_buffer": 250,
+    "mortgage_remaining": 2500,
+    "monthly_expenses": 30,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

@@ -1,0 +1,1292 @@
+{
+  "identity": {
+    "name": "山田花子",
+    "age_at_start": 24,
+    "gender": "female",
+    "education": "武蔵野美術大学 デザイン情報学科",
+    "mbti": "ENFP",
+    "stable_traits": [
+      "デザイン思考",
+      "UI/UXデザイン",
+      "クリエイティビティ",
+      "コミュニケーション力"
+    ],
+    "certifications": [],
+    "career_history_summary": "新卒でWeb系ベンチャーに入社。UI/UXデザイナーとしてアプリデザインを担当。入社2年目。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "デザインリード→CDO目指す",
+      "direction": "",
+      "risk": "デザインリード→CDO目指すのリスクシナリオ",
+      "upside": "デザインリード→CDO目指すの成功シナリオ",
+      "score": 0.7,
+      "overall_probability": 0.3,
+      "probability_rationale": "デザインリード→CDO目指すの実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (26-28歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "デザインリード→CDO目指すに向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "28歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "デザインリード→CDO目指す（最良）",
+          "probability": 0.05,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインリード→CDO目指す（最良）への移行",
+                  "probability": 0.05,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインリード→CDO目指す（最良）の進展",
+                  "probability": 0.05500000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインリード→CDO目指す（最良）の結実",
+                  "probability": 0.06,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "デザインリード→CDO目指す（標準）",
+          "probability": 0.5,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインリード→CDO目指す（標準）への移行",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインリード→CDO目指す（標準）の進展",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインリード→CDO目指す（標準）の結実",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "デザインリード→CDO目指す（保守）",
+          "probability": 0.45,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインリード→CDO目指す（保守）への移行",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインリード→CDO目指す（保守）の進展",
+                  "probability": 0.49500000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインリード→CDO目指す（保守）の結実",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 450.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 700.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "メガテック（Google/Apple）転職",
+      "direction": "",
+      "risk": "メガテック（Google/Apple）転職のリスクシナリオ",
+      "upside": "メガテック（Google/Apple）転職の成功シナリオ",
+      "score": 0.67,
+      "overall_probability": 0.26,
+      "probability_rationale": "メガテック（Google/Apple）転職の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (26-28歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "メガテック（Google/Apple）転職に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "28歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "メガテック（Google/Apple）転職（最良）",
+          "probability": 0.07,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "メガテック（Google/Apple）転職（最良）への移行",
+                  "probability": 0.07,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "メガテック（Google/Apple）転職（最良）の進展",
+                  "probability": 0.07700000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "メガテック（Google/Apple）転職（最良）の結実",
+                  "probability": 0.084,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "メガテック（Google/Apple）転職（標準）",
+          "probability": 0.52,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "メガテック（Google/Apple）転職（標準）への移行",
+                  "probability": 0.52,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "メガテック（Google/Apple）転職（標準）の進展",
+                  "probability": 0.5720000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "メガテック（Google/Apple）転職（標準）の結実",
+                  "probability": 0.624,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1000.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "メガテック（Google/Apple）転職（保守）",
+          "probability": 0.43,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "メガテック（Google/Apple）転職（保守）への移行",
+                  "probability": 0.43,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "メガテック（Google/Apple）転職（保守）の進展",
+                  "probability": 0.47300000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "メガテック（Google/Apple）転職（保守）の結実",
+                  "probability": 0.516,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 500.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 1000.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "フリーランスデザイナー独立",
+      "direction": "",
+      "risk": "フリーランスデザイナー独立のリスクシナリオ",
+      "upside": "フリーランスデザイナー独立の成功シナリオ",
+      "score": 0.64,
+      "overall_probability": 0.22,
+      "probability_rationale": "フリーランスデザイナー独立の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (26-28歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "フリーランスデザイナー独立に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "28歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "フリーランスデザイナー独立（最良）",
+          "probability": 0.09,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスデザイナー独立（最良）への移行",
+                  "probability": 0.09,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスデザイナー独立（最良）の進展",
+                  "probability": 0.099,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスデザイナー独立（最良）の結実",
+                  "probability": 0.108,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1200.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "フリーランスデザイナー独立（標準）",
+          "probability": 0.54,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスデザイナー独立（標準）への移行",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスデザイナー独立（標準）の進展",
+                  "probability": 0.5940000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスデザイナー独立（標準）の結実",
+                  "probability": 0.648,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 600.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "フリーランスデザイナー独立（保守）",
+          "probability": 0.41,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスデザイナー独立（保守）への移行",
+                  "probability": 0.41,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスデザイナー独立（保守）の進展",
+                  "probability": 0.451,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスデザイナー独立（保守）の結実",
+                  "probability": 0.49199999999999994,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 350.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 600.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "デザインスクール起業",
+      "direction": "",
+      "risk": "デザインスクール起業のリスクシナリオ",
+      "upside": "デザインスクール起業の成功シナリオ",
+      "score": 0.61,
+      "overall_probability": 0.18,
+      "probability_rationale": "デザインスクール起業の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (26-28歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "デザインスクール起業に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "28歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "デザインスクール起業（最良）",
+          "probability": 0.11,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインスクール起業（最良）への移行",
+                  "probability": 0.11,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインスクール起業（最良）の進展",
+                  "probability": 0.12100000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインスクール起業（最良）の結実",
+                  "probability": 0.132,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2000.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "デザインスクール起業（標準）",
+          "probability": 0.56,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインスクール起業（標準）への移行",
+                  "probability": 0.56,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインスクール起業（標準）の進展",
+                  "probability": 0.6160000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインスクール起業（標準）の結実",
+                  "probability": 0.672,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 500.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "デザインスクール起業（保守）",
+          "probability": 0.39,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "デザインスクール起業（保守）への移行",
+                  "probability": 0.39,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "デザインスクール起業（保守）の進展",
+                  "probability": 0.42900000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "デザインスクール起業（保守）の結実",
+                  "probability": 0.46799999999999997,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 300.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 500.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "プロダクトマネージャー転身",
+      "direction": "",
+      "risk": "プロダクトマネージャー転身のリスクシナリオ",
+      "upside": "プロダクトマネージャー転身の成功シナリオ",
+      "score": 0.58,
+      "overall_probability": 0.14,
+      "probability_rationale": "プロダクトマネージャー転身の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (26-28歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "プロダクトマネージャー転身に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "28歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "プロダクトマネージャー転身（最良）",
+          "probability": 0.13,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "プロダクトマネージャー転身（最良）への移行",
+                  "probability": 0.13,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "プロダクトマネージャー転身（最良）の進展",
+                  "probability": 0.14300000000000002,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "プロダクトマネージャー転身（最良）の結実",
+                  "probability": 0.156,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "プロダクトマネージャー転身（標準）",
+          "probability": 0.58,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "プロダクトマネージャー転身（標準）への移行",
+                  "probability": 0.58,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "プロダクトマネージャー転身（標準）の進展",
+                  "probability": 0.638,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "プロダクトマネージャー転身（標準）の結実",
+                  "probability": 0.696,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 800.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "プロダクトマネージャー転身（保守）",
+          "probability": 0.37,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (29-31歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "プロダクトマネージャー転身（保守）への移行",
+                  "probability": 0.37,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (32-33歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "プロダクトマネージャー転身（保守）の進展",
+                  "probability": 0.40700000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (34-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "プロダクトマネージャー転身（保守）の結実",
+                  "probability": 0.444,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 500.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 800.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

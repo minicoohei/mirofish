@@ -26,7 +26,7 @@ import sys
 import cc_layer.cli  # noqa: F401
 
 from zep_cloud.client import Zep
-from app.config import Config
+from cc_layer.app.config import Config
 
 
 def write_facts_to_zep(graph_id: str, facts: list[str]) -> int:

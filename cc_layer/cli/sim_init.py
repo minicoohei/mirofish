@@ -20,8 +20,8 @@ import sys
 # Ensure backend is importable
 import cc_layer.cli  # noqa: F401
 
-from app.models.life_simulator import BaseIdentity, CareerState, FamilyMember
-from app.services.life_simulation_loop import FormInput, cash_range_to_value
+from cc_layer.app.models.life_simulator import BaseIdentity, CareerState, FamilyMember
+from cc_layer.app.services.life_simulation_loop import FormInput, cash_range_to_value
 
 
 def build_identity(profile: dict) -> BaseIdentity:

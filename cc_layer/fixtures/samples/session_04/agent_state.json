@@ -1,0 +1,51 @@
+{
+  "identity": {
+    "name": "鈴木大輔",
+    "age_at_start": 55,
+    "gender": "male",
+    "education": "早稲田大学 理工学部",
+    "mbti": "ESTJ",
+    "stable_traits": [
+      "組織統率力",
+      "製造業知識",
+      "海外事業経験",
+      "品質管理"
+    ],
+    "certifications": [
+      "技術士（機械）"
+    ],
+    "career_history_summary": "大手自動車部品メーカーで33年勤務。製造→品質管理→海外事業（タイ駐在5年）→事業部長。早期退職を検討中。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 55,
+    "role": "事業部長",
+    "employer": "デンソー",
+    "industry": "自動車部品製造",
+    "years_in_role": 5,
+    "salary_annual": 1600,
+    "skills": [
+      "製造プロセス改善",
+      "品質管理",
+      "海外工場管理",
+      "サプライチェーン",
+      "部門経営"
+    ],
+    "family": [
+      {
+        "relation": "妻",
+        "age": 53
+      }
+    ],
+    "marital_status": "married",
+    "cash_buffer": 250,
+    "mortgage_remaining": 500,
+    "monthly_expenses": 45,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

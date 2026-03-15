@@ -1,0 +1,47 @@
+{
+  "identity": {
+    "name": "佐藤美咲",
+    "age_at_start": 28,
+    "gender": "female",
+    "education": "慶應義塾大学 経済学部",
+    "mbti": "ENTJ",
+    "stable_traits": [
+      "論理的思考力",
+      "プレゼンテーション力",
+      "英語力",
+      "分析力"
+    ],
+    "certifications": [
+      "TOEIC 950",
+      "簿記2級"
+    ],
+    "career_history_summary": "新卒で外資系戦略コンサルティングファーム入社。3年間でヘルスケア・金融・テクノロジー業界のプロジェクトを担当。現在はマネージャーとしてDX案件をリード。スタートアップへの転職を検討中。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 28,
+    "role": "マネージャー",
+    "employer": "マッキンゼー・アンド・カンパニー",
+    "industry": "経営コンサルティング",
+    "years_in_role": 2,
+    "salary_annual": 900,
+    "skills": [
+      "戦略立案",
+      "業務改善",
+      "データ分析",
+      "プロジェクトマネジメント",
+      "英語ビジネス"
+    ],
+    "family": [],
+    "marital_status": "single",
+    "cash_buffer": 250,
+    "mortgage_remaining": 0,
+    "monthly_expenses": 25,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

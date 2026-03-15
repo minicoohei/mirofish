@@ -1,0 +1,61 @@
+{
+  "identity": {
+    "name": "田中健一",
+    "age_at_start": 42,
+    "gender": "male",
+    "education": "一橋大学 商学部",
+    "mbti": "ISTJ",
+    "stable_traits": [
+      "リスク管理",
+      "組織マネジメント",
+      "財務分析",
+      "ステークホルダー調整"
+    ],
+    "certifications": [
+      "証券アナリスト",
+      "FP1級"
+    ],
+    "career_history_summary": "新卒でメガバンク入行。法人営業→海外駐在（ロンドン3年）→本部企画→現在は事業部長として中堅企業向け融資部門を統括。部下80名。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 42,
+    "role": "事業部長",
+    "employer": "三菱UFJ銀行",
+    "industry": "金融 / メガバンク",
+    "years_in_role": 3,
+    "salary_annual": 1400,
+    "skills": [
+      "法人営業",
+      "与信審査",
+      "リスク管理",
+      "部門経営",
+      "海外業務",
+      "M&Aファイナンス"
+    ],
+    "family": [
+      {
+        "relation": "妻",
+        "age": 40
+      },
+      {
+        "relation": "長男",
+        "age": 12
+      },
+      {
+        "relation": "長女",
+        "age": 9
+      }
+    ],
+    "marital_status": "married",
+    "cash_buffer": 250,
+    "mortgage_remaining": 4000,
+    "monthly_expenses": 55,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

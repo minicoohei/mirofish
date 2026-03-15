@@ -176,7 +176,7 @@ def main():
             else:
                 parser.error("--document-text-file or --document-text required")
 
-            from app.services.ontology_generator import OntologyGenerator
+            from cc_layer.app.services.ontology_generator import OntologyGenerator
             generator = OntologyGenerator()
             result = generator.generate(
                 document_texts=[doc_text],

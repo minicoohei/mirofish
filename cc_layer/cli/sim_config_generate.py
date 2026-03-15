@@ -50,7 +50,7 @@ def main():
                 document_text = f.read()
 
         # Reconstruct OasisAgentProfile objects
-        from app.services.oasis_profile_generator import OasisAgentProfile
+        from cc_layer.app.services.oasis_profile_generator import OasisAgentProfile
         profiles_list = profiles_data.get("profiles", profiles_data) if isinstance(profiles_data, dict) else profiles_data
         profiles = []
         for p in profiles_list:
@@ -76,13 +76,13 @@ def main():
             ))
 
         # Read entities from graph
-        from app.services.zep_entity_reader import ZepEntityReader
+        from cc_layer.app.services.zep_entity_reader import ZepEntityReader
         reader = ZepEntityReader()
         filtered = reader.filter_defined_entities(args.graph_id, enrich_with_edges=True)
         entities = filtered.entities
 
         # Generate config
-        from app.services.simulation_config_generator import SimulationConfigGenerator
+        from cc_layer.app.services.simulation_config_generator import SimulationConfigGenerator
         generator = SimulationConfigGenerator()
 
         def progress_cb(step, total, msg):

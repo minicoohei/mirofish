@@ -1,0 +1,29 @@
+{
+  "name": "中村あゆみ",
+  "age": 29,
+  "gender": "female",
+  "education": "青山学院大学 経営学部",
+  "mbti": "ESFP",
+  "traits": [
+    "企画力",
+    "トレンド感度",
+    "SNSマーケティング",
+    "マルチタスク"
+  ],
+  "certifications": [
+    "Google Analytics認定"
+  ],
+  "career_summary": "大手広告代理店入社7年目。デジタル広告プランニング→SNSマーケティング専任。副業でYouTubeチャンネル運営（登録者8万人）。",
+  "current_role": "プランナー",
+  "current_employer": "博報堂",
+  "industry": "広告代理店",
+  "years_in_role": 3,
+  "salary": 650,
+  "skills": [
+    "デジタルマーケティング",
+    "SNS運用",
+    "動画企画",
+    "クライアントワーク",
+    "データ分析"
+  ]
+}

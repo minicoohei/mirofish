@@ -1,0 +1,1292 @@
+{
+  "identity": {
+    "name": "李明華",
+    "age_at_start": 31,
+    "gender": "female",
+    "education": "清華大学 コンピュータサイエンス学部 / Stanford大学 MS CS",
+    "mbti": "INTP",
+    "stable_traits": [
+      "技術力",
+      "英語・中国語・日本語トリリンガル",
+      "論理的思考",
+      "グローバル視点"
+    ],
+    "certifications": [],
+    "career_history_summary": "清華大学CS卒業後Stanford MSに進学。卒業後Google本社SWEとして3年勤務後、Google Japan転籍。現在はGoogle JapanのSenior SWE（L5）としてSearch Qualityチームに所属。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "Google社内昇進（Staff Engineer→Principal）",
+      "direction": "corporate",
+      "risk": "昇進競争の激しさ・政治的スキル不足",
+      "upside": "Principal Engineer→年収5000万超",
+      "score": 0.75,
+      "overall_probability": 0.3,
+      "probability_rationale": "L5→L6は比較的一般的だがL6→L7(Staff)は10-15%。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (33-35歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "Google社内昇進（Staff Engineer→Principal）に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳でのL6昇進がまず必要",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "Principal Engineer(L8)到達",
+          "probability": 0.05,
+          "probability_note": "L5→L6は比較的一般的だがL6→L7(Staff)は10-15%。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "Principal Engineer(L8)到達に向けた行動期",
+                  "probability": 0.05,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "Principal Engineer(L8)到達の結果が顕在化",
+                  "probability": 0.05,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "Principal Engineer(L8)到達の安定フェーズ",
+                  "probability": 0.06,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 6000.0,
+            "satisfaction": 0.88,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "Staff Engineer(L6-7)で安定",
+          "probability": 0.55,
+          "probability_note": "L5→L6は比較的一般的だがL6→L7(Staff)は10-15%。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "Staff Engineer(L6-7)で安定に向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "Staff Engineer(L6-7)で安定の結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "Staff Engineer(L6-7)で安定の安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 3000.0,
+            "satisfaction": 0.75,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "L5-6で停滞→転職",
+          "probability": 0.4,
+          "probability_note": "L5→L6は比較的一般的だがL6→L7(Staff)は10-15%。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "L5-6で停滞→転職に向けた行動期",
+                  "probability": 0.4,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "L5-6で停滞→転職の結果が顕在化",
+                  "probability": 0.4,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "L5-6で停滞→転職の安定フェーズ",
+                  "probability": 0.48,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2200.0,
+            "satisfaction": 0.55,
+            "stress": 0.45,
+            "work_life_balance": 0.6
+          }
+        }
+      ],
+      "final_salary": 3000.0,
+      "final_satisfaction": 0.75,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "AIスタートアップ共同創業（CTO）",
+      "direction": "startup",
+      "risk": "収入ゼロ期間＋ビザ問題",
+      "upside": "ユニコーン創出→億万長者",
+      "score": 0.7,
+      "overall_probability": 0.2,
+      "probability_rationale": "技術力は十分だがビジネス面のパートナーが必要。ビザの制約あり。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (33-35歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "AIスタートアップ共同創業（CTO）に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "32歳での起業決断と共同創業者との出会い",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "ユニコーン達成→CTO",
+          "probability": 0.05,
+          "probability_note": "技術力は十分だがビジネス面のパートナーが必要。ビザの制約あり。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "ユニコーン達成→CTOに向けた行動期",
+                  "probability": 0.05,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "ユニコーン達成→CTOの結果が顕在化",
+                  "probability": 0.05,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "ユニコーン達成→CTOの安定フェーズ",
+                  "probability": 0.06,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 8000.0,
+            "satisfaction": 0.92,
+            "stress": 0.65,
+            "work_life_balance": 0.35
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "シリーズA到達→堅実成長",
+          "probability": 0.45,
+          "probability_note": "技術力は十分だがビジネス面のパートナーが必要。ビザの制約あり。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "シリーズA到達→堅実成長に向けた行動期",
+                  "probability": 0.45,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "シリーズA到達→堅実成長の結果が顕在化",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "シリーズA到達→堅実成長の安定フェーズ",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.8,
+            "stress": 0.7,
+            "work_life_balance": 0.35
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "起業失敗→GAFA復帰",
+          "probability": 0.5,
+          "probability_note": "技術力は十分だがビジネス面のパートナーが必要。ビザの制約あり。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "起業失敗→GAFA復帰に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "起業失敗→GAFA復帰の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "起業失敗→GAFA復帰の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2000.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 1500.0,
+      "final_satisfaction": 0.8,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "米国本社への転籍（Mountain View）",
+      "direction": "global",
+      "risk": "競争激化・文化適応",
+      "upside": "米国報酬水準で年収4000万超",
+      "score": 0.72,
+      "overall_probability": 0.25,
+      "probability_rationale": "社内転籍は外部採用より容易。L5実力があれば承認される可能性高い。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (33-35歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "米国本社への転籍（Mountain View）に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "32歳での転籍申請承認が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "米国で Staff→Director昇進",
+          "probability": 0.1,
+          "probability_note": "社内転籍は外部採用より容易。L5実力があれば承認される可能性高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "米国で Staff→Director昇進に向けた行動期",
+                  "probability": 0.1,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "米国で Staff→Director昇進の結果が顕在化",
+                  "probability": 0.1,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "米国で Staff→Director昇進の安定フェーズ",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 7000.0,
+            "satisfaction": 0.85,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "米国L6で安定・高報酬",
+          "probability": 0.55,
+          "probability_note": "社内転籍は外部採用より容易。L5実力があれば承認される可能性高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "米国L6で安定・高報酬に向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "米国L6で安定・高報酬の結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "米国L6で安定・高報酬の安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 4000.0,
+            "satisfaction": 0.78,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "米国生活に適応できず日本復帰",
+          "probability": 0.35,
+          "probability_note": "社内転籍は外部採用より容易。L5実力があれば承認される可能性高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "米国生活に適応できず日本復帰に向けた行動期",
+                  "probability": 0.35,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "米国生活に適応できず日本復帰の結果が顕在化",
+                  "probability": 0.35,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "米国生活に適応できず日本復帰の安定フェーズ",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2500.0,
+            "satisfaction": 0.55,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 4000.0,
+      "final_satisfaction": 0.78,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "中国テック企業（ByteDance/Alibaba）でAI責任者",
+      "direction": "global",
+      "risk": "地政学リスク・規制リスク",
+      "upside": "中国AI市場のリーダーポジション",
+      "score": 0.55,
+      "overall_probability": 0.15,
+      "probability_rationale": "清華大学人脈で門戸は開かれているが、米中デカップリングのリスク大。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (33-35歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "中国テック企業（ByteDance/Alibaba）でAI責任者に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳での中国帰国決断",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "ByteDance AI部門VP",
+          "probability": 0.1,
+          "probability_note": "清華大学人脈で門戸は開かれているが、米中デカップリングのリスク大。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "ByteDance AI部門VPに向けた行動期",
+                  "probability": 0.1,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "ByteDance AI部門VPの結果が顕在化",
+                  "probability": 0.1,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "ByteDance AI部門VPの安定フェーズ",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 5000.0,
+            "satisfaction": 0.8,
+            "stress": 0.6,
+            "work_life_balance": 0.4
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "中国テック企業のシニアエンジニア",
+          "probability": 0.5,
+          "probability_note": "清華大学人脈で門戸は開かれているが、米中デカップリングのリスク大。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "中国テック企業のシニアエンジニアに向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "中国テック企業のシニアエンジニアの結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "中国テック企業のシニアエンジニアの安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2500.0,
+            "satisfaction": 0.65,
+            "stress": 0.55,
+            "work_life_balance": 0.45
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "米中関係悪化でキャリアリスク顕在化",
+          "probability": 0.4,
+          "probability_note": "清華大学人脈で門戸は開かれているが、米中デカップリングのリスク大。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "米中関係悪化でキャリアリスク顕在化に向けた行動期",
+                  "probability": 0.4,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "米中関係悪化でキャリアリスク顕在化の結果が顕在化",
+                  "probability": 0.4,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "米中関係悪化でキャリアリスク顕在化の安定フェーズ",
+                  "probability": 0.48,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.4,
+            "stress": 0.65,
+            "work_life_balance": 0.4
+          }
+        }
+      ],
+      "final_salary": 2500.0,
+      "final_satisfaction": 0.65,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "大学研究者（AI/ML）に転身",
+      "direction": "academic",
+      "risk": "大幅年収ダウン",
+      "upside": "研究成果による社会的インパクト",
+      "score": 0.5,
+      "overall_probability": 0.1,
+      "probability_rationale": "Stanford MSでは研究ポジション獲得にPhDが必要な場合が多い。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (33-35歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "大学研究者（AI/ML）に転身に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳でのPhD入学決断",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "トップ大学のテニュア教授",
+          "probability": 0.08,
+          "probability_note": "Stanford MSでは研究ポジション獲得にPhDが必要な場合が多い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "トップ大学のテニュア教授に向けた行動期",
+                  "probability": 0.08,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "トップ大学のテニュア教授の結果が顕在化",
+                  "probability": 0.08,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "トップ大学のテニュア教授の安定フェーズ",
+                  "probability": 0.096,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.9,
+            "stress": 0.4,
+            "work_life_balance": 0.65
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "准教授 or 研究員として論文執筆",
+          "probability": 0.5,
+          "probability_note": "Stanford MSでは研究ポジション獲得にPhDが必要な場合が多い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "准教授 or 研究員として論文執筆に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "准教授 or 研究員として論文執筆の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "准教授 or 研究員として論文執筆の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 800.0,
+            "satisfaction": 0.75,
+            "stress": 0.45,
+            "work_life_balance": 0.6
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "アカデミアの競争に疲弊→企業復帰",
+          "probability": 0.42,
+          "probability_note": "Stanford MSでは研究ポジション獲得にPhDが必要な場合が多い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (36-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "アカデミアの競争に疲弊→企業復帰に向けた行動期",
+                  "probability": 0.42,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "アカデミアの競争に疲弊→企業復帰の結果が顕在化",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "アカデミアの競争に疲弊→企業復帰の安定フェーズ",
+                  "probability": 0.504,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2000.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 800.0,
+      "final_satisfaction": 0.75,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

@@ -1,0 +1,61 @@
+{
+  "identity": {
+    "name": "小林誠",
+    "age_at_start": 50,
+    "gender": "male",
+    "education": "日本大学 経済学部",
+    "mbti": "ESTP",
+    "stable_traits": [
+      "経営判断力",
+      "人脈構築力",
+      "リスクテイク",
+      "現場主義"
+    ],
+    "certifications": [],
+    "career_history_summary": "25歳で建設資材の商社を創業。年商30億円まで成長。社員80名。近年は事業承継を検討中。長男は別業界。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 50,
+    "role": "代表取締役社長",
+    "employer": "小林商事株式会社",
+    "industry": "建設資材商社",
+    "years_in_role": 25,
+    "salary_annual": 3000,
+    "skills": [
+      "経営",
+      "営業",
+      "人材育成",
+      "資金調達",
+      "業界人脈"
+    ],
+    "family": [
+      {
+        "relation": "妻",
+        "age": 48
+      },
+      {
+        "relation": "長男",
+        "age": 25
+      },
+      {
+        "relation": "次男",
+        "age": 22
+      },
+      {
+        "relation": "長女",
+        "age": 18
+      }
+    ],
+    "marital_status": "married",
+    "cash_buffer": 250,
+    "mortgage_remaining": 0,
+    "monthly_expenses": 80,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

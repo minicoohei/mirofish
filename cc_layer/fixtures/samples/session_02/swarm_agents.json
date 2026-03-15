@@ -1,0 +1,80 @@
+[
+  {
+    "agent_id": "agent_bank_boss",
+    "name": "鉄田雅彦",
+    "bio": "メガバンク常務。田中の上司。出世を期待。",
+    "role": "上司（常務）",
+    "category": "business_strategy",
+    "personality": "メガバンク常務。田中の上司。出世を期待。",
+    "speaking_style": "",
+    "background": "メガバンク常務。田中の上司。出世を期待。",
+    "stance": "opposing",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_fintech_ceo",
+    "name": "河野太一",
+    "bio": "フィンテックスタートアップCEO。田中をCFOとして勧誘中。",
+    "role": "フィンテックCEO",
+    "category": "tech_industry",
+    "personality": "フィンテックスタートアップCEO。田中をCFOとして勧誘中。",
+    "speaking_style": "",
+    "background": "フィンテックスタートアップCEO。田中をCFOとして勧誘中。",
+    "stance": "supportive",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_wife",
+    "name": "田中恵子",
+    "bio": "妻。子供の教育と住宅ローンを心配。安定重視。",
+    "role": "妻",
+    "category": "private",
+    "personality": "妻。子供の教育と住宅ローンを心配。安定重視。",
+    "speaking_style": "",
+    "background": "妻。子供の教育と住宅ローンを心配。安定重視。",
+    "stance": "opposing",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_bank_peer",
+    "name": "佐々木洋介",
+    "bio": "メガバンク同期。既に独立してFAを運営。",
+    "role": "同期の友人",
+    "category": "private",
+    "personality": "メガバンク同期。既に独立してFAを運営。",
+    "speaking_style": "",
+    "background": "メガバンク同期。既に独立してFAを運営。",
+    "stance": "supportive",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_fp",
+    "name": "山下真理",
+    "bio": "FP。家計とローン返済計画のアドバイザー。",
+    "role": "ファイナンシャルプランナー",
+    "category": "hr_career",
+    "personality": "FP。家計とローン返済計画のアドバイザー。",
+    "speaking_style": "",
+    "background": "FP。家計とローン返済計画のアドバイザー。",
+    "stance": "neutral",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "copy_agent_cautious",
+    "name": "慎重な自分",
+    "bio": "家族のことを最優先に考える自分。",
+    "role": "copy_agent",
+    "category": "copy_agent",
+    "personality": "家族のことを最優先に考える自分。",
+    "speaking_style": "",
+    "background": "家族のことを最優先に考える自分。",
+    "stance": "opposing",
+    "path_ref": "path_a",
+    "is_copy_agent": true
+  }
+]

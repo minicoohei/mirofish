@@ -1,0 +1,1295 @@
+{
+  "identity": {
+    "name": "佐藤美咲",
+    "age_at_start": 28,
+    "gender": "female",
+    "education": "慶應義塾大学 経済学部",
+    "mbti": "ENTJ",
+    "stable_traits": [
+      "論理的思考力",
+      "プレゼンテーション力",
+      "英語力",
+      "分析力"
+    ],
+    "certifications": [
+      "TOEIC 950",
+      "簿記2級"
+    ],
+    "career_history_summary": "新卒で外資系戦略コンサルティングファーム入社。3年間でヘルスケア・金融・テクノロジー業界のプロジェクトを担当。現在はマネージャーとしてDX案件をリード。スタートアップへの転職を検討中。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "スタートアップCOO転身",
+      "direction": "startup",
+      "risk": "事業失敗→年収500万で再就職",
+      "upside": "IPO成功→ストックオプション含め年収5000万",
+      "score": 0.75,
+      "overall_probability": 0.3,
+      "probability_rationale": "コンサル出身のスタートアップCOOは採用ニーズ高い。ただしIPO到達は低確率。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (30-32歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "スタートアップCOO転身に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "30歳時点でスタートアップの成長フェーズが分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "IPO成功→経営幹部",
+          "probability": 0.1,
+          "probability_note": "コンサル出身のスタートアップCOOは採用ニーズ高い。ただしIPO到達は低確率。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "IPO成功→経営幹部に向けた行動期",
+                  "probability": 0.1,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "IPO成功→経営幹部の結果が顕在化",
+                  "probability": 0.1,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "IPO成功→経営幹部の安定フェーズ",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 5000.0,
+            "satisfaction": 0.9,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "シリーズB到達→年商10億企業のCOO",
+          "probability": 0.55,
+          "probability_note": "コンサル出身のスタートアップCOOは採用ニーズ高い。ただしIPO到達は低確率。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "シリーズB到達→年商10億企業のCOOに向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "シリーズB到達→年商10億企業のCOOの結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "シリーズB到達→年商10億企業のCOOの安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.82,
+            "stress": 0.6,
+            "work_life_balance": 0.45
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "事業ピボット失敗→コンサル復帰",
+          "probability": 0.35,
+          "probability_note": "コンサル出身のスタートアップCOOは採用ニーズ高い。ただしIPO到達は低確率。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "事業ピボット失敗→コンサル復帰に向けた行動期",
+                  "probability": 0.35,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "事業ピボット失敗→コンサル復帰の結果が顕在化",
+                  "probability": 0.35,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "事業ピボット失敗→コンサル復帰の安定フェーズ",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1000.0,
+            "satisfaction": 0.55,
+            "stress": 0.4,
+            "work_life_balance": 0.65
+          }
+        }
+      ],
+      "final_salary": 1500.0,
+      "final_satisfaction": 0.82,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "外資コンサル昇進（パートナー目指す）",
+      "direction": "corporate",
+      "risk": "アップオアアウトで退職→事業会社転職",
+      "upside": "パートナー昇進→年収5000万超",
+      "score": 0.7,
+      "overall_probability": 0.25,
+      "probability_rationale": "女性パートナーは増加傾向だが昇進率は依然10%以下。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (30-32歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "外資コンサル昇進（パートナー目指す）に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "32歳でのシニアマネージャー昇進が鍵",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "パートナー昇進",
+          "probability": 0.08,
+          "probability_note": "女性パートナーは増加傾向だが昇進率は依然10%以下。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "パートナー昇進に向けた行動期",
+                  "probability": 0.08,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "パートナー昇進の結果が顕在化",
+                  "probability": 0.08,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "パートナー昇進の安定フェーズ",
+                  "probability": 0.096,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 5500.0,
+            "satisfaction": 0.85,
+            "stress": 0.75,
+            "work_life_balance": 0.3
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "シニアマネージャーで安定",
+          "probability": 0.5,
+          "probability_note": "女性パートナーは増加傾向だが昇進率は依然10%以下。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "シニアマネージャーで安定に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "シニアマネージャーで安定の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "シニアマネージャーで安定の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.7,
+            "stress": 0.7,
+            "work_life_balance": 0.35
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "アップオアアウト→事業会社",
+          "probability": 0.42,
+          "probability_note": "女性パートナーは増加傾向だが昇進率は依然10%以下。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "アップオアアウト→事業会社に向けた行動期",
+                  "probability": 0.42,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "アップオアアウト→事業会社の結果が顕在化",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "アップオアアウト→事業会社の安定フェーズ",
+                  "probability": 0.504,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1200.0,
+            "satisfaction": 0.6,
+            "stress": 0.45,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 1800.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "事業会社の経営企画・DX推進",
+      "direction": "corporate",
+      "risk": "大企業の意思決定の遅さにフラストレーション",
+      "upside": "CDO/CSOとして経営ボードメンバー",
+      "score": 0.68,
+      "overall_probability": 0.2,
+      "probability_rationale": "DX人材需要は高いが経営ボード入りは時間がかかる。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (30-32歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "事業会社の経営企画・DX推進に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳での部長昇格が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "CDO就任→経営改革リード",
+          "probability": 0.12,
+          "probability_note": "DX人材需要は高いが経営ボード入りは時間がかかる。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "CDO就任→経営改革リードに向けた行動期",
+                  "probability": 0.12,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "CDO就任→経営改革リードの結果が顕在化",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "CDO就任→経営改革リードの安定フェーズ",
+                  "probability": 0.144,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2500.0,
+            "satisfaction": 0.8,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "経営企画部長として安定",
+          "probability": 0.55,
+          "probability_note": "DX人材需要は高いが経営ボード入りは時間がかかる。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "経営企画部長として安定に向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "経営企画部長として安定の結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "経営企画部長として安定の安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1400.0,
+            "satisfaction": 0.72,
+            "stress": 0.45,
+            "work_life_balance": 0.6
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "組織政治に疲弊→再転職",
+          "probability": 0.33,
+          "probability_note": "DX人材需要は高いが経営ボード入りは時間がかかる。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "組織政治に疲弊→再転職に向けた行動期",
+                  "probability": 0.33,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "組織政治に疲弊→再転職の結果が顕在化",
+                  "probability": 0.33,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "組織政治に疲弊→再転職の安定フェーズ",
+                  "probability": 0.396,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1100.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        }
+      ],
+      "final_salary": 1400.0,
+      "final_satisfaction": 0.72,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "独立コンサルタント・フリーランス",
+      "direction": "freelance",
+      "risk": "案件獲得不安定→貯蓄切り崩し",
+      "upside": "自由な働き方×高単価で年収1500万",
+      "score": 0.6,
+      "overall_probability": 0.15,
+      "probability_rationale": "マッキンゼーブランドで案件獲得は容易だが安定性に欠ける。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (30-32歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "独立コンサルタント・フリーランスに向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "31歳でのクライアント基盤構築が鍵",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "高単価コンサル×複数顧問で年収2000万",
+          "probability": 0.15,
+          "probability_note": "マッキンゼーブランドで案件獲得は容易だが安定性に欠ける。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "高単価コンサル×複数顧問で年収2000万に向けた行動期",
+                  "probability": 0.15,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "高単価コンサル×複数顧問で年収2000万の結果が顕在化",
+                  "probability": 0.15,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "高単価コンサル×複数顧問で年収2000万の安定フェーズ",
+                  "probability": 0.18,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2000.0,
+            "satisfaction": 0.85,
+            "stress": 0.35,
+            "work_life_balance": 0.75
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "月100-150万で安定稼働",
+          "probability": 0.5,
+          "probability_note": "マッキンゼーブランドで案件獲得は容易だが安定性に欠ける。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "月100-150万で安定稼働に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "月100-150万で安定稼働の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "月100-150万で安定稼働の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1300.0,
+            "satisfaction": 0.75,
+            "stress": 0.4,
+            "work_life_balance": 0.7
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "案件途切れ→正社員復帰",
+          "probability": 0.35,
+          "probability_note": "マッキンゼーブランドで案件獲得は容易だが安定性に欠ける。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "案件途切れ→正社員復帰に向けた行動期",
+                  "probability": 0.35,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "案件途切れ→正社員復帰の結果が顕在化",
+                  "probability": 0.35,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "案件途切れ→正社員復帰の安定フェーズ",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 900.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 1300.0,
+      "final_satisfaction": 0.75,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "MBA留学→海外キャリア",
+      "direction": "global",
+      "risk": "留学費用2000万＋機会損失",
+      "upside": "グローバル企業幹部→年収3000万超",
+      "score": 0.65,
+      "overall_probability": 0.1,
+      "probability_rationale": "MBA後のROIは不確実。海外就労ビザ取得も課題。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (30-32歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "MBA留学→海外キャリアに向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "30歳でのMBA合格が最初の関門",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "海外テック企業の戦略部門VP",
+          "probability": 0.1,
+          "probability_note": "MBA後のROIは不確実。海外就労ビザ取得も課題。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "海外テック企業の戦略部門VPに向けた行動期",
+                  "probability": 0.1,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "海外テック企業の戦略部門VPの結果が顕在化",
+                  "probability": 0.1,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "海外テック企業の戦略部門VPの安定フェーズ",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 3500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "MBA後日本の外資系に復帰",
+          "probability": 0.55,
+          "probability_note": "MBA後のROIは不確実。海外就労ビザ取得も課題。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "MBA後日本の外資系に復帰に向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "MBA後日本の外資系に復帰の結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "MBA後日本の外資系に復帰の安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1600.0,
+            "satisfaction": 0.7,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "MBA費用回収に時間→当面年収横ばい",
+          "probability": 0.35,
+          "probability_note": "MBA後のROIは不確実。海外就労ビザ取得も課題。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (33-35歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "MBA費用回収に時間→当面年収横ばいに向けた行動期",
+                  "probability": 0.35,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (36-37歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "MBA費用回収に時間→当面年収横ばいの結果が顕在化",
+                  "probability": 0.35,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (38-39歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "MBA費用回収に時間→当面年収横ばいの安定フェーズ",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1000.0,
+            "satisfaction": 0.55,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        }
+      ],
+      "final_salary": 1600.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

@@ -1,0 +1,69 @@
+{
+  "trends": [
+    {
+      "trend_id": "ai_talent_war",
+      "label": "グローバルAI人材争奪戦",
+      "category": "workforce",
+      "description": "OpenAI/Anthropic/Googleの人材獲得競争が過熱。AI SWEの報酬は年々上昇。",
+      "probability": 0.9,
+      "timeframe": "2026-2030",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "グローバルAI人材争奪戦関連データ",
+          "excerpt": "OpenAI/Anthropic/Googleの人材獲得競争が過熱。AI SWEの報酬は年々上昇。"
+        }
+      ]
+    },
+    {
+      "trend_id": "us_china_decouple",
+      "label": "米中AI技術デカップリング",
+      "category": "geopolitics",
+      "description": "AI半導体輸出規制強化。中国出身エンジニアへのセキュリティクリアランス制限。",
+      "probability": 0.85,
+      "timeframe": "2026-2035",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "米中AI技術デカップリング関連データ",
+          "excerpt": "AI半導体輸出規制強化。中国出身エンジニアへのセキュリティクリアランス制限。"
+        }
+      ]
+    },
+    {
+      "trend_id": "japan_ai_hub",
+      "label": "日本のAI研究拠点化",
+      "category": "technology",
+      "description": "米中の中間地点として日本がAI研究ハブになる可能性。Google/MS/Metaが日本拠点拡大。",
+      "probability": 0.6,
+      "timeframe": "2027-2032",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "日本のAI研究拠点化関連データ",
+          "excerpt": "米中の中間地点として日本がAI研究ハブになる可能性。Google/MS/Metaが日本拠点拡大。"
+        }
+      ]
+    }
+  ],
+  "salary_benchmarks": [
+    {
+      "role": "Google Japan L5 SWE",
+      "range": "1500-2200万円",
+      "source": "Levels.fyi 2024",
+      "note": ""
+    },
+    {
+      "role": "Google US L6 SWE",
+      "range": "3500-5000万円",
+      "source": "Levels.fyi 2024",
+      "note": ""
+    },
+    {
+      "role": "AIスタートアップ CTO（シード-A）",
+      "range": "600-1500万円",
+      "source": "INITIAL 2024",
+      "note": ""
+    }
+  ]
+}

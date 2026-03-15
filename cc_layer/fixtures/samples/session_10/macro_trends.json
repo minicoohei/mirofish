@@ -1,0 +1,63 @@
+{
+  "trends": [
+    {
+      "trend_id": "industry_change",
+      "label": "建設資材商社業界の構造変化",
+      "category": "technology",
+      "description": "建設資材商社におけるDX・AI活用の進展",
+      "probability": 0.8,
+      "timeframe": "2026-2032",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "建設資材商社業界の構造変化関連データ",
+          "excerpt": "建設資材商社におけるDX・AI活用の進展"
+        }
+      ]
+    },
+    {
+      "trend_id": "labor_shift",
+      "label": "働き方の多様化",
+      "category": "workforce",
+      "description": "リモートワーク・副業・フリーランスの増加",
+      "probability": 0.85,
+      "timeframe": "2026-2030",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "働き方の多様化関連データ",
+          "excerpt": "リモートワーク・副業・フリーランスの増加"
+        }
+      ]
+    },
+    {
+      "trend_id": "demographics",
+      "label": "人口動態変化",
+      "category": "demographics",
+      "description": "労働人口減少と高齢化の影響",
+      "probability": 0.95,
+      "timeframe": "2026-2035",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "人口動態変化関連データ",
+          "excerpt": "労働人口減少と高齢化の影響"
+        }
+      ]
+    }
+  ],
+  "salary_benchmarks": [
+    {
+      "role": "代表取締役社長",
+      "range": "2400-3600万円",
+      "source": "OpenWork 2024",
+      "note": ""
+    },
+    {
+      "role": "建設資材商社上位ポジション",
+      "range": "2800-3500万円",
+      "source": "業界調査 2024",
+      "note": ""
+    }
+  ]
+}

@@ -32,7 +32,7 @@ import cc_layer.cli  # noqa: F401
 
 def _entities_from_graph(graph_id: str):
     """Read and filter entities from Zep graph."""
-    from app.services.zep_entity_reader import ZepEntityReader
+    from cc_layer.app.services.zep_entity_reader import ZepEntityReader
     reader = ZepEntityReader()
     result = reader.filter_defined_entities(graph_id, enrich_with_edges=True)
     return result.entities
@@ -40,7 +40,7 @@ def _entities_from_graph(graph_id: str):
 
 def _entities_from_file(filepath: str):
     """Load entities from JSON file."""
-    from app.services.zep_entity_reader import EntityNode
+    from cc_layer.app.services.zep_entity_reader import EntityNode
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -92,7 +92,7 @@ def main():
         print(f"Found {len(entities)} entities, generating profiles...", file=sys.stderr)
 
         # Generate profiles
-        from app.services.oasis_profile_generator import OasisProfileGenerator
+        from cc_layer.app.services.oasis_profile_generator import OasisProfileGenerator
         use_llm = not args.no_llm
 
         generator_kwargs = {}

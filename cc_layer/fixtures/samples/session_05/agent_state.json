@@ -1,0 +1,44 @@
+{
+  "identity": {
+    "name": "山田花子",
+    "age_at_start": 24,
+    "gender": "female",
+    "education": "武蔵野美術大学 デザイン情報学科",
+    "mbti": "ENFP",
+    "stable_traits": [
+      "デザイン思考",
+      "UI/UXデザイン",
+      "クリエイティビティ",
+      "コミュニケーション力"
+    ],
+    "certifications": [],
+    "career_history_summary": "新卒でWeb系ベンチャーに入社。UI/UXデザイナーとしてアプリデザインを担当。入社2年目。"
+  },
+  "state": {
+    "current_round": 0,
+    "current_age": 24,
+    "role": "UI/UXデザイナー",
+    "employer": "SmartApp株式会社",
+    "industry": "Webサービス",
+    "years_in_role": 2,
+    "salary_annual": 380,
+    "skills": [
+      "Figma",
+      "UIデザイン",
+      "UXリサーチ",
+      "プロトタイピング",
+      "グラフィックデザイン"
+    ],
+    "family": [],
+    "marital_status": "single",
+    "cash_buffer": 250,
+    "mortgage_remaining": 0,
+    "monthly_expenses": 18,
+    "stress_level": 0.3,
+    "job_satisfaction": 0.5,
+    "work_life_balance": 0.5,
+    "blockers": [],
+    "events_this_round": []
+  },
+  "seed": 42
+}

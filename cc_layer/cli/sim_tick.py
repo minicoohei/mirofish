@@ -24,14 +24,14 @@ import cc_layer.cli  # noqa: F401
 
 from cc_layer.cli.otel_setup import init_tracer, round_span
 
-from app.models.life_simulator import (
+from cc_layer.app.models.life_simulator import (
     BaseIdentity, CareerState, FamilyMember, ActiveBlocker, BlockerType,
     LifeEvent, LifeEventType,
 )
-from app.services.agent_state_store import AgentStateStore
-from app.services.life_event_engine import LifeEventEngine
-from app.services.blocker_engine import BlockerEngine
-from app.services.persona_renderer import PersonaRenderer
+from cc_layer.app.services.agent_state_store import AgentStateStore
+from cc_layer.app.services.life_event_engine import LifeEventEngine
+from cc_layer.app.services.blocker_engine import BlockerEngine
+from cc_layer.app.services.persona_renderer import PersonaRenderer
 
 
 def load_state_file(path: str) -> dict:

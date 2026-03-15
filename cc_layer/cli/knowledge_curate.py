@@ -48,7 +48,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        from app.services.knowledge_curator import KnowledgeCurator
+        from cc_layer.app.services.knowledge_curator import KnowledgeCurator
 
         # Read ontology entities
         ontology_entities = []

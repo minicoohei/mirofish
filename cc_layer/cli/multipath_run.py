@@ -19,10 +19,10 @@ import os
 
 import cc_layer.cli  # noqa: F401
 
-from app.models.life_simulator import (
+from cc_layer.app.models.life_simulator import (
     BaseIdentity, CareerState, FamilyMember, ActiveBlocker, BlockerType,
 )
-from app.services.multipath_simulator import MultiPathSimulator
+from cc_layer.app.services.multipath_simulator import MultiPathSimulator
 
 
 def reconstruct_identity(d: dict) -> BaseIdentity:
@@ -79,13 +79,13 @@ def main():
     simulator = MultiPathSimulator(base_seed=seed)
 
     if args.default_paths:
-        from app.services.multipath_simulator import build_default_paths
+        from cc_layer.app.services.multipath_simulator import build_default_paths
         path_configs = build_default_paths(state, args.round_count)
         simulator.initialize(identity, state, path_configs=path_configs, round_count=args.round_count)
         simulator.run_all()
         report = simulator.generate_comparison_report()
         # Score paths
-        from app.services.multipath_simulator import score_path
+        from cc_layer.app.services.multipath_simulator import score_path
         for p in report.get("paths", []):
             p["score"] = round(score_path(p), 3)
         report["paths"] = sorted(report.get("paths", []), key=lambda p: p["score"], reverse=True)[:args.top_n]

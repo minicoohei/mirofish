@@ -35,7 +35,7 @@ def _make_fetcher():
     """Create ExternalDataFetcher with env-based config."""
     # ExternalDataFetcher uses Config.TAVILY_API_KEY which reads from env.
     # We need to ensure dotenv is loaded.
-    from app.services.external_data_fetcher import ExternalDataFetcher
+    from cc_layer.app.services.external_data_fetcher import ExternalDataFetcher
     return ExternalDataFetcher()
 
 

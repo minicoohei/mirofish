@@ -37,8 +37,8 @@ import os
 
 import cc_layer.cli  # noqa: F401
 
-from app.services.zep_tools import ZepToolsService
-from app.services.zep_entity_reader import ZepEntityReader
+from cc_layer.app.services.zep_tools import ZepToolsService
+from cc_layer.app.services.zep_entity_reader import ZepEntityReader
 
 
 def main():

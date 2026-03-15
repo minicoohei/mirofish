@@ -1,0 +1,29 @@
+{
+  "name": "伊藤さくら",
+  "age": 45,
+  "gender": "female",
+  "education": "東京大学 薬学部 / Wharton MBA",
+  "mbti": "ENTJ",
+  "traits": [
+    "リーダーシップ",
+    "ヘルスケア業界知識",
+    "MBA",
+    "グローバル経験"
+  ],
+  "certifications": [
+    "薬剤師"
+  ],
+  "career_summary": "製薬会社MR→MBA留学→外資製薬マーケティング→医療系IT企業VP。ヘルスケア×ITのキャリア。離婚後シングルマザー。",
+  "current_role": "Vice President",
+  "current_employer": "メドレー",
+  "industry": "医療系IT",
+  "years_in_role": 3,
+  "salary": 2000,
+  "skills": [
+    "ヘルスケア戦略",
+    "マーケティング",
+    "事業開発",
+    "組織マネジメント",
+    "英語"
+  ]
+}

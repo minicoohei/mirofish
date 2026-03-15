@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiroFish Career Report — 鈴木大輔</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" integrity="sha384-vsrfeLOOY6KuIYKDlmVH5UiBmgIdB1oEf7p01YgWHuqmOHfZr374+odEv96n9tNC" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+:root {
+    --bg: #f8f9fc; --bg2: #f0f2f8; --surface: #ffffff; --surface2: #f3f4f8;
+    --glass: rgba(255,255,255,0.85); --glass-border: rgba(99,102,241,0.12);
+    --text: #1a1d2e; --text-muted: #5a6078; --text-dim: #9098b0;
+    --accent: #6366f1; --accent2: #4f46e5; --accent-glow: rgba(99,102,241,0.08);
+    --positive: #059669; --negative: #dc2626; --warning: #d97706;
+    --grad1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --grad2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --grad3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    overflow-x: hidden;
+}
+::selection { background: rgba(99,102,241,0.15); }
+
+/* Animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.anim-fade { opacity: 0; animation: fadeUp 0.6s ease-out forwards; }
+.anim-slide { opacity: 0; animation: slideIn 0.5s ease-out forwards; }
+
+/* Navigation */
+.nav-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e5e7eb;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 24px; height: 56px; gap: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.nav-link {
+    color: var(--text-muted); text-decoration: none; padding: 8px 16px;
+    border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+    transition: all 0.3s;
+}
+.nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+.nav-logo { font-weight: 700; color: var(--accent); margin-right: 16px; font-size: 1rem; }
+
+/* Hero */
+.hero {
+    padding: 120px 24px 60px; text-align: center; position: relative;
+    background: linear-gradient(180deg, #eef0ff 0%, var(--bg) 100%);
+}
+.hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+.hero-label {
+    display: inline-block; padding: 6px 20px; border-radius: 100px;
+    background: var(--accent-glow); border: 1px solid var(--glass-border);
+    font-size: 0.8rem; color: var(--accent); font-weight: 600; letter-spacing: 0.05em;
+    margin-bottom: 20px; text-transform: uppercase;
+}
+.hero h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.hero h1 span {
+    background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+    background-size: 200% 200%; animation: gradientShift 4s ease infinite;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* Profile Section */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section { margin: 64px 0; }
+.section-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
+}
+.section-num {
+    font-size: 0.75rem; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 6px;
+    padding: 4px 10px; letter-spacing: 0.1em;
+}
+.section-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
+.section-subtitle { color: var(--text-muted); margin-top: -20px; margin-bottom: 28px; }
+
+/* Glass card */
+.glass {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 16px; backdrop-filter: blur(12px);
+}
+
+/* Profile card */
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.profile-main { padding: 32px; }
+.profile-name { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
+.profile-role { color: var(--accent); font-size: 1rem; margin-bottom: 16px; }
+.profile-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.meta-chip {
+    background: var(--surface2); padding: 4px 12px; border-radius: 100px;
+    font-size: 0.8rem; color: var(--text-muted);
+}
+.profile-career { margin-top: 20px; }
+.career-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.career-step { display: flex; align-items: center; gap: 6px; }
+.career-dot { width: 10px; height: 10px; border-radius: 50%; }
+.career-label { font-size: 0.85rem; font-weight: 500; }
+.career-arrow { color: var(--text-dim); font-size: 1.2rem; }
+
+.profile-side { padding: 32px; border-left: 1px solid var(--glass-border); }
+.profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.stat-box { text-align: center; padding: 16px; background: var(--surface2); border-radius: 12px; }
+.stat-num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.cert-tag {
+    background: #eef2ff; border: 1px solid #c7d2fe;
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 0.78rem; color: var(--accent); font-weight: 500;
+}
+.skill-tag {
+    background: var(--surface2); padding: 3px 10px; border-radius: 6px;
+    font-size: 0.78rem; color: var(--text-muted);
+}
+.family-tag {
+    background: var(--surface2); padding: 3px 10px; border-radius: 6px;
+    font-size: 0.78rem; color: var(--text-muted);
+}
+
+/* Talent Assessment */
+.talent-box {
+    margin-top: 24px; padding: 28px 32px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    border: 1px solid #c7d2fe;
+}
+.talent-box::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--grad1); border-radius: 4px 0 0 4px;
+}
+.talent-type {
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.talent-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+
+/* Strengths / Weaknesses */
+.sw-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; margin-top: 24px; }
+.sw-col-title { font-size: 1rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.strength-card {
+    display: flex; gap: 16px; padding: 16px; border-radius: 12px;
+    background: var(--surface); border: 1px solid #e5e7eb;
+    margin-bottom: 12px; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+.strength-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.strength-icon { width: 40px; height: 40px; color: var(--accent); flex-shrink: 0; }
+.strength-icon svg { width: 100%; height: 100%; }
+.strength-body h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.strength-body p { font-size: 0.85rem; color: var(--text-muted); }
+
+.weakness-card {
+    padding: 14px 16px; border-radius: 10px; margin-bottom: 10px;
+    background: #fef2f2; border: 1px solid #fecaca;
+    transition: transform 0.2s;
+}
+.weakness-card:hover { transform: translateX(4px); }
+.weakness-card h4 { font-size: 0.9rem; color: var(--negative); margin-bottom: 4px; }
+.weakness-card p { font-size: 0.83rem; color: var(--text-muted); }
+
+/* Charts */
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chart-card { padding: 24px; }
+.chart-card h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; font-weight: 500; }
+canvas { max-height: 320px; }
+
+/* Path cards */
+.path-card {
+    margin-bottom: 24px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: var(--shadow-md);
+}
+.path-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.path-top {
+    display: flex; align-items: center; gap: 16px; padding: 20px 24px;
+    border-bottom: 1px solid var(--glass-border); border-top: 3px solid;
+}
+.path-rank {
+    font-size: 1.4rem; font-weight: 800; color: var(--text-dim);
+    min-width: 40px;
+}
+.path-title-block { flex: 1; }
+.path-title-block h3 { font-size: 1.15rem; font-weight: 700; }
+.path-dir { font-size: 0.85rem; color: var(--text-muted); }
+.path-score {
+    font-size: 1.1rem; font-weight: 700; color: white; padding: 6px 16px;
+    border-radius: 10px;
+}
+/* Scenario branch */
+.path-common-label {
+    padding: 4px 24px 0; font-size: 0.75rem; font-weight: 600;
+    color: var(--text-dim); letter-spacing: 0.05em; text-transform: uppercase;
+}
+.branch-point {
+    display: flex; align-items: center; gap: 10px; padding: 14px 24px;
+    margin: 8px 24px; border-radius: 10px;
+    background: linear-gradient(135deg, #fef3c7, #fef9c3);
+    border: 1px solid #fde68a;
+}
+.branch-icon { font-size: 1.3rem; }
+.branch-text { font-size: 0.88rem; color: #92400e; font-weight: 600; }
+.scenario-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px; padding: 0 24px 12px;
+}
+.scenario-pill {
+    border: 2px solid; border-radius: 12px; padding: 14px; background: var(--surface);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.scenario-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.scenario-pill-head { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.scenario-pill-head strong { font-size: 0.88rem; }
+.scenario-icon { font-size: 1rem; }
+.scenario-pill-stats { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.scenario-prob {
+    color: white; padding: 2px 10px; border-radius: 6px;
+    font-size: 0.85rem; font-weight: 700;
+}
+.scenario-income { font-weight: 700; font-size: 0.95rem; }
+.scenario-pill-note { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+.scenario-detail {
+    margin: 6px 24px; border-radius: 12px; border: 1px solid #e5e7eb; border-left: 4px solid;
+    overflow: hidden; background: var(--surface);
+}
+.scenario-summary {
+    padding: 12px 18px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+    display: flex; align-items: center; gap: 8px; list-style: none;
+    transition: background 0.2s;
+}
+.scenario-summary:hover { background: var(--surface2); }
+.scenario-summary::-webkit-details-marker { display: none; }
+.scenario-prob-sm {
+    color: white; padding: 1px 8px; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 700;
+}
+.scenario-final {
+    margin-left: auto; font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+}
+.ev-with-prob { position: relative; padding-right: 40px; }
+.ev-prob {
+    position: absolute; right: 3px; top: 50%; transform: translateY(-50%);
+    font-size: 0.65rem; color: white; padding: 1px 5px; border-radius: 3px;
+    font-weight: 700;
+}
+.path-summary { display: flex; gap: 12px; padding: 16px 24px; flex-wrap: wrap; }
+.path-pill {
+    flex: 1; min-width: 200px; padding: 10px 14px; border-radius: 10px;
+    font-size: 0.85rem; display: flex; align-items: flex-start; gap: 8px;
+}
+.pill-icon {
+    width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+}
+.upside-pill { background: #ecfdf5; color: var(--positive); }
+.upside-pill .pill-icon { background: #d1fae5; }
+.risk-pill { background: #fef2f2; color: var(--negative); }
+.risk-pill .pill-icon { background: #fee2e2; }
+
+.path-timeline-wrap { position: relative; padding: 12px 24px 24px; }
+.path-timeline-line {
+    position: absolute; left: 42px; top: 12px; bottom: 24px; width: 2px; border-radius: 2px;
+}
+.period-row { display: flex; gap: 16px; margin-bottom: 16px; position: relative; }
+.period-dot {
+    width: 12px; height: 12px; border-radius: 50%; margin-top: 6px; flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(99,102,241,0.3);
+}
+.period-body { flex: 1; }
+.period-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.period-name { font-weight: 600; font-size: 0.9rem; color: var(--accent); }
+.period-income { font-weight: 700; font-size: 0.95rem; }
+.period-text { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; }
+.period-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+.ev-tag {
+    background: #eef2ff; border: 1px solid #c7d2fe;
+    color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;
+}
+.block-tag {
+    background: #fef2f2; border: 1px solid #fecaca;
+    color: var(--negative); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;
+}
+.period-bars { display: flex; gap: 12px; }
+.mini-bar { display: flex; align-items: center; gap: 4px; flex: 1; }
+.mini-label { font-size: 0.7rem; color: var(--text-dim); min-width: 48px; }
+.mini-track { flex: 1; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+.mini-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+.mini-val { font-size: 0.7rem; color: var(--text-dim); min-width: 28px; text-align: right; }
+
+/* Reskilling */
+.reskill-row {
+    display: flex; gap: 16px; padding: 20px; margin-bottom: 12px;
+    transition: transform 0.2s;
+}
+.reskill-row:hover { transform: translateX(6px); }
+.reskill-priority {
+    width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; color: white; font-size: 0.85rem; flex-shrink: 0;
+}
+.reskill-content { flex: 1; }
+.reskill-content h4 { font-size: 1rem; margin-bottom: 4px; }
+.reskill-content p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+.reskill-meta { display: flex; align-items: center; gap: 16px; }
+.reskill-time { font-size: 0.8rem; color: var(--text-dim); }
+.reskill-paths { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; color: var(--text-dim); }
+.path-dot-mini {
+    width: 20px; height: 20px; border-radius: 4px; display: inline-flex;
+    align-items: center; justify-content: center; font-size: 0.65rem;
+    color: white; font-weight: 700;
+}
+
+/* Comments */
+.comments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.comments-section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.comment-bubble {
+    display: flex; gap: 12px; padding: 16px; margin-bottom: 12px;
+    background: var(--surface); border-radius: 12px; border: 1px solid #e5e7eb;
+    transition: transform 0.2s; box-shadow: var(--shadow-sm);
+}
+.comment-bubble:hover { transform: translateX(4px); }
+.comment-avatar {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; flex-shrink: 0;
+    background: var(--surface2);
+}
+.comment-meta { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; flex-wrap: wrap; }
+.comment-meta strong { font-size: 0.9rem; }
+.comment-stance { font-size: 0.75rem; font-weight: 600; }
+.comment-round-tag { font-size: 0.7rem; color: var(--text-dim); background: var(--surface2); padding: 1px 6px; border-radius: 4px; }
+.comment-bio-line { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 4px; }
+.comment-text { font-size: 0.88rem; color: var(--text-muted); }
+.empty-state { color: var(--text-dim); font-style: italic; padding: 20px; }
+
+/* Per-agent voice cards */
+.agent-voice-card {
+    border-radius: 14px; overflow: hidden; margin-bottom: 16px;
+    border: 1px solid #e5e7eb; border-left: 4px solid;
+    background: var(--surface); box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.agent-voice-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.agent-voice-header {
+    display: flex; align-items: center; gap: 12px; padding: 14px 18px;
+}
+.agent-voice-avatar {
+    width: 38px; height: 38px; border-radius: 50%; border: 2px solid;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.95rem; background: white; flex-shrink: 0;
+}
+.agent-voice-info { flex: 1; }
+.agent-voice-info strong { font-size: 0.9rem; display: block; }
+.agent-voice-bio { font-size: 0.78rem; color: var(--text-dim); }
+.agent-voice-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; display: block; }
+.agent-voice-cat { font-size: 0.7rem; color: var(--text-dim); background: rgba(99,102,241,0.08); padding: 1px 8px; border-radius: 10px; }
+.agent-profile-detail { padding: 8px 16px 4px; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; border-bottom: 1px solid rgba(0,0,0,0.04); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.agent-profile-bg { display: block; width: 100%; }
+.agent-profile-personality { display: block; width: 100%; font-style: italic; color: var(--text-dim); }
+.agent-profile-style { display: block; width: 100%; font-size: 0.72rem; color: var(--text-dim); opacity: 0.8; }
+.macro-impacts { display: flex; flex-direction: column; gap: 4px; }
+.macro-impact-row { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.03); }
+.macro-path-label { font-weight: 600; min-width: 90px; font-size: 0.78rem; }
+.macro-mag { font-size: 0.7rem; color: var(--text-dim); }
+.macro-detail { font-size: 0.78rem; color: var(--text-muted); }
+.macro-sources { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.macro-src { font-size: 0.72rem; color: var(--text-dim); background: rgba(0,0,0,0.03); padding: 2px 8px; border-radius: 8px; }
+.agent-voice-tags { display: flex; gap: 6px; align-items: center; }
+.stance-label { font-size: 0.75rem; font-weight: 600; }
+.sent-count { font-size: 0.75rem; font-weight: 700; padding: 1px 7px; border-radius: 8px; }
+.pos-count { background: #ecfdf5; color: var(--positive); }
+.neg-count { background: #fef2f2; color: var(--negative); }
+.agent-voice-quotes { padding: 4px 18px 14px; }
+.agent-quote {
+    padding: 10px 14px; border-radius: 10px; margin-bottom: 8px;
+    font-size: 0.88rem; position: relative; line-height: 1.6;
+}
+.pos-quote { background: #ecfdf5; border-left: 3px solid var(--positive); color: #065f46; }
+.neg-quote { background: #fef2f2; border-left: 3px solid var(--negative); color: #991b1b; }
+.neut-quote { background: #fffbeb; border-left: 3px solid var(--warning); color: #92400e; }
+.q-round { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+
+/* Core Competencies */
+.core-quotes-grid { display: flex; flex-direction: column; gap: 12px; }
+.core-quote-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 18px; background: var(--surface2); border-radius: 12px;
+    transition: transform 0.2s;
+}
+.core-quote-item:hover { transform: translateX(4px); }
+.core-quote-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.core-quote-body { flex: 1; }
+.core-quote-text { font-size: 0.88rem; line-height: 1.7; margin: 0 0 4px; color: var(--text); }
+.core-quote-attr { font-size: 0.75rem; color: var(--text-dim); }
+
+/* Path-level voices */
+.path-voices-section {
+    margin-top: 20px; padding: 20px 24px;
+    background: var(--surface2); border-radius: 14px;
+    border: 1px solid var(--glass-border);
+}
+.path-voices-title {
+    font-size: 0.95rem; font-weight: 600; margin-bottom: 14px; color: var(--text);
+}
+.path-voice-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid #e5e7eb;
+}
+.path-voice-item:last-child { border-bottom: none; }
+.path-voice-icon {
+    font-weight: 800; font-size: 1rem; min-width: 20px; text-align: center; margin-top: 2px;
+}
+.path-voice-body { flex: 1; }
+.path-voice-name { font-weight: 600; font-size: 0.82rem; margin-right: 6px; }
+.path-voice-bio { font-size: 0.72rem; color: var(--text-dim); }
+.path-voice-text { font-size: 0.85rem; line-height: 1.65; margin: 4px 0 0; color: var(--text-muted); }
+.path-voice-round { font-size: 0.7rem; color: var(--text-dim); white-space: nowrap; margin-top: 2px; }
+
+/* Fact-check */
+.fc-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 8px; background: #f0f2f8; }
+.fc-bar-seg { transition: width 0.6s; }
+.fc-legend { display: flex; gap: 16px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; }
+.fc-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.fc-row {
+    display: flex; gap: 10px; padding: 12px 14px; margin-bottom: 8px;
+    background: var(--surface); border-radius: 10px; border-left: 3px solid;
+}
+.fc-icon { font-size: 1.1rem; font-weight: 700; min-width: 20px; text-align: center; margin-top: 2px; }
+.fc-body { flex: 1; }
+.fc-location { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 4px; }
+.fc-values { font-size: 0.82rem; display: flex; gap: 16px; margin-bottom: 4px; }
+.fc-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+.fc-correction { font-size: 0.8rem; color: var(--accent); margin-top: 4px; font-weight: 500; }
+.fc-sources { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.fc-source { font-size: 0.72rem; color: var(--text-dim); display: flex; align-items: center; gap: 3px; }
+.fc-rel-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* Simulation table */
+.sim-table {
+    width: 100%; border-collapse: collapse; font-size: 0.82rem;
+}
+.sim-table th {
+    padding: 8px 10px; font-size: 0.75rem; text-transform: uppercase;
+    color: var(--text-dim); border-bottom: 2px solid #e5e7eb; text-align: left;
+}
+.sim-table td {
+    padding: 7px 10px; border-bottom: 1px solid #f0f2f8;
+}
+.sim-table tbody tr:hover {
+    background: var(--accent-glow);
+}
+.sim-table tfoot td {
+    padding: 10px;
+}
+
+/* Mirror intro */
+.mirror-intro {
+    padding: 20px 28px; margin-bottom: 20px; border-radius: 14px;
+    border-left: 4px solid var(--accent);
+}
+
+/* Footer */
+.footer {
+    text-align: center; padding: 48px 24px; color: var(--text-dim); font-size: 0.8rem;
+    border-top: 1px solid #e5e7eb; margin-top: 64px; background: #f0f2f8;
+}
+.footer-brand { font-weight: 700; color: var(--accent); font-size: 1rem; margin-bottom: 4px; }
+
+@media (max-width: 768px) {
+    .profile-grid, .charts-row, .comments-grid, .sw-grid { grid-template-columns: 1fr; }
+    .profile-side { border-left: none; border-top: 1px solid var(--glass-border); }
+    .hero h1 { font-size: 2rem; }
+    .nav-bar { overflow-x: auto; justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav-bar">
+    <span class="nav-logo">MiroFish</span>
+    <a href="#profile" class="nav-link">プロフィール</a><a href="#core" class="nav-link">根源的スキル</a><a href="#overview" class="nav-link">神の視点</a><a href="#salary" class="nav-link">年収推移</a><a href="#paths" class="nav-link">キャリアパス</a><a href="#reskill" class="nav-link">リスキリング</a><a href="#mirror" class="nav-link">自分のミラー</a><a href="#voices" class="nav-link">外部の声</a><a href="#macro" class="nav-link">マクロトレンド</a><a href="#graph" class="nav-link">ナレッジグラフ</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-label anim-fade">Swarm-in-the-Loop Analysis</div>
+    <h1 class="anim-fade" style="animation-delay:0.1s"><span>鈴木大輔</span></h1>
+    <p class="hero-sub anim-fade" style="animation-delay:0.2s">
+        45 Swarm Actions &middot; 5 Rounds &middot; 5 Parallel Worlds &middot; 6 Agents
+    </p>
+</div>
+
+<div class="container">
+
+<!-- Section 0: Profile -->
+<div class="section" id="profile">
+    <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">この人はどういう人材か</h2>
+    </div>
+
+    <div class="glass profile-grid anim-fade">
+        <div class="profile-main">
+            <div class="profile-name">鈴木大輔</div>
+            <div class="profile-role">事業部長 @ デンソー</div>
+            <div class="profile-meta">
+                <span class="meta-chip">55歳 male</span>
+                <span class="meta-chip">早稲田大学 理工学部</span>
+                <span class="meta-chip">ESTJ</span>
+                <span class="meta-chip">自動車部品製造</span>
+            </div>
+            <div class="tag-row"><span class="cert-tag">技術士（機械）</span></div>
+            <div class="tag-row" style="margin-top: 8px"><span class="skill-tag">製造プロセス改善</span><span class="skill-tag">品質管理</span><span class="skill-tag">海外工場管理</span><span class="skill-tag">サプライチェーン</span><span class="skill-tag">部門経営</span></div>
+            <div class="profile-career">
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 4px;">CAREER PATH</div>
+                <div class="career-flow">
+                    <div class="career-step anim-slide" style="animation-delay:0.0s"><div class="career-dot" style="background:#f59e0b"></div><div class="career-label">大手自動車部品メーカーで33年勤務。製造</div></div><span class="career-arrow">→</span><div class="career-step anim-slide" style="animation-delay:0.2s"><div class="career-dot" style="background:#8b5cf6"></div><div class="career-label">品質管理</div></div><span class="career-arrow">→</span><div class="career-step anim-slide" style="animation-delay:0.4s"><div class="career-dot" style="background:#6366f1"></div><div class="career-label">海外事業（タイ駐在5年）</div></div><span class="career-arrow">→</span><div class="career-step anim-slide" style="animation-delay:0.6000000000000001s"><div class="career-dot" style="background:#f59e0b"></div><div class="career-label">事業部長。早期退職を検討中。</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-side">
+            <div class="profile-stats">
+                <div class="stat-box">
+                    <div class="stat-num">1600<span style="font-size:0.8rem">万</span></div>
+                    <div class="stat-label">現在年収</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">11<span style="font-size:0.8rem">年</span></div>
+                    <div class="stat-label">PdM経験</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">500<span style="font-size:0.8rem">万</span></div>
+                    <div class="stat-label">住宅ローン残</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">250<span style="font-size:0.8rem">万</span></div>
+                    <div class="stat-label">貯蓄</div>
+                </div>
+            </div>
+            <div style="margin-top: 16px;">
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px;">FAMILY</div>
+                <div class="tag-row"><span class="family-tag">妻(53歳)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Talent Assessment -->
+    <div class="glass talent-box anim-fade" style="margin-top: 24px; border-radius: 16px;">
+        <div class="talent-type">事業責任を持てるハイブリッド型プロダクトリーダー</div>
+        <div class="talent-desc">コンサル×メガベンチャー×SaaSスタートアップを横断した経歴から、技術を事業成果につなげる力に優れる。単一専門職に収まる人材ではなく、「PdM×BizDev×組織マネジメント」の交点で最も力を発揮するタイプ。特にAI新規事業の立ち上げフェーズで、プロダクト戦略と事業オペレーションを同時に回せる希少性がある。</div>
+    </div>
+
+    <!-- Strengths / Weaknesses -->
+    <div class="sw-grid">
+        <div>
+            <div class="sw-col-title"><span style="color: var(--positive); font-size: 1.2rem;">&#9650;</span> 強み</div>
+            
+        </div>
+        <div>
+            <div class="sw-col-title"><span style="color: var(--negative); font-size: 1.2rem;">&#9660;</span> 注意点・弱み</div>
+            
+        <div class="weakness-card anim-fade" style="animation-delay: 0.0s">
+            <h4>専門領域の深さ</h4>
+            <p>横断型ゆえに「何の専門家か」が曖昧に映りやすい。採用JDとのミスマッチリスク</p>
+        </div>
+        </div>
+    </div>
+
+    <!-- Self vs God's Eye -->
+    
+    <div class="glass anim-fade" style="padding: 28px 32px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div>
+                <h4 style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 1.3rem;">&#128100;</span> 自己認知
+                </h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.8;">
+                    鈴木大輔は自身を「コンサル×メガベンチャー×SaaSを横断したプロダクトリーダー」と位置づけている。
+                    PdM歴11年のキャリアに自信を持ち、データドリブンな意思決定とステークホルダーマネジメントを強みと認識。
+                    副業のキャリアメンタリング（Mento）を通じて、自身のキャリア観を他者にも伝えたいという意欲がある。
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 1.3rem;">&#128065;</span> 神の視点
+                </h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.8;">
+                    30人のSwarmエージェント分析が示すのは、<strong>候補者が「CPO/CxO」を過大視し、「VP安定キャリア」の価値を過小評価している</strong>可能性。
+                    全5パスの確率加重結果は年収1290万・満足度63%で、
+                    これはCPOにならなくても「VP of Product」として十分到達可能な水準。
+                    最大のリスクは、CPOを追い求めてWLBを犠牲にし、Baseシナリオに落ちること。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section: Core Competencies -->
+<div class="section" id="core">
+    <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">根源的スキル — エージェントが見た本質</h2>
+    </div>
+    <p class="section-subtitle">30人のSwarmエージェントの45件の会話から、候補者の根源的な強みを抽出</p>
+    
+    <div class="glass anim-fade" style="padding: 28px 32px;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 8px;">
+            &#127919; 30人のエージェントが語る「この人の本質」
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">
+            Swarm 45件の会話から、候補者のスキル・強みに言及した発言を抽出
+        </p>
+        <div class="core-quotes-grid">
+            <p style="color: var(--text-dim); font-size: 0.85rem;">スキル・強みに関するエージェント発言はまだありません</p>
+        </div>
+    </div>
+</div>
+
+<!-- Section: God's Eye View -->
+<div class="section" id="overview">
+    <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">神の視点 — 5つのパラレルワールド</h2>
+    </div>
+    <p class="section-subtitle">同じ人物が異なる選択をした場合の10年後を俯瞰する</p>
+
+    <div class="charts-row">
+        <div class="glass chart-card anim-fade">
+            <h4>最終状態レーダー</h4>
+            <canvas id="radarChart"></canvas>
+        </div>
+        <div class="glass chart-card anim-fade" style="animation-delay:0.1s">
+            <h4>満足度推移</h4>
+            <canvas id="satChart"></canvas>
+        </div>
+    </div>
+
+    
+    <div class="glass anim-fade" style="padding: 28px 32px; margin-bottom: 24px;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 6px;">
+            シミュレーション結果 — 5パス×3シナリオの確率加重分析
+        </h3>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 20px;">
+            各パスのBest/Likely/Baseシナリオの確率×年収で期待値を算出。5パス×15シナリオ、200年分のシミュレーションに基づく
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="stat-box">
+                <div class="stat-num">1290<span style="font-size:0.8rem">万</span></div>
+                <div class="stat-label">期待年収（確率加重平均）</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">63<span style="font-size:0.8rem">%</span></div>
+                <div class="stat-label">期待満足度（確率加重平均）</div>
+            </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table class="sim-table">
+                <thead>
+                    <tr>
+                        <th>パス</th>
+                        <th>シナリオ</th>
+                        <th style="text-align:right">確率</th>
+                        <th style="text-align:right">年収</th>
+                        <th style="text-align:right">満足度</th>
+                        <th style="text-align:right">加重年収</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td style="font-weight:500">早期退職→中小製造業の社</td>
+                <td><span style="color:#22c55e; font-weight:600">早期退職→中小製造業の社長（最良）</span></td>
+                <td style="text-align:right">5%</td>
+                <td style="text-align:right">&#165;3000.0万</td>
+                <td style="text-align:right">88%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;150万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">早期退職→中小製造業の社</td>
+                <td><span style="color:#6366f1; font-weight:600">早期退職→中小製造業の社長（標準）</span></td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right">&#165;1500.0万</td>
+                <td style="text-align:right">70%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;750万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">早期退職→中小製造業の社</td>
+                <td><span style="color:#f59e0b; font-weight:600">早期退職→中小製造業の社長（保守）</span></td>
+                <td style="text-align:right">45%</td>
+                <td style="text-align:right">&#165;800.0万</td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;360万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">65歳まで現職→退職金満</td>
+                <td><span style="color:#22c55e; font-weight:600">65歳まで現職→退職金満額（最良）</span></td>
+                <td style="text-align:right">7%</td>
+                <td style="text-align:right">&#165;2000.0万</td>
+                <td style="text-align:right">88%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;140万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">65歳まで現職→退職金満</td>
+                <td><span style="color:#6366f1; font-weight:600">65歳まで現職→退職金満額（標準）</span></td>
+                <td style="text-align:right">52%</td>
+                <td style="text-align:right">&#165;1700.0万</td>
+                <td style="text-align:right">70%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;884万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">65歳まで現職→退職金満</td>
+                <td><span style="color:#f59e0b; font-weight:600">65歳まで現職→退職金満額（保守）</span></td>
+                <td style="text-align:right">43%</td>
+                <td style="text-align:right">&#165;1600.0万</td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;688万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">製造コンサル独立</td>
+                <td><span style="color:#22c55e; font-weight:600">製造コンサル独立（最良）</span></td>
+                <td style="text-align:right">9%</td>
+                <td style="text-align:right">&#165;2500.0万</td>
+                <td style="text-align:right">88%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;225万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">製造コンサル独立</td>
+                <td><span style="color:#6366f1; font-weight:600">製造コンサル独立（標準）</span></td>
+                <td style="text-align:right">54%</td>
+                <td style="text-align:right">&#165;1500.0万</td>
+                <td style="text-align:right">70%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;810万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">製造コンサル独立</td>
+                <td><span style="color:#f59e0b; font-weight:600">製造コンサル独立（保守）</span></td>
+                <td style="text-align:right">41%</td>
+                <td style="text-align:right">&#165;800.0万</td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;328万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">タイで日系工場支援事業</td>
+                <td><span style="color:#22c55e; font-weight:600">タイで日系工場支援事業（最良）</span></td>
+                <td style="text-align:right">11%</td>
+                <td style="text-align:right">&#165;2200.0万</td>
+                <td style="text-align:right">88%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;242万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">タイで日系工場支援事業</td>
+                <td><span style="color:#6366f1; font-weight:600">タイで日系工場支援事業（標準）</span></td>
+                <td style="text-align:right">56%</td>
+                <td style="text-align:right">&#165;1200.0万</td>
+                <td style="text-align:right">70%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;672万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">タイで日系工場支援事業</td>
+                <td><span style="color:#f59e0b; font-weight:600">タイで日系工場支援事業（保守）</span></td>
+                <td style="text-align:right">39%</td>
+                <td style="text-align:right">&#165;600.0万</td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;234万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">社外取締役・顧問複数社</td>
+                <td><span style="color:#22c55e; font-weight:600">社外取締役・顧問複数社（最良）</span></td>
+                <td style="text-align:right">13%</td>
+                <td style="text-align:right">&#165;1800.0万</td>
+                <td style="text-align:right">88%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;234万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">社外取締役・顧問複数社</td>
+                <td><span style="color:#6366f1; font-weight:600">社外取締役・顧問複数社（標準）</span></td>
+                <td style="text-align:right">57%</td>
+                <td style="text-align:right">&#165;1200.0万</td>
+                <td style="text-align:right">70%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;696万</td>
+            </tr>
+            <tr>
+                <td style="font-weight:500">社外取締役・顧問複数社</td>
+                <td><span style="color:#f59e0b; font-weight:600">社外取締役・顧問複数社（保守）</span></td>
+                <td style="text-align:right">37%</td>
+                <td style="text-align:right">&#165;800.0万</td>
+                <td style="text-align:right">50%</td>
+                <td style="text-align:right; color:var(--accent); font-weight:600">&#165;296万</td>
+            </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="border-top: 2px solid var(--accent); font-weight: 700;">
+                        <td colspan="5">確率加重合計（期待値）</td>
+                        <td style="text-align:right; color: var(--accent); font-size: 1.1rem;">&#165;1290万</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <p style="font-size: 0.78rem; color: var(--text-dim); margin-top: 12px; line-height: 1.6;">
+            ※ 加重年収 = 確率 × 年収。期待値 = 全シナリオの加重年収の合計を確率合計で正規化。<br>
+            ※ 確率はキャリア遷移の統計データに基づくシミュレーション推定値。主要ソース: マイナビ転職動向調査2025、ファーストライトキャピタル SaaS Annual Report 2024-2025、ScaleUp Finance Series A分析、厚労省 雇用均等基本調査2024、ランサーズ フリーランス実態調査2024等。<br>
+            ※ 主要パラメータ: VP昇進率8-15%、CPO就任率3-8%（設置率5-10%）、GAFA PM応募→内定1-3%、シード→シリーズA 15-20%、IPO率1-3%、バーンアウト経験率40-60%。
+        </p>
+    </div>
+    
+    <div class="glass anim-fade" style="padding: 24px 28px; margin-top: 20px;">
+        <h4 style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2rem;">&#128270;</span> ファクトチェック結果
+        </h4>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 16px;">
+            3件の確率・統計データをWeb検索で検証（2026-03-15）
+        </p>
+
+        <div class="fc-bar">
+            <div class="fc-bar-seg" style="width:66%; background:#22c55e" title="Verified 2"></div>
+            <div class="fc-bar-seg" style="width:33%; background:#f59e0b" title="Adjusted 1"></div>
+            <div class="fc-bar-seg" style="width:0%; background:#94a3b8" title="Unverified 0"></div>
+            <div class="fc-bar-seg" style="width:0%; background:#ef4444" title="Disputed 0"></div>
+        </div>
+        <div class="fc-legend">
+            <span><span class="fc-dot" style="background:#22c55e"></span>検証済 2</span>
+            <span><span class="fc-dot" style="background:#f59e0b"></span>要調整 1</span>
+            <span><span class="fc-dot" style="background:#94a3b8"></span>未検証 0</span>
+            <span><span class="fc-dot" style="background:#ef4444"></span>要修正 0</span>
+        </div>
+
+        <details style="margin-top: 16px;">
+            <summary style="cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--accent);">
+                検証詳細を表示（3件）
+            </summary>
+            <div class="fc-details" style="margin-top: 12px;">
+                
+            <div class="fc-row" style="border-left-color: #22c55e">
+                <div class="fc-icon" style="color: #22c55e">&#10003;</div>
+                <div class="fc-body">
+                    <div class="fc-location">path_a &gt; probability</div>
+                    <div class="fc-values">
+                        <span>元の値: <strong>早期退職→中小製造業の社長</strong></span>
+                        <span>検証値: <strong style="color:#22c55e">妥当</strong></span>
+                    </div>
+                    <div class="fc-note">自動車部品製造業界のデータと整合</div>
+                    
+                    <div class="fc-sources"><span class="fc-source"><span class="fc-rel-dot" style="background:#f59e0b"></span>調査データ</span></div>
+                </div>
+            </div>
+            <div class="fc-row" style="border-left-color: #f59e0b">
+                <div class="fc-icon" style="color: #f59e0b">&#9888;</div>
+                <div class="fc-body">
+                    <div class="fc-location">path_b &gt; income</div>
+                    <div class="fc-values">
+                        <span>元の値: <strong>2000</strong></span>
+                        <span>検証値: <strong style="color:#f59e0b">1800-2000</strong></span>
+                    </div>
+                    <div class="fc-note">市場データに基づき微調整</div>
+                    <div class="fc-correction">修正提案: 1800-2000 市場データに基づき微調整</div>
+                    <div class="fc-sources"><span class="fc-source"><span class="fc-rel-dot" style="background:#f59e0b"></span>調査データ</span></div>
+                </div>
+            </div>
+            <div class="fc-row" style="border-left-color: #22c55e">
+                <div class="fc-icon" style="color: #22c55e">&#10003;</div>
+                <div class="fc-body">
+                    <div class="fc-location">overall &gt; salary</div>
+                    <div class="fc-values">
+                        <span>元の値: <strong>1600</strong></span>
+                        <span>検証値: <strong style="color:#22c55e">1600</strong></span>
+                    </div>
+                    <div class="fc-note">デンソーの報酬水準と整合</div>
+                    
+                    <div class="fc-sources"><span class="fc-source"><span class="fc-rel-dot" style="background:#f59e0b"></span>調査データ</span></div>
+                </div>
+            </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<!-- Section: Salary -->
+<div class="section" id="salary">
+    <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">年収推移 — 10年シミュレーション</h2>
+    </div>
+    <div class="glass chart-card anim-fade">
+        <canvas id="incomeChart" style="max-height: 380px;"></canvas>
+    </div>
+</div>
+
+<!-- Section: Path Cards -->
+<div class="section" id="paths">
+    <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">各パスのキャリアイメージ</h2>
+    </div>
+    <p class="section-subtitle">各パラレルワールドの10年間を詳細に追う — パスごとにエージェントの声も複眼的に掲載</p>
+    
+        <div class="path-card anim-fade" id="path-path_a">
+            <div class="path-top" style="border-color: #818cf8">
+                <div class="path-rank">#1</div>
+                <div class="path-title-block">
+                    <h3>早期退職→中小製造業の社長</h3>
+                    <span class="path-dir"></span>
+                </div>
+                <div class="path-score" style="background: #818cf8">0.70</div>
+            </div>
+            <div class="path-summary">
+                <div class="path-pill upside-pill"><span class="pill-icon">+</span>早期退職→中小製造業の社長の成功シナリオ</div>
+                <div class="path-pill risk-pill"><span class="pill-icon">!</span>早期退職→中小製造業の社長のリスクシナリオ</div>
+            </div>
+            <div class='path-common-label'>共通フェーズ</div>
+            <div class="path-timeline-wrap">
+                <div class="path-timeline-line" style="background: #818cf822"></div>
+                
+            <div class="period-row anim-fade" style="animation-delay: 0.0s">
+                <div class="period-dot" style="background: #818cf8"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 1 (57-59歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長に向けた準備・検討</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長に向けた準備・検討<span class="ev-prob" style="background:#059669">65%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="branch-point anim-fade">
+                <div class="branch-icon">&#x2194;</div>
+                <div class="branch-text">59歳時点が分岐点</div>
+            </div>
+            <div class="scenario-bar">
+                <div class="scenario-pill" style="border-color: #059669">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #059669">★</span>
+                        <strong>早期退職→中小製造業の社長（最良）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #059669">5%</span>
+                        <span class="scenario-income">&#165;3000.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #6366f1">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #6366f1">◎</span>
+                        <strong>早期退職→中小製造業の社長（標準）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #6366f1">50%</span>
+                        <span class="scenario-income">&#165;1500.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #d97706">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #d97706">△</span>
+                        <strong>早期退職→中小製造業の社長（保守）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #d97706">45%</span>
+                        <span class="scenario-income">&#165;800.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div></div>
+                <details class="scenario-detail" style="border-left-color: #059669" >
+                    <summary class="scenario-summary" style="color: #059669">
+                        <span class="scenario-icon">★</span>
+                        早期退職→中小製造業の社長（最良）
+                        <span class="scenario-prob-sm" style="background: #059669">5%</span>
+                        <span class="scenario-final">→ &#165;3000.0万 / 満足度88%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #05966922"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（最良）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（最良）への移行<span class="ev-prob" style="background:#dc2626">5%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（最良）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（最良）の進展<span class="ev-prob" style="background:#dc2626">5%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（最良）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（最良）の結実<span class="ev-prob" style="background:#dc2626">6%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #6366f1" open>
+                    <summary class="scenario-summary" style="color: #6366f1">
+                        <span class="scenario-icon">◎</span>
+                        早期退職→中小製造業の社長（標準）
+                        <span class="scenario-prob-sm" style="background: #6366f1">50%</span>
+                        <span class="scenario-final">→ &#165;1500.0万 / 満足度70%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #6366f122"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（標準）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（標準）への移行<span class="ev-prob" style="background:#059669">50%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（標準）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（標準）の進展<span class="ev-prob" style="background:#059669">55%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（標準）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（標準）の結実<span class="ev-prob" style="background:#059669">60%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #d97706" >
+                    <summary class="scenario-summary" style="color: #d97706">
+                        <span class="scenario-icon">△</span>
+                        早期退職→中小製造業の社長（保守）
+                        <span class="scenario-prob-sm" style="background: #d97706">45%</span>
+                        <span class="scenario-final">→ &#165;800.0万 / 満足度50%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #d9770622"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（保守）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（保守）への移行<span class="ev-prob" style="background:#059669">45%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（保守）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（保守）の進展<span class="ev-prob" style="background:#059669">49%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">早期退職→中小製造業の社長（保守）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">早期退職→中小製造業の社長（保守）の結実<span class="ev-prob" style="background:#059669">54%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+            
+            <div class="path-voices-section">
+                <h4 class="path-voices-title">&#128172; エージェントの声 (45件中8件)</h4>
+                <div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--negative)">-</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔の家族</span>
+                <span class="path-voice-bio">家族の視点から安定を重視。</span>
+                <p class="path-voice-text">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 家族の視点から安定を重視。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R1</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--warning)">~</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">バランス型の自分</span>
+                <span class="path-voice-bio">長期的な持続可能性を重視する自分。</span>
+                <p class="path-voice-text">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 長期的な持続可能性を重視する自分。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R1</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--negative)">-</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔の家族</span>
+                <span class="path-voice-bio">家族の視点から安定を重視。</span>
+                <p class="path-voice-text">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 家族の視点から安定を重視。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R2</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--positive)">+</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔のメンター</span>
+                <span class="path-voice-bio">デンソーでの上司・メンター。</span>
+                <p class="path-voice-text">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 デンソーでの上司・メンター。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R2</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--warning)">~</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔の同僚</span>
+                <span class="path-voice-bio">同業界の同世代の友人。</span>
+                <p class="path-voice-text">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 同業界の同世代の友人。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R2</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--warning)">~</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">キャリアアドバイザー</span>
+                <span class="path-voice-bio">自動車部品製造業界に詳しい転職エージェント。</span>
+                <p class="path-voice-text">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 自動車部品製造業界に詳しい転職エージェント。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R2</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--positive)">+</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔のメンター</span>
+                <span class="path-voice-bio">デンソーでの上司・メンター。</span>
+                <p class="path-voice-text">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 デンソーでの上司・メンター。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R1</span>
+        </div><div class="path-voice-item">
+            <div class="path-voice-icon" style="color: var(--warning)">~</div>
+            <div class="path-voice-body">
+                <span class="path-voice-name">鈴木大輔の同僚</span>
+                <span class="path-voice-bio">同業界の同世代の友人。</span>
+                <p class="path-voice-text">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 同業界の同世代の友人。の観点から意見を述べます。</p>
+            </div>
+            <span class="path-voice-round">R1</span>
+        </div>
+            </div>
+        </div>
+        <div class="path-card anim-fade" id="path-path_b">
+            <div class="path-top" style="border-color: #fbbf24">
+                <div class="path-rank">#2</div>
+                <div class="path-title-block">
+                    <h3>65歳まで現職→退職金満額</h3>
+                    <span class="path-dir"></span>
+                </div>
+                <div class="path-score" style="background: #fbbf24">0.67</div>
+            </div>
+            <div class="path-summary">
+                <div class="path-pill upside-pill"><span class="pill-icon">+</span>65歳まで現職→退職金満額の成功シナリオ</div>
+                <div class="path-pill risk-pill"><span class="pill-icon">!</span>65歳まで現職→退職金満額のリスクシナリオ</div>
+            </div>
+            <div class='path-common-label'>共通フェーズ</div>
+            <div class="path-timeline-wrap">
+                <div class="path-timeline-line" style="background: #fbbf2422"></div>
+                
+            <div class="period-row anim-fade" style="animation-delay: 0.0s">
+                <div class="period-dot" style="background: #fbbf24"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 1 (57-59歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額に向けた準備・検討</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額に向けた準備・検討<span class="ev-prob" style="background:#059669">65%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="branch-point anim-fade">
+                <div class="branch-icon">&#x2194;</div>
+                <div class="branch-text">59歳時点が分岐点</div>
+            </div>
+            <div class="scenario-bar">
+                <div class="scenario-pill" style="border-color: #059669">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #059669">★</span>
+                        <strong>65歳まで現職→退職金満額（最良）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #059669">7%</span>
+                        <span class="scenario-income">&#165;2000.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #6366f1">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #6366f1">◎</span>
+                        <strong>65歳まで現職→退職金満額（標準）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #6366f1">52%</span>
+                        <span class="scenario-income">&#165;1700.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #d97706">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #d97706">△</span>
+                        <strong>65歳まで現職→退職金満額（保守）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #d97706">43%</span>
+                        <span class="scenario-income">&#165;1600.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div></div>
+                <details class="scenario-detail" style="border-left-color: #059669" >
+                    <summary class="scenario-summary" style="color: #059669">
+                        <span class="scenario-icon">★</span>
+                        65歳まで現職→退職金満額（最良）
+                        <span class="scenario-prob-sm" style="background: #059669">7%</span>
+                        <span class="scenario-final">→ &#165;2000.0万 / 満足度88%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #05966922"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（最良）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（最良）への移行<span class="ev-prob" style="background:#dc2626">7%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（最良）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（最良）の進展<span class="ev-prob" style="background:#dc2626">7%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（最良）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（最良）の結実<span class="ev-prob" style="background:#dc2626">8%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #6366f1" open>
+                    <summary class="scenario-summary" style="color: #6366f1">
+                        <span class="scenario-icon">◎</span>
+                        65歳まで現職→退職金満額（標準）
+                        <span class="scenario-prob-sm" style="background: #6366f1">52%</span>
+                        <span class="scenario-final">→ &#165;1700.0万 / 満足度70%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #6366f122"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（標準）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（標準）への移行<span class="ev-prob" style="background:#059669">52%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（標準）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（標準）の進展<span class="ev-prob" style="background:#059669">57%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（標準）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（標準）の結実<span class="ev-prob" style="background:#059669">62%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #d97706" >
+                    <summary class="scenario-summary" style="color: #d97706">
+                        <span class="scenario-icon">△</span>
+                        65歳まで現職→退職金満額（保守）
+                        <span class="scenario-prob-sm" style="background: #d97706">43%</span>
+                        <span class="scenario-final">→ &#165;1600.0万 / 満足度50%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #d9770622"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（保守）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（保守）への移行<span class="ev-prob" style="background:#059669">43%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（保守）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（保守）の進展<span class="ev-prob" style="background:#059669">47%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">65歳まで現職→退職金満額（保守）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">65歳まで現職→退職金満額（保守）の結実<span class="ev-prob" style="background:#059669">51%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+            
+        </div>
+        <div class="path-card anim-fade" id="path-path_c">
+            <div class="path-top" style="border-color: #34d399">
+                <div class="path-rank">#3</div>
+                <div class="path-title-block">
+                    <h3>製造コンサル独立</h3>
+                    <span class="path-dir"></span>
+                </div>
+                <div class="path-score" style="background: #34d399">0.64</div>
+            </div>
+            <div class="path-summary">
+                <div class="path-pill upside-pill"><span class="pill-icon">+</span>製造コンサル独立の成功シナリオ</div>
+                <div class="path-pill risk-pill"><span class="pill-icon">!</span>製造コンサル独立のリスクシナリオ</div>
+            </div>
+            <div class='path-common-label'>共通フェーズ</div>
+            <div class="path-timeline-wrap">
+                <div class="path-timeline-line" style="background: #34d39922"></div>
+                
+            <div class="period-row anim-fade" style="animation-delay: 0.0s">
+                <div class="period-dot" style="background: #34d399"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 1 (57-59歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立に向けた準備・検討</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立に向けた準備・検討<span class="ev-prob" style="background:#059669">65%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="branch-point anim-fade">
+                <div class="branch-icon">&#x2194;</div>
+                <div class="branch-text">59歳時点が分岐点</div>
+            </div>
+            <div class="scenario-bar">
+                <div class="scenario-pill" style="border-color: #059669">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #059669">★</span>
+                        <strong>製造コンサル独立（最良）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #059669">9%</span>
+                        <span class="scenario-income">&#165;2500.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #6366f1">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #6366f1">◎</span>
+                        <strong>製造コンサル独立（標準）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #6366f1">54%</span>
+                        <span class="scenario-income">&#165;1500.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #d97706">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #d97706">△</span>
+                        <strong>製造コンサル独立（保守）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #d97706">41%</span>
+                        <span class="scenario-income">&#165;800.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div></div>
+                <details class="scenario-detail" style="border-left-color: #059669" >
+                    <summary class="scenario-summary" style="color: #059669">
+                        <span class="scenario-icon">★</span>
+                        製造コンサル独立（最良）
+                        <span class="scenario-prob-sm" style="background: #059669">9%</span>
+                        <span class="scenario-final">→ &#165;2500.0万 / 満足度88%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #05966922"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（最良）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（最良）への移行<span class="ev-prob" style="background:#dc2626">9%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（最良）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（最良）の進展<span class="ev-prob" style="background:#dc2626">9%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（最良）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（最良）の結実<span class="ev-prob" style="background:#dc2626">10%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #6366f1" open>
+                    <summary class="scenario-summary" style="color: #6366f1">
+                        <span class="scenario-icon">◎</span>
+                        製造コンサル独立（標準）
+                        <span class="scenario-prob-sm" style="background: #6366f1">54%</span>
+                        <span class="scenario-final">→ &#165;1500.0万 / 満足度70%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #6366f122"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（標準）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（標準）への移行<span class="ev-prob" style="background:#059669">54%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（標準）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（標準）の進展<span class="ev-prob" style="background:#059669">59%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（標準）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（標準）の結実<span class="ev-prob" style="background:#059669">64%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #d97706" >
+                    <summary class="scenario-summary" style="color: #d97706">
+                        <span class="scenario-icon">△</span>
+                        製造コンサル独立（保守）
+                        <span class="scenario-prob-sm" style="background: #d97706">41%</span>
+                        <span class="scenario-final">→ &#165;800.0万 / 満足度50%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #d9770622"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（保守）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（保守）への移行<span class="ev-prob" style="background:#059669">41%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（保守）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（保守）の進展<span class="ev-prob" style="background:#059669">45%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">製造コンサル独立（保守）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">製造コンサル独立（保守）の結実<span class="ev-prob" style="background:#059669">49%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+            
+        </div>
+        <div class="path-card anim-fade" id="path-path_d">
+            <div class="path-top" style="border-color: #f87171">
+                <div class="path-rank">#4</div>
+                <div class="path-title-block">
+                    <h3>タイで日系工場支援事業</h3>
+                    <span class="path-dir"></span>
+                </div>
+                <div class="path-score" style="background: #f87171">0.61</div>
+            </div>
+            <div class="path-summary">
+                <div class="path-pill upside-pill"><span class="pill-icon">+</span>タイで日系工場支援事業の成功シナリオ</div>
+                <div class="path-pill risk-pill"><span class="pill-icon">!</span>タイで日系工場支援事業のリスクシナリオ</div>
+            </div>
+            <div class='path-common-label'>共通フェーズ</div>
+            <div class="path-timeline-wrap">
+                <div class="path-timeline-line" style="background: #f8717122"></div>
+                
+            <div class="period-row anim-fade" style="animation-delay: 0.0s">
+                <div class="period-dot" style="background: #f87171"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 1 (57-59歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業に向けた準備・検討</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業に向けた準備・検討<span class="ev-prob" style="background:#059669">65%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="branch-point anim-fade">
+                <div class="branch-icon">&#x2194;</div>
+                <div class="branch-text">59歳時点が分岐点</div>
+            </div>
+            <div class="scenario-bar">
+                <div class="scenario-pill" style="border-color: #059669">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #059669">★</span>
+                        <strong>タイで日系工場支援事業（最良）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #059669">11%</span>
+                        <span class="scenario-income">&#165;2200.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #6366f1">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #6366f1">◎</span>
+                        <strong>タイで日系工場支援事業（標準）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #6366f1">56%</span>
+                        <span class="scenario-income">&#165;1200.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #d97706">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #d97706">△</span>
+                        <strong>タイで日系工場支援事業（保守）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #d97706">39%</span>
+                        <span class="scenario-income">&#165;600.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div></div>
+                <details class="scenario-detail" style="border-left-color: #059669" >
+                    <summary class="scenario-summary" style="color: #059669">
+                        <span class="scenario-icon">★</span>
+                        タイで日系工場支援事業（最良）
+                        <span class="scenario-prob-sm" style="background: #059669">11%</span>
+                        <span class="scenario-final">→ &#165;2200.0万 / 満足度88%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #05966922"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（最良）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（最良）への移行<span class="ev-prob" style="background:#dc2626">11%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（最良）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（最良）の進展<span class="ev-prob" style="background:#dc2626">12%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（最良）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（最良）の結実<span class="ev-prob" style="background:#dc2626">13%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #6366f1" open>
+                    <summary class="scenario-summary" style="color: #6366f1">
+                        <span class="scenario-icon">◎</span>
+                        タイで日系工場支援事業（標準）
+                        <span class="scenario-prob-sm" style="background: #6366f1">56%</span>
+                        <span class="scenario-final">→ &#165;1200.0万 / 満足度70%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #6366f122"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（標準）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（標準）への移行<span class="ev-prob" style="background:#059669">56%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（標準）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（標準）の進展<span class="ev-prob" style="background:#059669">61%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（標準）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（標準）の結実<span class="ev-prob" style="background:#059669">67%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #d97706" >
+                    <summary class="scenario-summary" style="color: #d97706">
+                        <span class="scenario-icon">△</span>
+                        タイで日系工場支援事業（保守）
+                        <span class="scenario-prob-sm" style="background: #d97706">39%</span>
+                        <span class="scenario-final">→ &#165;600.0万 / 満足度50%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #d9770622"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（保守）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（保守）への移行<span class="ev-prob" style="background:#d97706">39%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（保守）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（保守）の進展<span class="ev-prob" style="background:#059669">42%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">タイで日系工場支援事業（保守）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">タイで日系工場支援事業（保守）の結実<span class="ev-prob" style="background:#059669">46%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+            
+        </div>
+        <div class="path-card anim-fade" id="path-path_e">
+            <div class="path-top" style="border-color: #a78bfa">
+                <div class="path-rank">#5</div>
+                <div class="path-title-block">
+                    <h3>社外取締役・顧問複数社</h3>
+                    <span class="path-dir"></span>
+                </div>
+                <div class="path-score" style="background: #a78bfa">0.58</div>
+            </div>
+            <div class="path-summary">
+                <div class="path-pill upside-pill"><span class="pill-icon">+</span>社外取締役・顧問複数社の成功シナリオ</div>
+                <div class="path-pill risk-pill"><span class="pill-icon">!</span>社外取締役・顧問複数社のリスクシナリオ</div>
+            </div>
+            <div class='path-common-label'>共通フェーズ</div>
+            <div class="path-timeline-wrap">
+                <div class="path-timeline-line" style="background: #a78bfa22"></div>
+                
+            <div class="period-row anim-fade" style="animation-delay: 0.0s">
+                <div class="period-dot" style="background: #a78bfa"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 1 (57-59歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社に向けた準備・検討</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社に向けた準備・検討<span class="ev-prob" style="background:#059669">65%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="branch-point anim-fade">
+                <div class="branch-icon">&#x2194;</div>
+                <div class="branch-text">59歳時点が分岐点</div>
+            </div>
+            <div class="scenario-bar">
+                <div class="scenario-pill" style="border-color: #059669">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #059669">★</span>
+                        <strong>社外取締役・顧問複数社（最良）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #059669">13%</span>
+                        <span class="scenario-income">&#165;1800.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #6366f1">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #6366f1">◎</span>
+                        <strong>社外取締役・顧問複数社（標準）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #6366f1">57%</span>
+                        <span class="scenario-income">&#165;1200.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div>
+                <div class="scenario-pill" style="border-color: #d97706">
+                    <div class="scenario-pill-head">
+                        <span class="scenario-icon" style="color: #d97706">△</span>
+                        <strong>社外取締役・顧問複数社（保守）</strong>
+                    </div>
+                    <div class="scenario-pill-stats">
+                        <span class="scenario-prob" style="background: #d97706">37%</span>
+                        <span class="scenario-income">&#165;800.0万</span>
+                    </div>
+                    <p class="scenario-pill-note"></p>
+                </div></div>
+                <details class="scenario-detail" style="border-left-color: #059669" >
+                    <summary class="scenario-summary" style="color: #059669">
+                        <span class="scenario-icon">★</span>
+                        社外取締役・顧問複数社（最良）
+                        <span class="scenario-prob-sm" style="background: #059669">13%</span>
+                        <span class="scenario-final">→ &#165;1800.0万 / 満足度88%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #05966922"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（最良）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（最良）への移行<span class="ev-prob" style="background:#dc2626">13%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（最良）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（最良）の進展<span class="ev-prob" style="background:#dc2626">14%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #059669"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（最良）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（最良）の結実<span class="ev-prob" style="background:#dc2626">15%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #6366f1" open>
+                    <summary class="scenario-summary" style="color: #6366f1">
+                        <span class="scenario-icon">◎</span>
+                        社外取締役・顧問複数社（標準）
+                        <span class="scenario-prob-sm" style="background: #6366f1">57%</span>
+                        <span class="scenario-final">→ &#165;1200.0万 / 満足度70%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #6366f122"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（標準）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（標準）への移行<span class="ev-prob" style="background:#059669">57%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（標準）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（標準）の進展<span class="ev-prob" style="background:#059669">63%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #6366f1"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（標準）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（標準）の結実<span class="ev-prob" style="background:#059669">69%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+                <details class="scenario-detail" style="border-left-color: #d97706" >
+                    <summary class="scenario-summary" style="color: #d97706">
+                        <span class="scenario-icon">△</span>
+                        社外取締役・顧問複数社（保守）
+                        <span class="scenario-prob-sm" style="background: #d97706">37%</span>
+                        <span class="scenario-final">→ &#165;800.0万 / 満足度50%</span>
+                    </summary>
+                    <div class="path-timeline-wrap">
+                        <div class="path-timeline-line" style="background: #d9770622"></div>
+                        
+            <div class="period-row anim-fade" style="animation-delay: 0.05s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 2 (60-62歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（保守）への移行</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（保守）への移行<span class="ev-prob" style="background:#d97706">37%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.1s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 3 (63-64歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（保守）の進展</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（保守）の進展<span class="ev-prob" style="background:#059669">40%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="period-row anim-fade" style="animation-delay: 0.15000000000000002s">
+                <div class="period-dot" style="background: #d97706"></div>
+                <div class="period-body">
+                    <div class="period-head">
+                        <span class="period-name">Period 4 (65-66歳)</span>
+                        <span class="period-income"></span>
+                    </div>
+                    <p class="period-text">社外取締役・顧問複数社（保守）の結実</p>
+                    <div class="period-tags"><span class="ev-tag ev-with-prob" title="">社外取締役・顧問複数社（保守）の結実<span class="ev-prob" style="background:#059669">44%</span></span></div>
+                    
+                    <div class="period-bars">
+                        <div class="mini-bar"><span class="mini-label">満足度</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--positive)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">ストレス</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--negative)"></div></div><span class="mini-val">50%</span></div>
+                        <div class="mini-bar"><span class="mini-label">WLB</span><div class="mini-track"><div class="mini-fill" style="width:50%; background: var(--accent)"></div></div><span class="mini-val">50%</span></div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </details>
+            
+        </div>
+</div>
+
+<!-- Section: Reskilling -->
+<div class="section" id="reskill">
+    <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">リスキリングするなら</h2>
+    </div>
+    <p class="section-subtitle">どのパスを選んでも活きるスキルを優先度順に提案</p>
+    
+        <div class="reskill-row anim-fade" style="animation-delay: 0.0s">
+            <div class="reskill-priority" style="background: #ef4444">高</div>
+            <div class="reskill-content">
+                <h4>AI/ML リテラシー</h4>
+                <p>全パスでAI関連スキルが競争優位に直結。Path A/Dでは社内AI戦略リード、Path Cでは創業プロダクトの核。</p>
+                <div class="reskill-meta">
+                    <span class="reskill-time">今すぐ〜1年</span>
+                    <span class="reskill-paths">関連パス: <span class="path-dot-mini" style="background: #818cf8">A</span><span class="path-dot-mini" style="background: #fbbf24">B</span><span class="path-dot-mini" style="background: #34d399">C</span><span class="path-dot-mini" style="background: #f87171">D</span><span class="path-dot-mini" style="background: #a78bfa">E</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="reskill-row anim-fade" style="animation-delay: 0.08s">
+            <div class="reskill-priority" style="background: #ef4444">高</div>
+            <div class="reskill-content">
+                <h4>英語（ビジネスレベル）</h4>
+                <p>Path B (GAFA)で必須。他パスでもグローバル案件・海外カンファレンス登壇で差別化。</p>
+                <div class="reskill-meta">
+                    <span class="reskill-time">1〜2年</span>
+                    <span class="reskill-paths">関連パス: <span class="path-dot-mini" style="background: #fbbf24">B</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="reskill-row anim-fade" style="animation-delay: 0.16s">
+            <div class="reskill-priority" style="background: #fbbf24">中</div>
+            <div class="reskill-content">
+                <h4>経営・ファイナンス</h4>
+                <p>Path A (CPO) / Path C (起業) で経営判断力が求められる。資金調達・PL管理の実務知識。</p>
+                <div class="reskill-meta">
+                    <span class="reskill-time">2〜3年</span>
+                    <span class="reskill-paths">関連パス: <span class="path-dot-mini" style="background: #818cf8">A</span><span class="path-dot-mini" style="background: #34d399">C</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="reskill-row anim-fade" style="animation-delay: 0.24s">
+            <div class="reskill-priority" style="background: #fbbf24">中</div>
+            <div class="reskill-content">
+                <h4>組織マネジメント</h4>
+                <p>30名以上の組織運営は全パスで共通課題。Path C/Dでは特にピープルマネジメントがボトルネック化。</p>
+                <div class="reskill-meta">
+                    <span class="reskill-time">1〜3年</span>
+                    <span class="reskill-paths">関連パス: <span class="path-dot-mini" style="background: #34d399">C</span><span class="path-dot-mini" style="background: #f87171">D</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="reskill-row anim-fade" style="animation-delay: 0.32s">
+            <div class="reskill-priority" style="background: #34d399">低</div>
+            <div class="reskill-content">
+                <h4>コンテンツ発信力</h4>
+                <p>Path E (独立PdMコンサル) でブランド構築の核。書籍・YouTube・カンファレンス登壇スキル。</p>
+                <div class="reskill-meta">
+                    <span class="reskill-time">3〜5年</span>
+                    <span class="reskill-paths">関連パス: <span class="path-dot-mini" style="background: #a78bfa">E</span></span>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Section: Mirror Agents -->
+<div class="section" id="mirror">
+    <div class="section-header">
+        <span class="section-num">07</span>
+        <h2 class="section-title">パラレルワールドの自分</h2>
+    </div>
+    <p class="section-subtitle">5つの世界線を生きた「もう一人の自分」が語る、それぞれの選択のリアル</p>
+    <div class="mirror-intro glass anim-fade">
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
+            以下は候補者のコピーエージェント — 各パスを実際に歩んだ「自分自身」の声です。
+            外部の評価者とは異なり、選択した道の<strong>実感</strong>と<strong>葛藤</strong>を語ります。
+        </p>
+    </div>
+    
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--warning)">
+                <div class="agent-voice-header" style="background: #fffbeb">
+                    <div class="agent-voice-avatar" style="border-color: var(--warning)">バ</div>
+                    <div class="agent-voice-info">
+                        <strong>バランス型の自分</strong>
+                        <span class="agent-voice-role">copy_agent</span>
+                        <span class="agent-voice-cat">ミラー</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--warning)">Neutral</span>
+                        <span class='sent-count pos-count'>+5</span>
+                        
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">長期的な持続可能性を重視する自分。</span><span class="agent-profile-personality">長期的な持続可能性を重視する自分。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote pos-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 長期的な持続可能性を重視する自分。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote pos-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 長期的な持続可能性を重視する自分。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote pos-quote">[Round 3] 鈴木大輔さんのキャリアについて。家族・生活面への影響を議論します。 長期的な持続可能性を重視する自分。の観点から意見を述べます。<span class="q-round">R3</span></div><div class="agent-quote pos-quote">[Round 4] 鈴木大輔さんのキャリアについて。業界トレンドとの整合性を検討します。 長期的な持続可能性を重視する自分。の観点から意見を述べます。<span class="q-round">R4</span></div></div>
+            </div>
+</div>
+
+<!-- Section: Agent Comments -->
+<div class="section" id="voices">
+    <div class="section-header">
+        <span class="section-num">08</span>
+        <h2 class="section-title">外部エージェントの声</h2>
+    </div>
+    <p class="section-subtitle">5人の外部エージェントが5ラウンドにわたり語った評価</p>
+    
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--positive)">
+                <div class="agent-voice-header" style="background: #ecfdf5">
+                    <div class="agent-voice-avatar" style="border-color: var(--positive)">鈴</div>
+                    <div class="agent-voice-info">
+                        <strong>鈴木大輔のメンター</strong>
+                        <span class="agent-voice-role">メンター</span>
+                        <span class="agent-voice-cat">HR/キャリア</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--positive)">Supportive</span>
+                        
+                        <span class='sent-count neg-count'>-1</span>
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">デンソーでの上司・メンター。</span><span class="agent-profile-personality">デンソーでの上司・メンター。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote neg-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 デンソーでの上司・メンター。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote neut-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 デンソーでの上司・メンター。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote neut-quote">[Round 3] 鈴木大輔さんのキャリアについて。家族・生活面への影響を議論します。 デンソーでの上司・メンター。の観点から意見を述べます。<span class="q-round">R3</span></div></div>
+            </div>
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--warning)">
+                <div class="agent-voice-header" style="background: #fffbeb">
+                    <div class="agent-voice-avatar" style="border-color: var(--warning)">鈴</div>
+                    <div class="agent-voice-info">
+                        <strong>鈴木大輔の同僚</strong>
+                        <span class="agent-voice-role">同僚</span>
+                        <span class="agent-voice-cat">プライベート</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--warning)">Neutral</span>
+                        
+                        <span class='sent-count neg-count'>-1</span>
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">同業界の同世代の友人。</span><span class="agent-profile-personality">同業界の同世代の友人。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote neg-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 同業界の同世代の友人。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote neut-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 同業界の同世代の友人。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote neut-quote">鈴木大輔のメンターさんの意見に対して、neutralの立場からコメントします。<span class="q-round">R1</span></div></div>
+            </div>
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--negative)">
+                <div class="agent-voice-header" style="background: #fef2f2">
+                    <div class="agent-voice-avatar" style="border-color: var(--negative)">鈴</div>
+                    <div class="agent-voice-info">
+                        <strong>鈴木大輔の家族</strong>
+                        <span class="agent-voice-role">家族</span>
+                        <span class="agent-voice-cat">プライベート</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--negative)">Opposing</span>
+                        <span class='sent-count pos-count'>+5</span>
+                        
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">家族の視点から安定を重視。</span><span class="agent-profile-personality">家族の視点から安定を重視。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote pos-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 家族の視点から安定を重視。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote pos-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 家族の視点から安定を重視。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote pos-quote">[Round 3] 鈴木大輔さんのキャリアについて。家族・生活面への影響を議論します。 家族の視点から安定を重視。の観点から意見を述べます。<span class="q-round">R3</span></div><div class="agent-quote pos-quote">[Round 4] 鈴木大輔さんのキャリアについて。業界トレンドとの整合性を検討します。 家族の視点から安定を重視。の観点から意見を述べます。<span class="q-round">R4</span></div><div class="agent-quote neut-quote">鈴木大輔の同僚さんの意見に対して、opposingの立場からコメントします。<span class="q-round">R1</span></div><div class="agent-quote neut-quote">鈴木大輔の同僚さんの意見に対して、opposingの立場からコメントします。<span class="q-round">R2</span></div></div>
+            </div>
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--warning)">
+                <div class="agent-voice-header" style="background: #fffbeb">
+                    <div class="agent-voice-avatar" style="border-color: var(--warning)">キ</div>
+                    <div class="agent-voice-info">
+                        <strong>キャリアアドバイザー</strong>
+                        <span class="agent-voice-role">キャリアアドバイザー</span>
+                        <span class="agent-voice-cat">HR/キャリア</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--warning)">Neutral</span>
+                        
+                        <span class='sent-count neg-count'>-1</span>
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">自動車部品製造業界に詳しい転職エージェント。</span><span class="agent-profile-personality">自動車部品製造業界に詳しい転職エージェント。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote neg-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 自動車部品製造業界に詳しい転職エージェント。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote neut-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 自動車部品製造業界に詳しい転職エージェント。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote neut-quote">鈴木大輔の家族さんの意見に対して、neutralの立場からコメントします。<span class="q-round">R1</span></div></div>
+            </div>
+            <div class="agent-voice-card anim-fade" style="border-left-color: var(--warning)">
+                <div class="agent-voice-header" style="background: #fffbeb">
+                    <div class="agent-voice-avatar" style="border-color: var(--warning)">業</div>
+                    <div class="agent-voice-info">
+                        <strong>業界有識者</strong>
+                        <span class="agent-voice-role">業界有識者</span>
+                        <span class="agent-voice-cat">経営・戦略</span>
+                    </div>
+                    <div class="agent-voice-tags">
+                        <span class="stance-label" style="color: var(--warning)">Neutral</span>
+                        
+                        <span class='sent-count neg-count'>-1</span>
+                    </div>
+                </div>
+                <div class="agent-profile-detail"><span class="agent-profile-bg">自動車部品製造の第一人者。</span><span class="agent-profile-personality">自動車部品製造の第一人者。</span></div>
+                <div class="agent-voice-quotes"><div class="agent-quote neg-quote">[Round 2] 鈴木大輔さんのキャリアについて。リスクとリターンのバランスについて考えます。 自動車部品製造の第一人者。の観点から意見を述べます。<span class="q-round">R2</span></div><div class="agent-quote neut-quote">[Round 1] 鈴木大輔さんのキャリアについて。キャリアの方向性について議論を開始します。 自動車部品製造の第一人者。の観点から意見を述べます。<span class="q-round">R1</span></div><div class="agent-quote neut-quote">[Round 3] 鈴木大輔さんのキャリアについて。家族・生活面への影響を議論します。 自動車部品製造の第一人者。の観点から意見を述べます。<span class="q-round">R3</span></div></div>
+            </div>
+</div>
+
+
+<div class="section" id="macro">
+    <div class="section-header">
+        <span class="section-num">09</span>
+        <h2 class="section-title">マクロトレンド&社会リスク</h2>
+    </div>
+    <p class="section-subtitle">2026-2035年の主要トレンドと各パスへの影響度</p>
+    
+            <div class="glass anim-fade" style="padding: 20px 24px; margin-bottom: 12px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.3rem">&#128187;</span>
+                    <div>
+                        <strong style="font-size:0.95rem">自動車部品製造業界の構造変化</strong>
+                        <span style="font-size:0.75rem; color:var(--text-dim); margin-left:8px">2026-2032</span>
+                        <span style="font-size:0.72rem; background:rgba(99,102,241,0.1); padding:1px 8px; border-radius:10px; margin-left:4px;">確率 80%</span>
+                    </div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px; line-height:1.6">自動車部品製造におけるDX・AI活用の進展</p>
+                <div class="macro-impacts"></div>
+                <div class="macro-sources"><span class="macro-src">自動車部品製造業界の構造変化関連データ</span></div>
+            </div>
+            <div class="glass anim-fade" style="padding: 20px 24px; margin-bottom: 12px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.3rem">&#128300;</span>
+                    <div>
+                        <strong style="font-size:0.95rem">働き方の多様化</strong>
+                        <span style="font-size:0.75rem; color:var(--text-dim); margin-left:8px">2026-2030</span>
+                        <span style="font-size:0.72rem; background:rgba(99,102,241,0.1); padding:1px 8px; border-radius:10px; margin-left:4px;">確率 85%</span>
+                    </div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px; line-height:1.6">リモートワーク・副業・フリーランスの増加</p>
+                <div class="macro-impacts"></div>
+                <div class="macro-sources"><span class="macro-src">働き方の多様化関連データ</span></div>
+            </div>
+            <div class="glass anim-fade" style="padding: 20px 24px; margin-bottom: 12px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.3rem">&#128101;</span>
+                    <div>
+                        <strong style="font-size:0.95rem">人口動態変化</strong>
+                        <span style="font-size:0.75rem; color:var(--text-dim); margin-left:8px">2026-2035</span>
+                        <span style="font-size:0.72rem; background:rgba(99,102,241,0.1); padding:1px 8px; border-radius:10px; margin-left:4px;">確率 95%</span>
+                    </div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px; line-height:1.6">労働人口減少と高齢化の影響</p>
+                <div class="macro-impacts"></div>
+                <div class="macro-sources"><span class="macro-src">人口動態変化関連データ</span></div>
+            </div>
+    <div class="glass anim-fade" style="padding: 20px 24px; margin-top: 16px;">
+        <h4 style="margin-bottom: 12px;">&#128176; 給与ベンチマーク（市場データ）</h4>
+        <div style="overflow-x: auto;">
+            <table class="sim-table">
+                <thead><tr><th>ポジション</th><th style="text-align:right">年収レンジ</th><th>出典</th><th>備考</th></tr></thead>
+                <tbody><tr><td>事業部長</td><td style="text-align:right; font-weight:600">&#165;1280-1920万円</td><td style="font-size:0.78rem; color:var(--text-dim)">OpenWork 2024</td><td style="font-size:0.75rem; color:var(--text-dim)"></td></tr><tr><td>自動車部品製造上位ポジション</td><td style="text-align:right; font-weight:600">&#165;2400-3000万円</td><td style="font-size:0.78rem; color:var(--text-dim)">業界調査 2024</td><td style="font-size:0.75rem; color:var(--text-dim)"></td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="section" id="graph">
+    <div class="section-header">
+        <span class="section-num">10</span>
+        <h2 class="section-title">ナレッジグラフ</h2>
+    </div>
+    <p class="section-subtitle">候補者の経歴・スキル・キャリアパスの関係性マップ（ドラッグ＆ズーム対応）</p>
+    <div class="glass anim-fade" style="padding: 0; position: relative; overflow: hidden; border-radius: 16px;">
+        <svg id="graphSvg" style="width:100%; height:800px; background: #fafbfe;"></svg>
+        <div id="graphLegend" style="position:absolute; bottom:12px; left:16px; display:flex; gap:12px; flex-wrap:wrap; font-size:0.75rem; color:var(--text-dim);"></div>
+        <div id="graphDetail" style="display:none; position:absolute; top:12px; right:12px; width:280px; background:var(--glass); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:12px; padding:16px; box-shadow:var(--shadow-md); font-size:0.82rem;"></div>
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="footer-brand">MiroFish</div>
+    Swarm-in-the-Loop Multi-Perspective Career Analysis<br>
+    45 actions &middot; 5 rounds &middot; 6 agents &middot; 5 parallel worlds
+</div>
+
+<script>
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.anim-fade, .anim-slide').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+});
+
+// Chart defaults
+Chart.defaults.color = '#5a6078';
+Chart.defaults.borderColor = '#e5e7eb';
+Chart.defaults.font.family = "'Inter', 'Noto Sans JP', sans-serif";
+
+// Radar
+new Chart(document.getElementById('radarChart'), {
+    type: 'radar',
+    data: { labels: ["年収", "満足度", "WLB", "ストレス耐性"], datasets: [{"label": "早期退職→中小製造業の社長", "data": [60.0, 70.0, 55.00000000000001, 50.0], "borderColor": "#818cf8", "backgroundColor": "#818cf815", "pointBackgroundColor": "#818cf8", "borderWidth": 2}, {"label": "65歳まで現職→退職金満額", "data": [68.0, 70.0, 55.00000000000001, 50.0], "borderColor": "#fbbf24", "backgroundColor": "#fbbf2415", "pointBackgroundColor": "#fbbf24", "borderWidth": 2}, {"label": "製造コンサル独立", "data": [60.0, 70.0, 55.00000000000001, 50.0], "borderColor": "#34d399", "backgroundColor": "#34d39915", "pointBackgroundColor": "#34d399", "borderWidth": 2}, {"label": "タイで日系工場支援事業", "data": [48.0, 70.0, 55.00000000000001, 50.0], "borderColor": "#f87171", "backgroundColor": "#f8717115", "pointBackgroundColor": "#f87171", "borderWidth": 2}, {"label": "社外取締役・顧問複数社", "data": [48.0, 70.0, 55.00000000000001, 50.0], "borderColor": "#a78bfa", "backgroundColor": "#a78bfa15", "pointBackgroundColor": "#a78bfa", "borderWidth": 2}] },
+    options: {
+        responsive: true,
+        scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#e5e7eb88' }, pointLabels: { color: '#1a1d2e', font: { size: 12 } }, angleLines: { color: '#e5e7eb66' } } },
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, usePointStyle: true } } },
+        animation: { duration: 1500, easing: 'easeOutQuart' }
+    }
+});
+
+// Satisfaction
+new Chart(document.getElementById('satChart'), {
+    type: 'line',
+    data: { labels: ["Year 1-2", "Year 3-5", "Year 6-8", "Year 9-10"], datasets: [{"label": "早期退職→中小製造業の社長", "data": [50, 50, 50, 50], "borderColor": "#818cf8", "backgroundColor": "#818cf815", "tension": 0.4, "fill": false, "borderWidth": 2, "pointRadius": 4}, {"label": "65歳まで現職→退職金満額", "data": [50, 50, 50, 50], "borderColor": "#fbbf24", "backgroundColor": "#fbbf2415", "tension": 0.4, "fill": false, "borderWidth": 2, "pointRadius": 4}, {"label": "製造コンサル独立", "data": [50, 50, 50, 50], "borderColor": "#34d399", "backgroundColor": "#34d39915", "tension": 0.4, "fill": false, "borderWidth": 2, "pointRadius": 4}, {"label": "タイで日系工場支援事業", "data": [50, 50, 50, 50], "borderColor": "#f87171", "backgroundColor": "#f8717115", "tension": 0.4, "fill": false, "borderWidth": 2, "pointRadius": 4}, {"label": "社外取締役・顧問複数社", "data": [50, 50, 50, 50], "borderColor": "#a78bfa", "backgroundColor": "#a78bfa15", "tension": 0.4, "fill": false, "borderWidth": 2, "pointRadius": 4}] },
+    options: {
+        responsive: true,
+        scales: {
+            y: { min: 0, max: 100, title: { display: true, text: '満足度 (%)' }, grid: { color: '#e5e7eb44' } },
+            x: { grid: { color: '#e5e7eb44' } }
+        },
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, usePointStyle: true } } },
+        animation: { duration: 1500 }
+    }
+});
+
+// Income
+new Chart(document.getElementById('incomeChart'), {
+    type: 'line',
+    data: { labels: ["Year 1-2", "Year 3-5", "Year 6-8", "Year 9-10"], datasets: [{"label": "早期退職→中小製造業の社長", "data": [0.0, 0.0, 0.0, 0.0], "borderColor": "#818cf8", "backgroundColor": "#818cf820", "tension": 0.4, "fill": true, "pointRadius": 5, "pointHoverRadius": 8, "borderWidth": 3}, {"label": "65歳まで現職→退職金満額", "data": [0.0, 0.0, 0.0, 0.0], "borderColor": "#fbbf24", "backgroundColor": "#fbbf2420", "tension": 0.4, "fill": true, "pointRadius": 5, "pointHoverRadius": 8, "borderWidth": 3}, {"label": "製造コンサル独立", "data": [0.0, 0.0, 0.0, 0.0], "borderColor": "#34d399", "backgroundColor": "#34d39920", "tension": 0.4, "fill": true, "pointRadius": 5, "pointHoverRadius": 8, "borderWidth": 3}, {"label": "タイで日系工場支援事業", "data": [0.0, 0.0, 0.0, 0.0], "borderColor": "#f87171", "backgroundColor": "#f8717120", "tension": 0.4, "fill": true, "pointRadius": 5, "pointHoverRadius": 8, "borderWidth": 3}, {"label": "社外取締役・顧問複数社", "data": [0.0, 0.0, 0.0, 0.0], "borderColor": "#a78bfa", "backgroundColor": "#a78bfa20", "tension": 0.4, "fill": true, "pointRadius": 5, "pointHoverRadius": 8, "borderWidth": 3}] },
+    options: {
+        responsive: true,
+        scales: {
+            y: { title: { display: true, text: '年収（万円）' }, grid: { color: '#e5e7eb44' } },
+            x: { grid: { color: '#e5e7eb44' } }
+        },
+        plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, usePointStyle: true } },
+            tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y + '万円'; } } }
+        },
+        interaction: { mode: 'index', intersect: false },
+        animation: { duration: 2000, easing: 'easeOutQuart' }
+    }
+});
+
+// Smooth nav scroll highlight
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section[id]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + current ? '#818cf8' : '';
+        link.style.background = link.getAttribute('href') === '#' + current ? 'rgba(99,102,241,0.1)' : '';
+    });
+});
+
+// Knowledge Graph — D3.js SVG (MiroFish GraphPanel.vue style)
+(function() {
+    const svgEl = document.getElementById('graphSvg');
+    if (!svgEl || typeof d3 === 'undefined') return;
+
+    const rawNodes = [{"id": "candidate", "label": "鈴木大輔", "group": "person", "size": 30}, {"id": "comp_0", "label": "大手自動車部品メーカーで33年勤務。製造", "group": "company"}, {"id": "comp_1", "label": "品質管理", "group": "company"}, {"id": "comp_2", "label": "海外事業（タイ駐在5年）", "group": "company"}, {"id": "comp_3", "label": "事業部長。早期退職を検討中。", "group": "company"}, {"id": "skill_4", "label": "製造プロセス改善", "group": "skill"}, {"id": "skill_5", "label": "品質管理", "group": "skill"}, {"id": "skill_6", "label": "海外工場管理", "group": "skill"}, {"id": "skill_7", "label": "サプライチェーン", "group": "skill"}, {"id": "skill_8", "label": "部門経営", "group": "skill"}, {"id": "path_a", "label": "早期退職→中小製造業の社長", "group": "path"}, {"id": "path_a_best", "label": "早期退職→中小製造業の社長（最良） (5%)", "group": "scenario_best"}, {"id": "path_a_likely", "label": "早期退職→中小製造業の社長（標準） (50%)", "group": "scenario_likely"}, {"id": "path_a_base", "label": "早期退職→中小製造業の社長（保守） (45%)", "group": "scenario_base"}, {"id": "path_b", "label": "65歳まで現職→退職金満額", "group": "path"}, {"id": "path_b_best", "label": "65歳まで現職→退職金満額（最良） (7%)", "group": "scenario_best"}, {"id": "path_b_likely", "label": "65歳まで現職→退職金満額（標準） (52%)", "group": "scenario_likely"}, {"id": "path_b_base", "label": "65歳まで現職→退職金満額（保守） (43%)", "group": "scenario_base"}, {"id": "path_c", "label": "製造コンサル独立", "group": "path"}, {"id": "path_c_best", "label": "製造コンサル独立（最良） (9%)", "group": "scenario_best"}, {"id": "path_c_likely", "label": "製造コンサル独立（標準） (54%)", "group": "scenario_likely"}, {"id": "path_c_base", "label": "製造コンサル独立（保守） (41%)", "group": "scenario_base"}, {"id": "path_d", "label": "タイで日系工場支援事業", "group": "path"}, {"id": "path_d_best", "label": "タイで日系工場支援事業（最良） (11%)", "group": "scenario_best"}, {"id": "path_d_likely", "label": "タイで日系工場支援事業（標準） (56%)", "group": "scenario_likely"}, {"id": "path_d_base", "label": "タイで日系工場支援事業（保守） (39%)", "group": "scenario_base"}, {"id": "path_e", "label": "社外取締役・顧問複数社", "group": "path"}, {"id": "path_e_best", "label": "社外取締役・顧問複数社（最良） (13%)", "group": "scenario_best"}, {"id": "path_e_likely", "label": "社外取締役・顧問複数社（標準） (57%)", "group": "scenario_likely"}, {"id": "path_e_base", "label": "社外取締役・顧問複数社（保守） (37%)", "group": "scenario_base"}, {"id": "agent_mentor", "label": "鈴木大輔のメンター", "group": "agent_hr", "detail": "メンター", "personality": "デンソーでの上司・メンター。", "background": "デンソーでの上司・メンター。", "speaking_style": ""}, {"id": "agent_peer", "label": "鈴木大輔の同僚", "group": "agent_private", "detail": "同僚", "personality": "同業界の同世代の友人。", "background": "同業界の同世代の友人。", "speaking_style": ""}, {"id": "agent_family", "label": "鈴木大輔の家族", "group": "agent_private", "detail": "家族", "personality": "家族の視点から安定を重視。", "background": "家族の視点から安定を重視。", "speaking_style": ""}, {"id": "agent_consultant", "label": "キャリアアドバイザー", "group": "agent_hr", "detail": "キャリアアドバイザー", "personality": "自動車部品製造業界に詳しい転職エージェント。", "background": "自動車部品製造業界に詳しい転職エージェント。", "speaking_style": ""}, {"id": "agent_industry", "label": "業界有識者", "group": "agent_biz", "detail": "業界有識者", "personality": "自動車部品製造の第一人者。", "background": "自動車部品製造の第一人者。", "speaking_style": ""}, {"id": "copy_agent_balanced", "label": "バランス型の自分", "group": "agent_mirror", "detail": "copy_agent", "personality": "長期的な持続可能性を重視する自分。", "background": "長期的な持続可能性を重視する自分。", "speaking_style": ""}];
+    const rawEdges = [{"from": "candidate", "to": "comp_0", "label": "経歴"}, {"from": "candidate", "to": "comp_1", "label": "経歴"}, {"from": "candidate", "to": "comp_2", "label": "経歴"}, {"from": "candidate", "to": "comp_3", "label": "経歴"}, {"from": "candidate", "to": "skill_4", "label": "スキル"}, {"from": "candidate", "to": "skill_5", "label": "スキル"}, {"from": "candidate", "to": "skill_6", "label": "スキル"}, {"from": "candidate", "to": "skill_7", "label": "スキル"}, {"from": "candidate", "to": "skill_8", "label": "スキル"}, {"from": "candidate", "to": "path_a", "label": "キャリアパス"}, {"from": "path_a", "to": "path_a_best", "label": "best"}, {"from": "path_a", "to": "path_a_likely", "label": "likely"}, {"from": "path_a", "to": "path_a_base", "label": "base"}, {"from": "candidate", "to": "path_b", "label": "キャリアパス"}, {"from": "path_b", "to": "path_b_best", "label": "best"}, {"from": "path_b", "to": "path_b_likely", "label": "likely"}, {"from": "path_b", "to": "path_b_base", "label": "base"}, {"from": "candidate", "to": "path_c", "label": "キャリアパス"}, {"from": "path_c", "to": "path_c_best", "label": "best"}, {"from": "path_c", "to": "path_c_likely", "label": "likely"}, {"from": "path_c", "to": "path_c_base", "label": "base"}, {"from": "candidate", "to": "path_d", "label": "キャリアパス"}, {"from": "path_d", "to": "path_d_best", "label": "best"}, {"from": "path_d", "to": "path_d_likely", "label": "likely"}, {"from": "path_d", "to": "path_d_base", "label": "base"}, {"from": "candidate", "to": "path_e", "label": "キャリアパス"}, {"from": "path_e", "to": "path_e_best", "label": "best"}, {"from": "path_e", "to": "path_e_likely", "label": "likely"}, {"from": "path_e", "to": "path_e_base", "label": "base"}, {"from": "agent_mentor", "to": "candidate", "label": "支持"}, {"from": "agent_mentor", "to": "path_a", "label": "注目"}, {"from": "agent_peer", "to": "candidate", "label": "中立"}, {"from": "agent_peer", "to": "path_a", "label": "注目"}, {"from": "agent_family", "to": "candidate", "label": "批判"}, {"from": "agent_family", "to": "path_a", "label": "注目"}, {"from": "agent_consultant", "to": "candidate", "label": "中立"}, {"from": "agent_consultant", "to": "path_a", "label": "注目"}, {"from": "agent_industry", "to": "candidate", "label": "中立"}, {"from": "agent_industry", "to": "path_a", "label": "注目"}, {"from": "copy_agent_balanced", "to": "candidate", "label": "中立"}, {"from": "copy_agent_balanced", "to": "path_a", "label": "注目"}];
+
+    const W = svgEl.clientWidth || 1000, H = svgEl.clientHeight || 650;
+    const svg = d3.select(svgEl).attr('viewBox', `0 0 ${W} ${H}`);
+    svg.selectAll('*').remove();
+
+    const groupColors = {
+        person: '#6366f1', company: '#FF6B35', skill: '#1A936F',
+        path: '#C5283D', scenario_best: '#27ae60', scenario_likely: '#3498db', scenario_base: '#f39c12',
+        agent_vc: '#9b59b6', agent_tech: '#3498db', agent_hr: '#e67e22',
+        agent_biz: '#2c3e50', agent_private: '#e74c3c', agent_mirror: '#1abc9c'
+    };
+    const groupRadius = {
+        person: 20, company: 12, skill: 10, path: 16, scenario_best: 8, scenario_likely: 8, scenario_base: 8,
+        agent_vc: 9, agent_tech: 9, agent_hr: 9, agent_biz: 9, agent_private: 9, agent_mirror: 9
+    };
+    const getColor = g => groupColors[g] || '#999';
+    const getRadius = g => groupRadius[g] || 10;
+
+    // Prep D3 data
+    const nodes = rawNodes.map(n => ({ ...n }));
+    const edges = rawEdges.map(e => ({ source: e.from, target: e.to, label: e.label }));
+
+    // Force simulation (GraphPanel.vue style, tuned for 50+ nodes)
+    const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(edges).id(d => d.id).distance(d => {
+            // Agents closer to their targets
+            const isAgent = d.source.group?.startsWith('agent_') || d.target.group?.startsWith('agent_');
+            return isAgent ? 100 : 150;
+        }))
+        .force('charge', d3.forceManyBody().strength(-300))
+        .force('center', d3.forceCenter(W / 2, H / 2))
+        .force('collide', d3.forceCollide(35))
+        .force('x', d3.forceX(W / 2).strength(0.03))
+        .force('y', d3.forceY(H / 2).strength(0.03));
+
+    const g = svg.append('g');
+
+    // Zoom (same as GraphPanel.vue)
+    svg.call(d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform)));
+
+    // Defs for arrow markers
+    svg.append('defs').selectAll('marker')
+        .data(['arrow']).enter().append('marker')
+        .attr('id', 'arrow').attr('viewBox', '0 -5 10 10')
+        .attr('refX', 20).attr('refY', 0)
+        .attr('markerWidth', 6).attr('markerHeight', 6).attr('orient', 'auto')
+        .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', '#C0C0C0');
+
+    // Links
+    const link = g.append('g').selectAll('line')
+        .data(edges).enter().append('line')
+        .attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
+        .attr('marker-end', 'url(#arrow)');
+
+    // Edge labels
+    const edgeLabels = g.append('g').selectAll('text')
+        .data(edges).enter().append('text')
+        .text(d => d.label || '')
+        .attr('font-size', '9px').attr('fill', '#999')
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+        .style('font-family', "'Inter', system-ui, sans-serif")
+        .style('pointer-events', 'none');
+
+    // Node groups
+    const nodeGroup = g.append('g').selectAll('g')
+        .data(nodes).enter().append('g')
+        .style('cursor', 'pointer')
+        .call(d3.drag()
+            .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+            .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+            .on('end', (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+        )
+        .on('click', (e, d) => {
+            e.stopPropagation();
+            // Highlight connected edges
+            link.attr('stroke', l => (l.source.id === d.id || l.target.id === d.id) ? '#E91E63' : '#C0C0C0')
+                .attr('stroke-width', l => (l.source.id === d.id || l.target.id === d.id) ? 2.5 : 1.5);
+            nodeGroup.selectAll('circle').attr('stroke', '#fff').attr('stroke-width', 2);
+            d3.select(e.currentTarget).select('circle').attr('stroke', '#E91E63').attr('stroke-width', 3.5);
+            // Detail panel
+            const detail = document.getElementById('graphDetail');
+            detail.style.display = 'block';
+            function esc(s) { if (!s) return ''; const el = document.createElement('div'); el.textContent = s; return el.innerHTML; }
+            const groupLabels = {
+                person: '候補者', company: '経歴', skill: 'スキル', path: 'キャリアパス',
+                scenario_best: 'Best', scenario_likely: 'Likely', scenario_base: 'Base',
+                agent_vc: 'VC/投資家', agent_tech: 'テック業界', agent_hr: 'HR/キャリア',
+                agent_biz: '経営・戦略', agent_private: 'プライベート', agent_mirror: 'ミラー'
+            };
+            const isAgent = d.group.startsWith('agent_');
+            let detailBody = '';
+            if (isAgent) {
+                detailBody = `
+                    ${d.detail ? `<div style="font-weight:600;color:var(--accent);margin-bottom:4px">${esc(d.detail)}</div>` : ''}
+                    ${d.background ? `<div style="margin-bottom:4px">${esc(d.background)}</div>` : ''}
+                    ${d.personality ? `<div style="font-style:italic;color:#7c8298">${esc(d.personality)}</div>` : ''}
+                    ${d.speaking_style ? `<div style="font-size:0.72rem;color:#9098b0;margin-top:4px">口調: ${esc(d.speaking_style)}</div>` : ''}
+                `;
+            } else {
+                detailBody = `${d.group === 'person' ? 'シミュレーション対象の候補者' : d.group === 'company' ? '経歴に含まれる企業/組織' : d.group === 'skill' ? '保有スキル/専門領域' : d.group === 'path' ? 'シミュレートされたキャリアパス' : d.group.startsWith('scenario') ? 'シナリオ分岐（確率付き）' : ''}`;
+            }
+            detail.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <strong>${esc(d.label)}</strong>
+                <span style="font-size:0.7rem;padding:2px 8px;border-radius:8px;background:${getColor(d.group)};color:#fff">${groupLabels[d.group] || esc(d.group)}</span>
+            </div>
+            <div style="font-size:0.78rem;color:#5a6078;line-height:1.6">${detailBody}</div>`;
+        });
+
+    // Node circles
+    nodeGroup.append('circle')
+        .attr('r', d => getRadius(d.group))
+        .attr('fill', d => getColor(d.group))
+        .attr('stroke', '#fff').attr('stroke-width', 2);
+
+    // Node labels
+    nodeGroup.append('text')
+        .text(d => d.label.length > 12 ? d.label.substring(0, 12) + '…' : d.label)
+        .attr('font-size', d => d.group === 'person' ? '13px' : '10px')
+        .attr('font-weight', d => d.group === 'person' ? '600' : '500')
+        .attr('fill', '#333').attr('dx', d => getRadius(d.group) + 4).attr('dy', 4)
+        .style('pointer-events', 'none')
+        .style('font-family', "'Inter', 'Noto Sans JP', system-ui, sans-serif");
+
+    // Click empty space to dismiss
+    svg.on('click', () => { document.getElementById('graphDetail').style.display = 'none'; });
+
+    // Tick
+    simulation.on('tick', () => {
+        link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+        edgeLabels.attr('x', d => (d.source.x + d.target.x) / 2).attr('y', d => (d.source.y + d.target.y) / 2);
+        nodeGroup.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+    // Legend
+    const legendData = [['候補者', 'person'], ['経歴', 'company'], ['スキル', 'skill'], ['パス', 'path'],
+        ['VC', 'agent_vc'], ['テック', 'agent_tech'], ['HR', 'agent_hr'], ['経営', 'agent_biz'], ['私的', 'agent_private'], ['ミラー', 'agent_mirror']];
+    const legendEl = document.getElementById('graphLegend');
+    legendData.forEach(([label, group]) => {
+        legendEl.innerHTML += `<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:${getColor(group)}"></span>${label}</span>`;
+    });
+})();
+</script>
+</body>
+</html>

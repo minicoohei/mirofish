@@ -1,0 +1,1294 @@
+{
+  "identity": {
+    "name": "中村あゆみ",
+    "age_at_start": 29,
+    "gender": "female",
+    "education": "青山学院大学 経営学部",
+    "mbti": "ESFP",
+    "stable_traits": [
+      "企画力",
+      "トレンド感度",
+      "SNSマーケティング",
+      "マルチタスク"
+    ],
+    "certifications": [
+      "Google Analytics認定"
+    ],
+    "career_history_summary": "大手広告代理店入社7年目。デジタル広告プランニング→SNSマーケティング専任。副業でYouTubeチャンネル運営（登録者8万人）。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "広告代理店でクリエイティブディレクター",
+      "direction": "",
+      "risk": "広告代理店でクリエイティブディレクターのリスクシナリオ",
+      "upside": "広告代理店でクリエイティブディレクターの成功シナリオ",
+      "score": 0.7,
+      "overall_probability": 0.3,
+      "probability_rationale": "広告代理店でクリエイティブディレクターの実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (31-33歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "広告代理店でクリエイティブディレクターに向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "広告代理店でクリエイティブディレクター（最良）",
+          "probability": 0.05,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "広告代理店でクリエイティブディレクター（最良）への移行",
+                  "probability": 0.05,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "広告代理店でクリエイティブディレクター（最良）の進展",
+                  "probability": 0.05500000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "広告代理店でクリエイティブディレクター（最良）の結実",
+                  "probability": 0.06,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "広告代理店でクリエイティブディレクター（標準）",
+          "probability": 0.5,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "広告代理店でクリエイティブディレクター（標準）への移行",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "広告代理店でクリエイティブディレクター（標準）の進展",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "広告代理店でクリエイティブディレクター（標準）の結実",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 900.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "広告代理店でクリエイティブディレクター（保守）",
+          "probability": 0.45,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "広告代理店でクリエイティブディレクター（保守）への移行",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "広告代理店でクリエイティブディレクター（保守）の進展",
+                  "probability": 0.49500000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "広告代理店でクリエイティブディレクター（保守）の結実",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 900.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "YouTuber/インフルエンサー専業",
+      "direction": "",
+      "risk": "YouTuber/インフルエンサー専業のリスクシナリオ",
+      "upside": "YouTuber/インフルエンサー専業の成功シナリオ",
+      "score": 0.67,
+      "overall_probability": 0.26,
+      "probability_rationale": "YouTuber/インフルエンサー専業の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (31-33歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "YouTuber/インフルエンサー専業に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "YouTuber/インフルエンサー専業（最良）",
+          "probability": 0.07,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "YouTuber/インフルエンサー専業（最良）への移行",
+                  "probability": 0.07,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "YouTuber/インフルエンサー専業（最良）の進展",
+                  "probability": 0.07700000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "YouTuber/インフルエンサー専業（最良）の結実",
+                  "probability": 0.084,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 3000.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "YouTuber/インフルエンサー専業（標準）",
+          "probability": 0.52,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "YouTuber/インフルエンサー専業（標準）への移行",
+                  "probability": 0.52,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "YouTuber/インフルエンサー専業（標準）の進展",
+                  "probability": 0.5720000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "YouTuber/インフルエンサー専業（標準）の結実",
+                  "probability": 0.624,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 800.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "YouTuber/インフルエンサー専業（保守）",
+          "probability": 0.43,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "YouTuber/インフルエンサー専業（保守）への移行",
+                  "probability": 0.43,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "YouTuber/インフルエンサー専業（保守）の進展",
+                  "probability": 0.47300000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "YouTuber/インフルエンサー専業（保守）の結実",
+                  "probability": 0.516,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 300.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 800.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "D2Cブランド起業",
+      "direction": "",
+      "risk": "D2Cブランド起業のリスクシナリオ",
+      "upside": "D2Cブランド起業の成功シナリオ",
+      "score": 0.64,
+      "overall_probability": 0.22,
+      "probability_rationale": "D2Cブランド起業の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (31-33歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "D2Cブランド起業に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "D2Cブランド起業（最良）",
+          "probability": 0.09,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "D2Cブランド起業（最良）への移行",
+                  "probability": 0.09,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "D2Cブランド起業（最良）の進展",
+                  "probability": 0.099,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "D2Cブランド起業（最良）の結実",
+                  "probability": 0.108,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "D2Cブランド起業（標準）",
+          "probability": 0.54,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "D2Cブランド起業（標準）への移行",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "D2Cブランド起業（標準）の進展",
+                  "probability": 0.5940000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "D2Cブランド起業（標準）の結実",
+                  "probability": 0.648,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 600.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "D2Cブランド起業（保守）",
+          "probability": 0.41,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "D2Cブランド起業（保守）への移行",
+                  "probability": 0.41,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "D2Cブランド起業（保守）の進展",
+                  "probability": 0.451,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "D2Cブランド起業（保守）の結実",
+                  "probability": 0.49199999999999994,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 200.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 600.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "マーケティングSaaS企業転職",
+      "direction": "",
+      "risk": "マーケティングSaaS企業転職のリスクシナリオ",
+      "upside": "マーケティングSaaS企業転職の成功シナリオ",
+      "score": 0.61,
+      "overall_probability": 0.18,
+      "probability_rationale": "マーケティングSaaS企業転職の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (31-33歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "マーケティングSaaS企業転職に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "マーケティングSaaS企業転職（最良）",
+          "probability": 0.11,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "マーケティングSaaS企業転職（最良）への移行",
+                  "probability": 0.11,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "マーケティングSaaS企業転職（最良）の進展",
+                  "probability": 0.12100000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "マーケティングSaaS企業転職（最良）の結実",
+                  "probability": 0.132,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "マーケティングSaaS企業転職（標準）",
+          "probability": 0.56,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "マーケティングSaaS企業転職（標準）への移行",
+                  "probability": 0.56,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "マーケティングSaaS企業転職（標準）の進展",
+                  "probability": 0.6160000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "マーケティングSaaS企業転職（標準）の結実",
+                  "probability": 0.672,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1000.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "マーケティングSaaS企業転職（保守）",
+          "probability": 0.39,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "マーケティングSaaS企業転職（保守）への移行",
+                  "probability": 0.39,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "マーケティングSaaS企業転職（保守）の進展",
+                  "probability": 0.42900000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "マーケティングSaaS企業転職（保守）の結実",
+                  "probability": 0.46799999999999997,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 1000.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "フリーランスマーケター",
+      "direction": "",
+      "risk": "フリーランスマーケターのリスクシナリオ",
+      "upside": "フリーランスマーケターの成功シナリオ",
+      "score": 0.58,
+      "overall_probability": 0.14,
+      "probability_rationale": "フリーランスマーケターの実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (31-33歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "フリーランスマーケターに向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "33歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "フリーランスマーケター（最良）",
+          "probability": 0.13,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスマーケター（最良）への移行",
+                  "probability": 0.13,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスマーケター（最良）の進展",
+                  "probability": 0.14300000000000002,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスマーケター（最良）の結実",
+                  "probability": 0.156,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "フリーランスマーケター（標準）",
+          "probability": 0.58,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスマーケター（標準）への移行",
+                  "probability": 0.58,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスマーケター（標準）の進展",
+                  "probability": 0.638,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスマーケター（標準）の結実",
+                  "probability": 0.696,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 800.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "フリーランスマーケター（保守）",
+          "probability": 0.37,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (34-36歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "フリーランスマーケター（保守）への移行",
+                  "probability": 0.37,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (37-38歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "フリーランスマーケター（保守）の進展",
+                  "probability": 0.40700000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (39-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フリーランスマーケター（保守）の結実",
+                  "probability": 0.444,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 500.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 800.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

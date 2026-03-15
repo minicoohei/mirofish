@@ -1,0 +1,29 @@
+{
+  "name": "李明華",
+  "age": 31,
+  "gender": "female",
+  "education": "清華大学 コンピュータサイエンス学部 / Stanford大学 MS CS",
+  "mbti": "INTP",
+  "traits": [
+    "技術力",
+    "英語・中国語・日本語トリリンガル",
+    "論理的思考",
+    "グローバル視点"
+  ],
+  "certifications": [],
+  "career_summary": "清華大学CS卒業後Stanford MSに進学。卒業後Google本社SWEとして3年勤務後、Google Japan転籍。現在はGoogle JapanのSenior SWE（L5）としてSearch Qualityチームに所属。",
+  "current_role": "Senior Software Engineer (L5)",
+  "current_employer": "Google Japan",
+  "industry": "テクノロジー / GAFA",
+  "years_in_role": 2,
+  "salary": 1800,
+  "skills": [
+    "機械学習",
+    "大規模システム設計",
+    "Python",
+    "C++",
+    "Go",
+    "分散システム",
+    "NLP"
+  ]
+}

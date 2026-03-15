@@ -1,0 +1,80 @@
+[
+  {
+    "agent_id": "agent_google_mgr",
+    "name": "David Chen",
+    "bio": "Google Japanのマネージャー。明華の昇進を支援。",
+    "role": "マネージャー",
+    "category": "tech_industry",
+    "personality": "Google Japanのマネージャー。明華の昇進を支援。",
+    "speaking_style": "",
+    "background": "Google Japanのマネージャー。明華の昇進を支援。",
+    "stance": "supportive",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_stanford_friend",
+    "name": "Emily Zhang",
+    "bio": "Stanford同期。米国でAIスタートアップを創業。",
+    "role": "大学同期",
+    "category": "tech_industry",
+    "personality": "Stanford同期。米国でAIスタートアップを創業。",
+    "speaking_style": "",
+    "background": "Stanford同期。米国でAIスタートアップを創業。",
+    "stance": "supportive",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_tsinghua_prof",
+    "name": "王教授",
+    "bio": "清華大学の恩師。学術キャリアを勧める。",
+    "role": "大学恩師",
+    "category": "hr_career",
+    "personality": "清華大学の恩師。学術キャリアを勧める。",
+    "speaking_style": "",
+    "background": "清華大学の恩師。学術キャリアを勧める。",
+    "stance": "neutral",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_mother_china",
+    "name": "李母",
+    "bio": "中国在住の母親。娘の中国帰国を希望。",
+    "role": "母親",
+    "category": "private",
+    "personality": "中国在住の母親。娘の中国帰国を希望。",
+    "speaking_style": "",
+    "background": "中国在住の母親。娘の中国帰国を希望。",
+    "stance": "neutral",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "agent_recruiter",
+    "name": "田口誠",
+    "bio": "外資系ITリクルーター。ByteDanceのポジションを紹介。",
+    "role": "リクルーター",
+    "category": "hr_career",
+    "personality": "外資系ITリクルーター。ByteDanceのポジションを紹介。",
+    "speaking_style": "",
+    "background": "外資系ITリクルーター。ByteDanceのポジションを紹介。",
+    "stance": "neutral",
+    "path_ref": "path_a",
+    "is_copy_agent": false
+  },
+  {
+    "agent_id": "copy_agent_data_driven",
+    "name": "分析的な自分",
+    "bio": "データと確率で最適解を求める自分。",
+    "role": "copy_agent",
+    "category": "copy_agent",
+    "personality": "データと確率で最適解を求める自分。",
+    "speaking_style": "",
+    "background": "データと確率で最適解を求める自分。",
+    "stance": "neutral",
+    "path_ref": "path_a",
+    "is_copy_agent": true
+  }
+]

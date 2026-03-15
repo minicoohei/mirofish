@@ -1113,7 +1113,7 @@ class _MockSearchResult:
         return {"facts": [{"fact": "テスト事実", "score": 0.9}], "nodes": [], "edges": []}
 
 # Patch after import
-import app.services.zep_tools as _zt_mod
+import cc_layer.app.services.zep_tools as _zt_mod
 class _MockZepToolsService:
     def __init__(self, **kw): pass
     def search_graph(self, **kw): return _MockSearchResult()
@@ -1161,7 +1161,7 @@ class _MockZepEntityReader:
         return _MockFilteredEntities(entities=ents, total_count=2, filtered_count=2,
                                      entity_types={"CareerAdvisor", "HRManager"})
 
-import app.services.zep_entity_reader as _zer_mod
+import cc_layer.app.services.zep_entity_reader as _zer_mod
 _zer_mod.ZepEntityReader = _MockZepEntityReader
 _zer_mod.EntityNode = _MockEntityNode
 _zer_mod.FilteredEntities = _MockFilteredEntities
@@ -1214,7 +1214,7 @@ _time_mod.sleep = lambda s: _original_sleep(min(s, 0.01))
 import cc_layer.cli
 
 # --- Mock ExternalDataFetcher (Tavily) ---
-import app.services.external_data_fetcher as _edf_mod
+import cc_layer.app.services.external_data_fetcher as _edf_mod
 class _MockExternalDataFetcher:
     def __init__(self, **kw):
         self.is_available = True

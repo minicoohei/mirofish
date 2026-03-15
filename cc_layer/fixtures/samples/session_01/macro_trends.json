@@ -1,0 +1,69 @@
+{
+  "trends": [
+    {
+      "trend_id": "consulting_disruption",
+      "label": "コンサル業界のAI置換リスク",
+      "category": "technology",
+      "description": "McKinsey/BCGもAIツール導入。ジュニアアナリストの業務がAI化。",
+      "probability": 0.8,
+      "timeframe": "2026-2030",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "コンサル業界のAI置換リスク関連データ",
+          "excerpt": "McKinsey/BCGもAIツール導入。ジュニアアナリストの業務がAI化。"
+        }
+      ]
+    },
+    {
+      "trend_id": "female_leadership",
+      "label": "女性リーダー登用の加速",
+      "category": "workforce",
+      "description": "ESG/DE&I圧力で女性経営幹部需要増。",
+      "probability": 0.75,
+      "timeframe": "2026-2035",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "女性リーダー登用の加速関連データ",
+          "excerpt": "ESG/DE&I圧力で女性経営幹部需要増。"
+        }
+      ]
+    },
+    {
+      "trend_id": "startup_ecosystem",
+      "label": "日本スタートアップエコシステム成熟",
+      "category": "finance",
+      "description": "5か年計画の効果。スタートアップ転職の社会的受容度上昇。",
+      "probability": 0.7,
+      "timeframe": "2026-2030",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "日本スタートアップエコシステム成熟関連データ",
+          "excerpt": "5か年計画の効果。スタートアップ転職の社会的受容度上昇。"
+        }
+      ]
+    }
+  ],
+  "salary_benchmarks": [
+    {
+      "role": "外資コンサル マネージャー",
+      "range": "800-1200万円",
+      "source": "OpenWork 2024",
+      "note": ""
+    },
+    {
+      "role": "スタートアップCOO（シリーズA-B）",
+      "range": "800-1500万円",
+      "source": "INITIAL 2024",
+      "note": ""
+    },
+    {
+      "role": "外資コンサル パートナー",
+      "range": "3000-8000万円",
+      "source": "Glassdoor 2024",
+      "note": ""
+    }
+  ]
+}

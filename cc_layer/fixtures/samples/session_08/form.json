@@ -1,0 +1,16 @@
+{
+  "family_members": [
+    {
+      "relation": "妻",
+      "age": 31
+    },
+    {
+      "relation": "長男",
+      "age": 2
+    }
+  ],
+  "marital_status": "married",
+  "mortgage_remaining": 2500,
+  "monthly_expenses": 30,
+  "cash_buffer_range": "300-500"
+}

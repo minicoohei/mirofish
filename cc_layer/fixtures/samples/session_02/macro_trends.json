@@ -1,0 +1,69 @@
+{
+  "trends": [
+    {
+      "trend_id": "banking_digital",
+      "label": "メガバンクのDX・支店削減",
+      "category": "technology",
+      "description": "AI・フィンテックによる銀行業務の構造変化。支店数は2030年までに30%減少見込み。",
+      "probability": 0.9,
+      "timeframe": "2026-2032",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "メガバンクのDX・支店削減関連データ",
+          "excerpt": "AI・フィンテックによる銀行業務の構造変化。支店数は2030年までに30%減少見込み。"
+        }
+      ]
+    },
+    {
+      "trend_id": "interest_rate",
+      "label": "日銀利上げと金融環境変化",
+      "category": "finance",
+      "description": "マイナス金利解除後の金利正常化で銀行収益構造が変化。",
+      "probability": 0.75,
+      "timeframe": "2026-2028",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "日銀利上げと金融環境変化関連データ",
+          "excerpt": "マイナス金利解除後の金利正常化で銀行収益構造が変化。"
+        }
+      ]
+    },
+    {
+      "trend_id": "sme_succession",
+      "label": "中小企業の事業承継問題",
+      "category": "demographics",
+      "description": "後継者不在率65%。M&A市場は急拡大。",
+      "probability": 0.95,
+      "timeframe": "2026-2035",
+      "impact_by_path": {},
+      "sources": [
+        {
+          "title": "中小企業の事業承継問題関連データ",
+          "excerpt": "後継者不在率65%。M&A市場は急拡大。"
+        }
+      ]
+    }
+  ],
+  "salary_benchmarks": [
+    {
+      "role": "メガバンク事業部長",
+      "range": "1300-1600万円",
+      "source": "OpenWork 2024",
+      "note": ""
+    },
+    {
+      "role": "フィンテックCFO",
+      "range": "1500-2500万円",
+      "source": "ビズリーチ 2024",
+      "note": ""
+    },
+    {
+      "role": "PEファンドディレクター",
+      "range": "2000-4000万円",
+      "source": "Glassdoor 2024",
+      "note": ""
+    }
+  ]
+}

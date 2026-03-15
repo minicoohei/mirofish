@@ -1,0 +1,1294 @@
+{
+  "identity": {
+    "name": "渡辺修平",
+    "age_at_start": 33,
+    "gender": "male",
+    "education": "新潟大学 法学部",
+    "mbti": "ISFJ",
+    "stable_traits": [
+      "堅実性",
+      "地域貢献意欲",
+      "行政知識",
+      "調整力"
+    ],
+    "certifications": [
+      "行政書士"
+    ],
+    "career_history_summary": "地方公務員（新潟県庁）10年目。企画課→税務課→現在は産業振興課。地元へのUターン転職を検討中（現在は新潟市在住、実家は長岡市）。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "公務員継続→管理職昇進",
+      "direction": "",
+      "risk": "公務員継続→管理職昇進のリスクシナリオ",
+      "upside": "公務員継続→管理職昇進の成功シナリオ",
+      "score": 0.7,
+      "overall_probability": 0.3,
+      "probability_rationale": "公務員継続→管理職昇進の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (35-37歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "公務員継続→管理職昇進に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "37歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "公務員継続→管理職昇進（最良）",
+          "probability": 0.05,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "公務員継続→管理職昇進（最良）への移行",
+                  "probability": 0.05,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "公務員継続→管理職昇進（最良）の進展",
+                  "probability": 0.05500000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "公務員継続→管理職昇進（最良）の結実",
+                  "probability": 0.06,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 800.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "公務員継続→管理職昇進（標準）",
+          "probability": 0.5,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "公務員継続→管理職昇進（標準）への移行",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "公務員継続→管理職昇進（標準）の進展",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "公務員継続→管理職昇進（標準）の結実",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 650.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "公務員継続→管理職昇進（保守）",
+          "probability": 0.45,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "公務員継続→管理職昇進（保守）への移行",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "公務員継続→管理職昇進（保守）の進展",
+                  "probability": 0.49500000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "公務員継続→管理職昇進（保守）の結実",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 550.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 650.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "地元長岡市役所へ転職",
+      "direction": "",
+      "risk": "地元長岡市役所へ転職のリスクシナリオ",
+      "upside": "地元長岡市役所へ転職の成功シナリオ",
+      "score": 0.67,
+      "overall_probability": 0.26,
+      "probability_rationale": "地元長岡市役所へ転職の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (35-37歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "地元長岡市役所へ転職に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "37歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "地元長岡市役所へ転職（最良）",
+          "probability": 0.07,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元長岡市役所へ転職（最良）への移行",
+                  "probability": 0.07,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元長岡市役所へ転職（最良）の進展",
+                  "probability": 0.07700000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元長岡市役所へ転職（最良）の結実",
+                  "probability": 0.084,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "地元長岡市役所へ転職（標準）",
+          "probability": 0.52,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元長岡市役所へ転職（標準）への移行",
+                  "probability": 0.52,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元長岡市役所へ転職（標準）の進展",
+                  "probability": 0.5720000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元長岡市役所へ転職（標準）の結実",
+                  "probability": 0.624,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 580.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "地元長岡市役所へ転職（保守）",
+          "probability": 0.43,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元長岡市役所へ転職（保守）への移行",
+                  "probability": 0.43,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元長岡市役所へ転職（保守）の進展",
+                  "probability": 0.47300000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元長岡市役所へ転職（保守）の結実",
+                  "probability": 0.516,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 500.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 580.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "地方創生コンサルタントへ転身",
+      "direction": "",
+      "risk": "地方創生コンサルタントへ転身のリスクシナリオ",
+      "upside": "地方創生コンサルタントへ転身の成功シナリオ",
+      "score": 0.64,
+      "overall_probability": 0.22,
+      "probability_rationale": "地方創生コンサルタントへ転身の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (35-37歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "地方創生コンサルタントへ転身に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "37歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "地方創生コンサルタントへ転身（最良）",
+          "probability": 0.09,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地方創生コンサルタントへ転身（最良）への移行",
+                  "probability": 0.09,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地方創生コンサルタントへ転身（最良）の進展",
+                  "probability": 0.099,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地方創生コンサルタントへ転身（最良）の結実",
+                  "probability": 0.108,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1200.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "地方創生コンサルタントへ転身（標準）",
+          "probability": 0.54,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地方創生コンサルタントへ転身（標準）への移行",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地方創生コンサルタントへ転身（標準）の進展",
+                  "probability": 0.5940000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地方創生コンサルタントへ転身（標準）の結実",
+                  "probability": 0.648,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "地方創生コンサルタントへ転身（保守）",
+          "probability": 0.41,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地方創生コンサルタントへ転身（保守）への移行",
+                  "probability": 0.41,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地方創生コンサルタントへ転身（保守）の進展",
+                  "probability": 0.451,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地方創生コンサルタントへ転身（保守）の結実",
+                  "probability": 0.49199999999999994,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 400.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 700.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "地元で農業×IT起業",
+      "direction": "",
+      "risk": "地元で農業×IT起業のリスクシナリオ",
+      "upside": "地元で農業×IT起業の成功シナリオ",
+      "score": 0.61,
+      "overall_probability": 0.18,
+      "probability_rationale": "地元で農業×IT起業の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (35-37歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "地元で農業×IT起業に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "37歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "地元で農業×IT起業（最良）",
+          "probability": 0.11,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元で農業×IT起業（最良）への移行",
+                  "probability": 0.11,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元で農業×IT起業（最良）の進展",
+                  "probability": 0.12100000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元で農業×IT起業（最良）の結実",
+                  "probability": 0.132,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "地元で農業×IT起業（標準）",
+          "probability": 0.56,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元で農業×IT起業（標準）への移行",
+                  "probability": 0.56,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元で農業×IT起業（標準）の進展",
+                  "probability": 0.6160000000000001,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元で農業×IT起業（標準）の結実",
+                  "probability": 0.672,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 400.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "地元で農業×IT起業（保守）",
+          "probability": 0.39,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "地元で農業×IT起業（保守）への移行",
+                  "probability": 0.39,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "地元で農業×IT起業（保守）の進展",
+                  "probability": 0.42900000000000005,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地元で農業×IT起業（保守）の結実",
+                  "probability": 0.46799999999999997,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 200.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 400.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "民間企業（地方銀行等）へ転職",
+      "direction": "",
+      "risk": "民間企業（地方銀行等）へ転職のリスクシナリオ",
+      "upside": "民間企業（地方銀行等）へ転職の成功シナリオ",
+      "score": 0.58,
+      "overall_probability": 0.14,
+      "probability_rationale": "民間企業（地方銀行等）へ転職の実現可能性分析",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (35-37歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "準備期",
+              "description": "民間企業（地方銀行等）へ転職に向けた準備・検討",
+              "probability": 0.65,
+              "probability_note": ""
+            }
+          ]
+        }
+      ],
+      "branch_point": "37歳時点が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "民間企業（地方銀行等）へ転職（最良）",
+          "probability": 0.13,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "民間企業（地方銀行等）へ転職（最良）への移行",
+                  "probability": 0.13,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "民間企業（地方銀行等）へ転職（最良）の進展",
+                  "probability": 0.14300000000000002,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "民間企業（地方銀行等）へ転職（最良）の結実",
+                  "probability": 0.156,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1000.0,
+            "satisfaction": 0.88,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "民間企業（地方銀行等）へ転職（標準）",
+          "probability": 0.58,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "民間企業（地方銀行等）へ転職（標準）への移行",
+                  "probability": 0.58,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "民間企業（地方銀行等）へ転職（標準）の進展",
+                  "probability": 0.638,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "民間企業（地方銀行等）へ転職（標準）の結実",
+                  "probability": 0.696,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 700.0,
+            "satisfaction": 0.7,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "民間企業（地方銀行等）へ転職（保守）",
+          "probability": 0.37,
+          "probability_note": "",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (38-40歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "転換期",
+                  "description": "民間企業（地方銀行等）へ転職（保守）への移行",
+                  "probability": 0.37,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (41-42歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "成長期",
+                  "description": "民間企業（地方銀行等）へ転職（保守）の進展",
+                  "probability": 0.40700000000000003,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (43-44歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "民間企業（地方銀行等）へ転職（保守）の結実",
+                  "probability": 0.444,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 550.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.55
+          }
+        }
+      ],
+      "final_salary": 700.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

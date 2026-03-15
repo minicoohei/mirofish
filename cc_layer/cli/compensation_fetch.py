@@ -456,7 +456,7 @@ def try_tavily_augment(industry: str, role: str) -> list[dict]:
     Falls back gracefully if TAVILY_API_KEY is not set.
     """
     try:
-        from app.services.external_data_fetcher import ExternalDataFetcher
+        from cc_layer.app.services.external_data_fetcher import ExternalDataFetcher
         fetcher = ExternalDataFetcher()
         query = f"{industry} {role} 年収 報酬 2025"
         results = fetcher.search(query, max_results=3)

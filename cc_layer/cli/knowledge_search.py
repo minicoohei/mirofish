@@ -32,7 +32,7 @@ import cc_layer.cli  # noqa: F401
 
 def _get_loader():
     """Lazy import to avoid openai dependency at module level."""
-    from app.services.knowledge_loader import KnowledgeLoader
+    from cc_layer.app.services.knowledge_loader import KnowledgeLoader
     return KnowledgeLoader
 
 

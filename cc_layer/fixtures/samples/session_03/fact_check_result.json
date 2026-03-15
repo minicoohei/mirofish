@@ -1,0 +1,66 @@
+{
+  "fact_check_metadata": {
+    "checked_at": "2026-03-15T16:00:00",
+    "total_claims": 3,
+    "verified": 3,
+    "adjusted": 0,
+    "unverified": 0,
+    "disputed": 0
+  },
+  "checks": [
+    {
+      "claim_id": "FC-001",
+      "location": "path_a > L5→L6昇進率",
+      "original_value": "比較的一般的",
+      "original_note": "",
+      "status": "verified",
+      "verified_value": "60-70%",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "Levels.fyi 2024データと整合",
+          "reliability": "medium"
+        }
+      ],
+      "note": "Levels.fyi 2024データと整合",
+      "suggested_correction": null
+    },
+    {
+      "claim_id": "FC-002",
+      "location": "path_a > L6→L7昇進率",
+      "original_value": "10-15%",
+      "original_note": "",
+      "status": "verified",
+      "verified_value": "10-15%",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "Levels.fyi/Blind 2024データと一致",
+          "reliability": "medium"
+        }
+      ],
+      "note": "Levels.fyi/Blind 2024データと一致",
+      "suggested_correction": null
+    },
+    {
+      "claim_id": "FC-003",
+      "location": "path_c > 米国報酬",
+      "original_value": "4000万超",
+      "original_note": "",
+      "status": "verified",
+      "verified_value": "L6: $300-400K TC",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "Levels.fyi 2024のGoogle L6 TC中央値と整合",
+          "reliability": "medium"
+        }
+      ],
+      "note": "Levels.fyi 2024のGoogle L6 TC中央値と整合",
+      "suggested_correction": null
+    }
+  ]
+}

@@ -36,7 +36,7 @@ import cc_layer.cli  # noqa: F401
 
 def _build_graph(args):
     """Build a new graph (synchronous wrapper around async builder)."""
-    from app.services.graph_builder import GraphBuilderService
+    from cc_layer.app.services.graph_builder import GraphBuilderService
 
     # Read inputs
     with open(args.text_file, "r", encoding="utf-8") as f:
@@ -56,7 +56,7 @@ def _build_graph(args):
     print("Ontology set", file=sys.stderr)
 
     # Step 3: Split text into chunks
-    from app.services.text_processor import TextProcessor
+    from cc_layer.app.services.text_processor import TextProcessor
     chunks = TextProcessor.split_text(text, args.chunk_size, args.overlap)
     print(f"Text split into {len(chunks)} chunks", file=sys.stderr)
 
@@ -92,7 +92,7 @@ def _build_graph(args):
 
 def _get_info(args):
     """Get graph info."""
-    from app.services.graph_builder import GraphBuilderService
+    from cc_layer.app.services.graph_builder import GraphBuilderService
     builder = GraphBuilderService()
     info = builder._get_graph_info(args.graph_id)
     print(json.dumps(info.to_dict(), ensure_ascii=False, indent=2))
@@ -100,7 +100,7 @@ def _get_info(args):
 
 def _get_data(args):
     """Get full graph data."""
-    from app.services.graph_builder import GraphBuilderService
+    from cc_layer.app.services.graph_builder import GraphBuilderService
     builder = GraphBuilderService()
     data = builder.get_graph_data(args.graph_id)
     print(json.dumps(data, ensure_ascii=False, indent=2))
@@ -108,7 +108,7 @@ def _get_data(args):
 
 def _delete_graph(args):
     """Delete a graph."""
-    from app.services.graph_builder import GraphBuilderService
+    from cc_layer.app.services.graph_builder import GraphBuilderService
     builder = GraphBuilderService()
     builder.delete_graph(args.graph_id)
     print(json.dumps({"status": "ok", "deleted": args.graph_id}, ensure_ascii=False))

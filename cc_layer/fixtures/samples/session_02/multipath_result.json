@@ -1,0 +1,1295 @@
+{
+  "identity": {
+    "name": "田中健一",
+    "age_at_start": 42,
+    "gender": "male",
+    "education": "一橋大学 商学部",
+    "mbti": "ISTJ",
+    "stable_traits": [
+      "リスク管理",
+      "組織マネジメント",
+      "財務分析",
+      "ステークホルダー調整"
+    ],
+    "certifications": [
+      "証券アナリスト",
+      "FP1級"
+    ],
+    "career_history_summary": "新卒でメガバンク入行。法人営業→海外駐在（ロンドン3年）→本部企画→現在は事業部長として中堅企業向け融資部門を統括。部下80名。"
+  },
+  "simulation_years": 10.0,
+  "total_rounds": 40,
+  "paths": [
+    {
+      "path_id": "path_a",
+      "label": "メガバンク残留→執行役員目指す",
+      "direction": "corporate",
+      "risk": "50代で出向→関連会社社長",
+      "upside": "執行役員→年収3000万超",
+      "score": 0.72,
+      "overall_probability": 0.35,
+      "probability_rationale": "部長→執行役員の昇進率は5-10%。ロンドン駐在経験はプラス。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (44-46歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "メガバンク残留→執行役員目指すに向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "45歳での常務補佐ポスト獲得が鍵",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "執行役員就任",
+          "probability": 0.08,
+          "probability_note": "部長→執行役員の昇進率は5-10%。ロンドン駐在経験はプラス。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "執行役員就任に向けた行動期",
+                  "probability": 0.08,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "執行役員就任の結果が顕在化",
+                  "probability": 0.08,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "執行役員就任の安定フェーズ",
+                  "probability": 0.096,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 3500.0,
+            "satisfaction": 0.8,
+            "stress": 0.65,
+            "work_life_balance": 0.35
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "部長職で定年まで→関連会社社長",
+          "probability": 0.55,
+          "probability_note": "部長→執行役員の昇進率は5-10%。ロンドン駐在経験はプラス。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "部長職で定年まで→関連会社社長に向けた行動期",
+                  "probability": 0.55,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "部長職で定年まで→関連会社社長の結果が顕在化",
+                  "probability": 0.55,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "部長職で定年まで→関連会社社長の安定フェーズ",
+                  "probability": 0.66,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1600.0,
+            "satisfaction": 0.65,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "出向→年収ダウン",
+          "probability": 0.37,
+          "probability_note": "部長→執行役員の昇進率は5-10%。ロンドン駐在経験はプラス。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "出向→年収ダウンに向けた行動期",
+                  "probability": 0.37,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "出向→年収ダウンの結果が顕在化",
+                  "probability": 0.37,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "出向→年収ダウンの安定フェーズ",
+                  "probability": 0.444,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1100.0,
+            "satisfaction": 0.45,
+            "stress": 0.4,
+            "work_life_balance": 0.6
+          }
+        }
+      ],
+      "final_salary": 1600.0,
+      "final_satisfaction": 0.65,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_b",
+      "label": "フィンテック企業のCFO/COO",
+      "direction": "startup",
+      "risk": "年収一時ダウン＋住宅ローンリスク",
+      "upside": "IPO→ストックオプション行使で資産形成",
+      "score": 0.68,
+      "overall_probability": 0.25,
+      "probability_rationale": "メガバンク出身のフィンテック幹部は需要あり。ただし文化適応がハードル。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (44-46歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "フィンテック企業のCFO/COOに向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "44歳での転職決断タイミングが分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "フィンテックIPO→CFO",
+          "probability": 0.12,
+          "probability_note": "メガバンク出身のフィンテック幹部は需要あり。ただし文化適応がハードル。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "フィンテックIPO→CFOに向けた行動期",
+                  "probability": 0.12,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "フィンテックIPO→CFOの結果が顕在化",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フィンテックIPO→CFOの安定フェーズ",
+                  "probability": 0.144,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 4000.0,
+            "satisfaction": 0.85,
+            "stress": 0.6,
+            "work_life_balance": 0.4
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "フィンテックCFOとして安定",
+          "probability": 0.5,
+          "probability_note": "メガバンク出身のフィンテック幹部は需要あり。ただし文化適応がハードル。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "フィンテックCFOとして安定に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "フィンテックCFOとして安定の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "フィンテックCFOとして安定の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.75,
+            "stress": 0.55,
+            "work_life_balance": 0.45
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "カルチャーフィットせず1年で退職",
+          "probability": 0.38,
+          "probability_note": "メガバンク出身のフィンテック幹部は需要あり。ただし文化適応がハードル。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "カルチャーフィットせず1年で退職に向けた行動期",
+                  "probability": 0.38,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "カルチャーフィットせず1年で退職の結果が顕在化",
+                  "probability": 0.38,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "カルチャーフィットせず1年で退職の安定フェーズ",
+                  "probability": 0.45599999999999996,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1200.0,
+            "satisfaction": 0.4,
+            "stress": 0.65,
+            "work_life_balance": 0.45
+          }
+        }
+      ],
+      "final_salary": 1800.0,
+      "final_satisfaction": 0.75,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_c",
+      "label": "地方銀行の頭取候補として転職",
+      "direction": "corporate",
+      "risk": "地方移住の家族負担",
+      "upside": "地方銀行頭取→地域経済のリーダー",
+      "score": 0.62,
+      "overall_probability": 0.15,
+      "probability_rationale": "メガバンク出身の地銀トップは増加傾向だが家族の同意が必要。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (44-46歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "地方銀行の頭取候補として転職に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "46歳での地銀からのオファー受諾が分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "地銀頭取就任→地域再生リーダー",
+          "probability": 0.15,
+          "probability_note": "メガバンク出身の地銀トップは増加傾向だが家族の同意が必要。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "地銀頭取就任→地域再生リーダーに向けた行動期",
+                  "probability": 0.15,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "地銀頭取就任→地域再生リーダーの結果が顕在化",
+                  "probability": 0.15,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地銀頭取就任→地域再生リーダーの安定フェーズ",
+                  "probability": 0.18,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2500.0,
+            "satisfaction": 0.82,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "地銀副頭取として安定",
+          "probability": 0.5,
+          "probability_note": "メガバンク出身の地銀トップは増加傾向だが家族の同意が必要。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "地銀副頭取として安定に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "地銀副頭取として安定の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地銀副頭取として安定の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1800.0,
+            "satisfaction": 0.7,
+            "stress": 0.45,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "地方生活に家族が適応できず単身赴任",
+          "probability": 0.35,
+          "probability_note": "メガバンク出身の地銀トップは増加傾向だが家族の同意が必要。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "地方生活に家族が適応できず単身赴任に向けた行動期",
+                  "probability": 0.35,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "地方生活に家族が適応できず単身赴任の結果が顕在化",
+                  "probability": 0.35,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "地方生活に家族が適応できず単身赴任の安定フェーズ",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.5,
+            "stress": 0.55,
+            "work_life_balance": 0.35
+          }
+        }
+      ],
+      "final_salary": 1800.0,
+      "final_satisfaction": 0.7,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_d",
+      "label": "PEファンド・投資会社転職",
+      "direction": "finance",
+      "risk": "成果報酬型で収入変動大",
+      "upside": "キャリーで数億円の資産形成",
+      "score": 0.65,
+      "overall_probability": 0.15,
+      "probability_rationale": "メガバンクの与信・M&A経験はPE業界で評価されるが、42歳からの転身はハードル高い。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (44-46歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "PEファンド・投資会社転職に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "43歳でのPEファンド採用面接突破が最初の関門",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "PEパートナー昇進→キャリー獲得",
+          "probability": 0.08,
+          "probability_note": "メガバンクの与信・M&A経験はPE業界で評価されるが、42歳からの転身はハードル高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "PEパートナー昇進→キャリー獲得に向けた行動期",
+                  "probability": 0.08,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "PEパートナー昇進→キャリー獲得の結果が顕在化",
+                  "probability": 0.08,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "PEパートナー昇進→キャリー獲得の安定フェーズ",
+                  "probability": 0.096,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 5000.0,
+            "satisfaction": 0.85,
+            "stress": 0.7,
+            "work_life_balance": 0.3
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "PEディレクターとして投資実行",
+          "probability": 0.5,
+          "probability_note": "メガバンクの与信・M&A経験はPE業界で評価されるが、42歳からの転身はハードル高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "PEディレクターとして投資実行に向けた行動期",
+                  "probability": 0.5,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "PEディレクターとして投資実行の結果が顕在化",
+                  "probability": 0.5,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "PEディレクターとして投資実行の安定フェーズ",
+                  "probability": 0.6,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2200.0,
+            "satisfaction": 0.75,
+            "stress": 0.65,
+            "work_life_balance": 0.35
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "PE業界に馴染めず→事業会社CFO",
+          "probability": 0.42,
+          "probability_note": "メガバンクの与信・M&A経験はPE業界で評価されるが、42歳からの転身はハードル高い。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "PE業界に馴染めず→事業会社CFOに向けた行動期",
+                  "probability": 0.42,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "PE業界に馴染めず→事業会社CFOの結果が顕在化",
+                  "probability": 0.42,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "PE業界に馴染めず→事業会社CFOの安定フェーズ",
+                  "probability": 0.504,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1500.0,
+            "satisfaction": 0.55,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          }
+        }
+      ],
+      "final_salary": 2200.0,
+      "final_satisfaction": 0.75,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    },
+    {
+      "path_id": "path_e",
+      "label": "独立系M&Aアドバイザリー設立",
+      "direction": "entrepreneurship",
+      "risk": "案件獲得にメガバンク人脈依存",
+      "upside": "成功報酬型で年収3000万超",
+      "score": 0.58,
+      "overall_probability": 0.1,
+      "probability_rationale": "中小企業M&A市場は拡大中だが、42歳での独立はリスクが高い。住宅ローン4000万が重荷。",
+      "common_periods": [
+        {
+          "period_id": null,
+          "period_name": "Period 1 (44-46歳)",
+          "narrative": "",
+          "snapshot": {
+            "annual_income": 0.0,
+            "satisfaction": 0.5,
+            "stress": 0.5,
+            "work_life_balance": 0.5
+          },
+          "events": [
+            {
+              "type": "キャリア検討",
+              "description": "独立系M&Aアドバイザリー設立に向けた準備期間",
+              "probability": 0.7,
+              "probability_note": "検討段階の実行確率"
+            }
+          ]
+        }
+      ],
+      "branch_point": "45歳で最初の大型案件クローズが分岐点",
+      "scenarios": [
+        {
+          "scenario_id": "best",
+          "label": "M&Aブティック成功→年間10案件",
+          "probability": 0.1,
+          "probability_note": "中小企業M&A市場は拡大中だが、42歳での独立はリスクが高い。住宅ローン4000万が重荷。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "M&Aブティック成功→年間10案件に向けた行動期",
+                  "probability": 0.1,
+                  "probability_note": "bestシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "M&Aブティック成功→年間10案件の結果が顕在化",
+                  "probability": 0.1,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "M&Aブティック成功→年間10案件の安定フェーズ",
+                  "probability": 0.12,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 4000.0,
+            "satisfaction": 0.88,
+            "stress": 0.55,
+            "work_life_balance": 0.5
+          }
+        },
+        {
+          "scenario_id": "likely",
+          "label": "年間3-5案件で堅実運営",
+          "probability": 0.45,
+          "probability_note": "中小企業M&A市場は拡大中だが、42歳での独立はリスクが高い。住宅ローン4000万が重荷。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "年間3-5案件で堅実運営に向けた行動期",
+                  "probability": 0.45,
+                  "probability_note": "likelyシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "年間3-5案件で堅実運営の結果が顕在化",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "年間3-5案件で堅実運営の安定フェーズ",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 2000.0,
+            "satisfaction": 0.72,
+            "stress": 0.5,
+            "work_life_balance": 0.55
+          }
+        },
+        {
+          "scenario_id": "base",
+          "label": "案件獲得に苦戦→メガバンク復帰",
+          "probability": 0.45,
+          "probability_note": "中小企業M&A市場は拡大中だが、42歳での独立はリスクが高い。住宅ローン4000万が重荷。",
+          "periods": [
+            {
+              "period_id": null,
+              "period_name": "Period 2 (47-49歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "キャリア変化",
+                  "description": "案件獲得に苦戦→メガバンク復帰に向けた行動期",
+                  "probability": 0.45,
+                  "probability_note": "baseシナリオの実現確率"
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 3 (50-51歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "結果",
+                  "description": "案件獲得に苦戦→メガバンク復帰の結果が顕在化",
+                  "probability": 0.45,
+                  "probability_note": ""
+                }
+              ]
+            },
+            {
+              "period_id": null,
+              "period_name": "Period 4 (52-53歳)",
+              "narrative": "",
+              "snapshot": {
+                "annual_income": 0.0,
+                "satisfaction": 0.5,
+                "stress": 0.5,
+                "work_life_balance": 0.5
+              },
+              "events": [
+                {
+                  "type": "安定期",
+                  "description": "案件獲得に苦戦→メガバンク復帰の安定フェーズ",
+                  "probability": 0.54,
+                  "probability_note": ""
+                }
+              ]
+            }
+          ],
+          "final_state": {
+            "annual_income": 1300.0,
+            "satisfaction": 0.4,
+            "stress": 0.6,
+            "work_life_balance": 0.45
+          }
+        }
+      ],
+      "final_salary": 2000.0,
+      "final_satisfaction": 0.72,
+      "final_age": null,
+      "final_role": "",
+      "final_employer": "",
+      "final_cash_buffer": 0.0,
+      "peak_salary": 0.0
+    }
+  ],
+  "ranking": {}
+}

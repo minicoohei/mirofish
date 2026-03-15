@@ -1,0 +1,69 @@
+{
+  "fact_check_metadata": {
+    "checked_at": "2026-03-15T16:00:00",
+    "total_claims": 3,
+    "verified": 2,
+    "adjusted": 1,
+    "unverified": 0,
+    "disputed": 0
+  },
+  "checks": [
+    {
+      "claim_id": "FC-001",
+      "location": "path_a > 執行役員昇進率",
+      "original_value": "5-10%",
+      "original_note": "",
+      "status": "verified",
+      "verified_value": "5-8%",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "三菱UFJ銀行の有価証券報告書データと整合",
+          "reliability": "medium"
+        }
+      ],
+      "note": "三菱UFJ銀行の有価証券報告書データと整合",
+      "suggested_correction": null
+    },
+    {
+      "claim_id": "FC-002",
+      "location": "path_b > フィンテックIPO",
+      "original_value": "12%",
+      "original_note": "",
+      "status": "adjusted",
+      "verified_value": "8-10%",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "日本のフィンテックIPO率は米国より低い",
+          "reliability": "medium"
+        }
+      ],
+      "note": "日本のフィンテックIPO率は米国より低い",
+      "suggested_correction": {
+        "value": "8-10%",
+        "note_addition": "日本のフィンテックIPO率は米国より低い"
+      }
+    },
+    {
+      "claim_id": "FC-003",
+      "location": "path_e > 中小企業M&A市場",
+      "original_value": "拡大中",
+      "original_note": "",
+      "status": "verified",
+      "verified_value": "CAGR 15-20%",
+      "sources": [
+        {
+          "title": "調査データ",
+          "url": "",
+          "excerpt": "M&Aクラウド2024レポートで確認",
+          "reliability": "medium"
+        }
+      ],
+      "note": "M&Aクラウド2024レポートで確認",
+      "suggested_correction": null
+    }
+  ]
+}
