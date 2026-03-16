@@ -5,9 +5,9 @@ AI Career Simulator powered by Claude Code SubAgents.
 Simulate 10-year career trajectories with multi-path analysis, social sentiment simulation, and detailed HTML reports.
 
 <div align="center">
-<img src="docs/images/report_demo.gif" alt="MiroFish Report Demo" width="80%"/>
+<img src="docs/images/cli_demo.gif" alt="MiroFish CLI Pipeline Demo" width="80%"/>
 <br/>
-<em>Generated HTML report: profile analysis, income projections, scenario comparison, agent discussions</em>
+<em>Full pipeline: profile init, path design, 5-way expansion, scoring, 30-agent swarm, HTML report</em>
 </div>
 
 ## What It Does
@@ -19,6 +19,14 @@ Input a resume and career context. MiroFish generates a comprehensive career sim
 - **30 AI agents** discussing your career choices from different perspectives
 - **Fact-checked claims** against real market data
 - **Reskilling recommendations** prioritized by cross-path impact
+
+### Report Output
+
+<div align="center">
+<img src="docs/images/report_demo.gif" alt="MiroFish Report Sections" width="80%"/>
+<br/>
+<em>Self-contained HTML report with 10 interactive sections</em>
+</div>
 
 ### Report Sections
 
