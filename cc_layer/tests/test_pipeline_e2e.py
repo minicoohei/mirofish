@@ -59,6 +59,7 @@ def test_e2e_status(session_copy):
         capture_output=True, text=True,
     )
     assert result.returncode == 0
+    # Rich outputs to stderr (Console(stderr=True)), so check both streams
     combined = result.stdout + result.stderr
     assert "OK" in combined
 

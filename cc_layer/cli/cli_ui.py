@@ -297,7 +297,7 @@ def show_next_action(session_dir: str) -> None:
         msg = "Launch SubAgent PathDesignerAgent (cc_layer/prompts/path_designer_agent.md)"
     elif not (sdir / "multipath_result.json").exists():
         msg = "Launch SubAgent PathExpanderAgent x5 -> path_score"
-    elif not list((sdir / "swarm").glob("all_actions_round_*.jsonl")) if (sdir / "swarm").exists() else True:
+    elif not (sdir / "swarm").exists() or not list((sdir / "swarm").glob("all_actions_round_*.jsonl")):
         msg = f"python -m cc_layer.cli.generate_swarm_agents --session-dir {session_dir}"
     elif not (sdir / "report.html").exists():
         msg = f"python -m cc_layer.cli.pipeline_run --session-dir {session_dir} --phase report"

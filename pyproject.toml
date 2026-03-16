@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "mirofish"
 version = "0.1.0"
-description = "AI Career Simulator powered by Claude Code SubAgents"
+description = "AI Career Simulator powered by AI coding agents"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"

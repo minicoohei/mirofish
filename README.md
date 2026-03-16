@@ -1,8 +1,8 @@
 # MiroFish
 
-AI Career Simulator powered by Claude Code SubAgents.
+AI Career Simulator powered by AI coding agents.
 
-Simulate 10-year career trajectories with multi-path analysis, social sentiment simulation, and detailed HTML reports.
+Simulate 10-year career trajectories with multi-path analysis, social sentiment simulation, and detailed HTML reports. Works with any AI coding agent -- Claude Code, Kimi Code, OpenCode, and more.
 
 <div align="center">
 <img src="docs/images/cli_demo.gif" alt="MiroFish CLI Pipeline Demo" width="80%"/>
@@ -55,7 +55,7 @@ Input a resume and career context. MiroFish generates a comprehensive career sim
 
 ## Origin
 
-This project is a Claude Code-native fork of [666ghj/MiroFish](https://github.com/666ghj/MiroFish), the multi-agent social simulation platform.
+This project is a fork of [666ghj/MiroFish](https://github.com/666ghj/MiroFish) reimplemented for AI coding agents.
 
 **What we kept from the original:**
 - Domain models: `BaseIdentity`, `CareerState`, life event definitions
@@ -67,33 +67,54 @@ This project is a Claude Code-native fork of [666ghj/MiroFish](https://github.co
 - Replaced OpenAI + Flask backend with Claude Code SubAgent orchestration
 - Removed frontend (Vue.js) and Docker -- output is a self-contained HTML report
 - Added multi-path expansion (5 paths x 4 scenarios = 20 trajectories)
-- Added SNS Agent Swarm (30-50 AI characters discussing career decisions)
+- Added SNS Agent Swarm (30 AI characters discussing career decisions)
 - Added Pydantic v2 data contracts with normalizer layer for LLM output variance
 - Added fact-checking pipeline (Tavily) and macro trend analysis
 - Packaged as standalone Python CLI (`cc_layer`)
 
-## Requirements
+## AI Agent Setup (One-Push)
 
-- Python 3.11+
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (for SubAgent orchestration)
+<div align="center">
+<img src="docs/images/setup_flow.svg" alt="Setup Flow" width="100%"/>
+</div>
 
-## Installation
+### 3 Steps to Run
 
 ```bash
-pip install -e .
+# 1. Clone & Install
+git clone https://github.com/minicoohei/mirofish.git && cd mirofish
+pip install -e ".[all]"
 
-# Optional dependencies
-pip install -e ".[zep]"      # Zep knowledge graph
-pip install -e ".[search]"   # Tavily web search
-pip install -e ".[otel]"     # OpenTelemetry tracing
-pip install -e ".[all]"      # Everything
+# 2. Place your resume in the project directory
+cp ~/Documents/resume.pdf .
+
+# 3. Launch your AI coding agent and tell it to run
+claude                    # Claude Code
+# kimi                    # Kimi Code
+# opencode                # OpenCode
+# Any agent that can run shell commands
 ```
 
-## Quick Start
+Then just say:
+
+> **"Run MiroFish career simulation for resume.pdf"**
+
+The agent reads the orchestrator prompt (`cc_layer/prompts/orchestrator.md`), asks you a few questions about your career goals, and runs the entire pipeline automatically -- profile init, 5-path design, parallel expansion, scoring, 30-agent swarm discussion, and HTML report generation.
+
+### Supported AI Agents
+
+| Agent | How It Works |
+|-------|-------------|
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Best experience -- reads `.claude/skills/` for orchestration with SubAgent parallel execution. |
+| Kimi Code | Reads `cc_layer/prompts/orchestrator.md` and runs CLI commands. |
+| OpenCode | Same -- reads prompts, runs CLI commands. |
+| Any terminal agent | All pipeline steps are standard Python CLI commands. |
+
+The core pipeline is **agent-friendly**: all phases are Python CLI tools (`cc_layer/cli/`) with JSON in/out. Optimized for Claude Code (with Skills and SubAgent support), but the orchestrator prompt and all CLI commands work with any agent that can run shell commands.
 
 ### Demo Mode (no API keys needed)
 
-Generate a report from bundled sample data:
+Try it instantly with bundled sample data:
 
 ```bash
 python -m cc_layer.cli.pipeline_run \
@@ -101,17 +122,91 @@ python -m cc_layer.cli.pipeline_run \
   --phase report
 ```
 
-### Full Pipeline
+### How It Works
 
-Check pipeline status and follow guided steps:
+The orchestrator handles everything, but here's what happens under the hood:
+
+| Step | What the Agent Does | How |
+|------|-----------------|-----|
+| Input | Asks for resume, career goals, salary, family info | Interactive prompt |
+| Phase 0 | Parses resume, initializes career state | Python CLI |
+| Phase 1a | Designs 5 divergent career paths | LLM reasoning |
+| Phase 1b | Expands each path into 10-year scenarios | 5 parallel calls |
+| Phase 2 | Scores and ranks all paths | Python CLI |
+| Phase 3-4 | 30 AI agents discuss your career choices | Agent Swarm |
+| Phase 5-7 | Fact-checks claims, analyzes macro trends | LLM + Tavily |
+| Phase 8 | Generates self-contained HTML report | Python CLI |
+
+All prompts are in `cc_layer/prompts/` (plain Markdown). The orchestrator coordinates them automatically.
+
+### Pipeline Sequence
+
+Full data flow including Zep knowledge graph and Tavily web search integration:
+
+<div align="center">
+<img src="docs/images/pipeline_sequence.png" alt="Pipeline Sequence Diagram" width="100%"/>
+</div>
+
+<details>
+<summary>Component interactions</summary>
+
+- **AI Agent (Orchestrator)** -- coordinates the entire pipeline, launches SubAgents for creative reasoning
+- **Python CLI** -- deterministic steps (scoring, normalization, report generation) that consume 0 LLM tokens
+- **Zep Cloud** (optional) -- persistent knowledge graph for candidate memory. The agent writes career facts and swarm actions, then reads them back for context in later phases
+- **Tavily** (optional) -- real-time web search for job market data, industry trends, and fact verification
+- **File System** -- all intermediate state is JSON files in the session directory. Every phase reads from and writes to disk, making the pipeline resumable and debuggable
+
+Both Zep and Tavily are optional. The pipeline gracefully degrades without them -- you get the full simulation but without persistent memory and real-time market data.
+
+</details>
+
+### Manual Pipeline Control
+
+If you prefer step-by-step control:
 
 ```bash
+# Check pipeline status and see next action
 python -m cc_layer.cli.pipeline_run \
   --session-dir cc_layer/state/my_session \
   --phase status
 ```
 
-The orchestrator guide at `cc_layer/prompts/orchestrator.md` provides step-by-step instructions for running the complete pipeline with Claude Code.
+The status command shows which phases are complete and what to run next.
+
+## Requirements
+
+- Python 3.11+
+- Any AI coding agent (Claude Code, Kimi Code, OpenCode, etc.) for orchestration
+
+## Installation
+
+```bash
+pip install -e .
+
+# Or install with all optional features
+pip install -e ".[all]"
+```
+
+<details>
+<summary>Optional dependencies (pick what you need)</summary>
+
+```bash
+pip install -e ".[zep]"      # Zep knowledge graph
+pip install -e ".[search]"   # Tavily web search for fact-checking
+pip install -e ".[otel]"     # OpenTelemetry tracing
+pip install -e ".[cli]"      # Rich terminal UI
+pip install -e ".[all]"      # Everything above
+```
+
+| Feature | Env Variable | Purpose |
+|---------|-------------|---------|
+| Zep | `ZEP_API_KEY` | Persistent knowledge graph for candidate memory |
+| Tavily | `TAVILY_API_KEY` | Real-time web search for fact-checking and market data |
+| OTel | `OTEL_EXPORTER_OTLP_ENDPOINT` | Distributed tracing for pipeline observability |
+
+All features work without API keys -- they gracefully degrade with warnings.
+
+</details>
 
 ## Architecture
 

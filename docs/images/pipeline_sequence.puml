@@ -1,0 +1,201 @@
+@startuml pipeline_sequence
+!theme cyborg-outline
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #e2e8f0
+skinparam defaultFontSize 11
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam maxMessageSize 200
+skinparam sequenceArrowThickness 1.5
+skinparam roundcorner 8
+
+skinparam participant {
+  BackgroundColor #1e293b
+  BorderColor #475569
+  FontColor #e2e8f0
+}
+
+skinparam sequence {
+  LifeLineBorderColor #334155
+  LifeLineBackgroundColor #1e293b
+  GroupBorderColor #334155
+  GroupBackgroundColor #0f172a
+  DividerBorderColor #334155
+  DividerBackgroundColor #1e293b
+  ReferenceBackgroundColor #1e293b
+  ReferenceBorderColor #475569
+}
+
+skinparam note {
+  BackgroundColor #1a2744
+  BorderColor #334155
+  FontColor #94a3b8
+}
+
+title MiroFish Pipeline Sequence Diagram
+
+actor "User" as user #3b82f6
+participant "AI Agent\n(Orchestrator)" as agent #7c3aed
+participant "Python CLI\n(cc_layer/cli/)" as cli #059669
+database "Zep Cloud\n(Knowledge Graph)" as zep #f59e0b
+participant "Tavily\n(Web Search)" as tavily #06b6d4
+collections "File System\n(session dir)" as fs #64748b
+
+== Phase 0: Input & Init ==
+
+user -> agent : Resume (PDF/TXT) + career goals
+agent -> cli : sim_init --profile ... --form ...
+cli -> fs : Write agent_state.json
+cli --> agent : Initial career state
+
+== Phase -1: Knowledge Graph Build (optional, requires Zep) ==
+
+agent -> cli : text_process --input-files resume.pdf
+cli -> fs : Write extracted_text.txt
+
+agent -> cli : graph_build --text-file extracted_text.txt
+cli -> zep : Create graph + set ontology
+cli -> zep : Add text chunks (batched)
+zep --> cli : graph_id + entity extraction
+cli -> fs : Write graph_info.json
+
+agent -> cli : state_export --format zep-facts
+cli -> fs : Read agent_state.json
+cli --> agent : Career facts as text
+
+agent -> cli : zep_write --graph-id ... --facts-file ...
+cli -> zep : Add facts to graph
+zep --> cli : Entities auto-extracted
+
+== Phase 1a: Path Design ==
+
+agent -> cli : zep_search --mode entities
+cli -> zep : List all nodes + edges
+zep --> cli : Entity nodes with labels
+cli --> agent : Candidate background entities
+
+agent -> agent : Launch SubAgent\n(path_designer_agent.md)
+note right of agent : Reads orchestrator prompt\nDesigns 5 career paths\nusing candidate context + entities
+agent -> fs : Write path_designs.json
+
+== Knowledge Enrichment (optional, requires Tavily) ==
+
+par Parallel web searches
+  agent -> cli : external_search --mode job-market
+  cli -> tavily : Search job market data
+  tavily --> cli : Market results (sanitized)
+  cli -> fs : Write knowledge/job_market.json
+else
+  agent -> cli : external_search --mode industry-news
+  cli -> tavily : Search industry trends
+  tavily --> cli : News results (sanitized)
+  cli -> fs : Write knowledge/industry_news.json
+else
+  agent -> cli : external_search --mode hr-trends
+  cli -> tavily : Search HR trends
+  tavily --> cli : HR data (sanitized)
+  cli -> fs : Write knowledge/hr_trends.json
+end
+
+== Phase 1b: Path Expansion (5 parallel SubAgents) ==
+
+par 5 paths expanded simultaneously
+  agent -> agent : SubAgent: Expand path_a
+  agent -> fs : Write path_expanded_path_a.json
+else
+  agent -> agent : SubAgent: Expand path_b
+  agent -> fs : Write path_expanded_path_b.json
+else
+  agent -> agent : SubAgent: Expand path_c-e
+  agent -> fs : Write path_expanded_path_c-e.json
+end
+
+note right of agent : Each SubAgent receives:\n- candidate identity\n- path design\n- knowledge context (Tavily)\n- Zep entity data
+
+== Phase 2: Score & Rank ==
+
+agent -> cli : path_score --input-dir session/
+cli -> fs : Read all path_expanded_*.json
+cli -> cli : Deterministic scoring\n(0 LLM tokens)
+cli -> fs : Write multipath_result.json
+cli --> agent : Ranked paths with scores
+
+== Phase 3: Swarm Agent Generation ==
+
+agent -> cli : generate_swarm_agents --session-dir ...
+cli -> zep : Read defined entities\n(ZepEntityReader)
+zep --> cli : Entity profiles + relationships
+cli -> cli : Generate 30 agent personas
+cli -> fs : Write swarm_agents.json
+cli --> agent : 30 OasisAgentProfiles
+
+== Phase 4: Swarm Discussion (30 agents x 40 rounds) ==
+
+loop 40 rounds
+  agent -> cli : zep_search --query "previous round context"
+  cli -> zep : QuickSearch (semantic + BM25)
+  zep --> cli : Relevant facts & edges
+  cli --> agent : Round context
+
+  agent -> agent : SubAgent: 30 agents\npost, react, follow
+  agent -> fs : Write swarm/all_actions_round_N.jsonl
+
+  agent -> cli : zep_write --activity ...
+  cli -> zep : Add actions as episodes\n(batched, background)
+  zep --> cli : Auto entity extraction
+end
+
+== Phase 5-6: Fact Check ==
+
+agent -> cli : fact_check extract
+cli -> fs : Read multipath_result.json
+cli --> agent : Extracted claims
+
+agent -> agent : SubAgent: Verify claims
+agent -> cli : zep_search --mode insight
+cli -> zep : InsightForge\n(sub-question decomposition)
+zep --> cli : Multi-angle facts
+cli --> agent : Deep insights
+
+agent -> tavily : Verify against web sources
+tavily --> agent : Verification results
+agent -> fs : Write fact_check_result.json
+
+== Phase 7: Macro Trends ==
+
+agent -> agent : SubAgent: Analyze trends
+agent -> cli : external_search (multiple modes)
+cli -> tavily : Industry + labor market queries
+tavily --> cli : Trend data
+cli --> agent : Structured trends
+agent -> fs : Write macro_trends.json
+
+== Phase 8: Report Generation ==
+
+agent -> cli : pipeline_run --phase report
+cli -> cli : Normalize SubAgent outputs
+cli -> cli : Validate session data
+
+cli -> zep : InsightForge (analysis sections)
+zep --> cli : Deep analytical insights
+
+cli -> zep : PanoramaSearch (overview)
+zep --> cli : Full graph snapshot
+
+cli -> cli : Build HTML\n(10 interactive sections)
+cli -> fs : Write report.html
+
+cli --> agent : Report complete
+
+agent --> user : report.html\n(self-contained, no server needed)
+
+note over user, fs
+  <b>Legend</b>
+  Green = Python CLI (deterministic, 0 tokens)
+  Purple = AI Agent / SubAgent (LLM reasoning)
+  Yellow = Zep Cloud (knowledge graph, optional)
+  Cyan = Tavily (web search, optional)
+  All pipeline steps work without Zep/Tavily (graceful degradation)
+end note
+
+@enduml
