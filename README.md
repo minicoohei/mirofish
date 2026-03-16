@@ -24,16 +24,24 @@ Input a resume and career context. MiroFish generates a comprehensive career sim
 
 <table>
 <tr>
-<td width="50%"><img src="docs/images/report_03_overview_radar.png" alt="Scenario Analysis"/><br/><b>Scenario Analysis</b> - 5 paths x 3 scenarios with probability-weighted scoring</td>
-<td width="50%"><img src="docs/images/report_04_income_chart.png" alt="Income Chart"/><br/><b>Income Projections</b> - 10-year salary trajectories across all paths</td>
+<td width="50%"><img src="docs/images/report_01_profile.png" alt="Profile"/><br/><b>01 Profile</b> - Candidate overview with career history, skills, and financials</td>
+<td width="50%"><img src="docs/images/report_02_core_skills.png" alt="Core Skills"/><br/><b>02 Core Skills</b> - Fundamental strengths identified by 30 swarm agents</td>
 </tr>
 <tr>
-<td><img src="docs/images/report_05_career_paths.png" alt="Career Paths"/><br/><b>Career Path Details</b> - Period-by-period breakdown with events and blockers</td>
-<td><img src="docs/images/report_06_reskill.png" alt="Reskilling"/><br/><b>Reskilling Suggestions</b> - Skills prioritized by cross-path relevance</td>
+<td><img src="docs/images/report_03_overview_radar.png" alt="Scenario Analysis"/><br/><b>03 God's Eye View</b> - 5 paths x 3 scenarios with probability-weighted scoring</td>
+<td><img src="docs/images/report_04_income_chart.png" alt="Income Chart"/><br/><b>04 Income Projections</b> - 10-year salary trajectories across all paths</td>
 </tr>
 <tr>
-<td><img src="docs/images/report_08_swarm_voices.png" alt="Agent Voices"/><br/><b>Agent Swarm Voices</b> - 30 AI agents discuss each career path</td>
-<td><img src="docs/images/report_10_knowledge_graph.png" alt="Knowledge Graph"/><br/><b>Knowledge Graph</b> - Interactive visualization of career relationships</td>
+<td><img src="docs/images/report_05_career_paths.png" alt="Career Paths"/><br/><b>05 Career Paths</b> - Period-by-period breakdown with events, blockers, and agent commentary</td>
+<td><img src="docs/images/report_06_reskill.png" alt="Reskilling"/><br/><b>06 Reskilling</b> - Skills prioritized by cross-path relevance</td>
+</tr>
+<tr>
+<td><img src="docs/images/report_07_mirror.png" alt="Parallel Self"/><br/><b>07 Parallel Self</b> - How your parallel-world selves would view each other</td>
+<td><img src="docs/images/report_08_swarm_voices.png" alt="Agent Voices"/><br/><b>08 External Voices</b> - 30 AI agents discuss each career path</td>
+</tr>
+<tr>
+<td><img src="docs/images/report_09_macro_trends.png" alt="Macro Trends"/><br/><b>09 Macro Trends</b> - Industry trends and labor market risks</td>
+<td><img src="docs/images/report_10_knowledge_graph.png" alt="Knowledge Graph"/><br/><b>10 Knowledge Graph</b> - Interactive visualization of career entity relationships</td>
 </tr>
 </table>
 
